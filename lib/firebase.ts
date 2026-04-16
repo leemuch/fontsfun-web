@@ -18,6 +18,21 @@ let _db:   Firestore   | null = null;
 
 function getFirebaseApp(): FirebaseApp {
   if (!_app) {
+    // Runtime guard: warn (once) if any required env var is missing in the browser.
+    // Helps diagnose "Google sign-in silently closes" when Vercel env vars
+    // weren't added to Production/Preview.
+    if (typeof window !== 'undefined') {
+      const missing = Object.entries(firebaseConfig)
+        .filter(([, v]) => !v || v === 'YOUR_API_KEY')
+        .map(([k]) => k);
+      if (missing.length) {
+        console.warn(
+          '[firebase] Missing env:',
+          missing.join(', '),
+          '— Google sign-in will fail. Set NEXT_PUBLIC_FIREBASE_* in Vercel Dashboard.'
+        );
+      }
+    }
     _app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
   }
   return _app;

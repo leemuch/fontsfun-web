@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import {
   signInWithEmailAndPassword, createUserWithEmailAndPassword,
-  GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
+  GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult,
+  signOut, onAuthStateChanged,
   updateProfile, type User,
 } from 'firebase/auth';
 import {
@@ -48,9 +49,27 @@ function parseFirebaseError(code: string) {
     'auth/weak-password': '密碼強度不足',
     'auth/invalid-email': 'Email 格式不正確',
     'auth/popup-closed-by-user': '登入視窗已關閉',
+    'auth/popup-blocked': '瀏覽器阻擋了登入視窗，正改為網頁跳轉登入…',
+    'auth/cancelled-popup-request': '已取消先前的登入請求',
     'auth/too-many-requests': '嘗試次數過多，請稍後再試',
+    'auth/unauthorized-domain': '此網域尚未授權 Firebase 登入，請聯絡管理員',
+    'auth/network-request-failed': '網路連線失敗，請檢查網路',
+    'auth/operation-not-allowed': 'Google 登入尚未啟用，請聯絡管理員',
+    'auth/internal-error': 'Firebase 內部錯誤，請稍後再試',
+    'auth/api-key-not-valid.-please-pass-a-valid-api-key.': 'Firebase API Key 無效（環境變數未設）',
   };
-  return map[code] || '發生錯誤，請稍後再試';
+  return map[code] || `發生錯誤（${code || 'unknown'}），請稍後再試`;
+}
+
+// Detect when popup-based Google sign-in is unlikely to work
+function shouldUseRedirect() {
+  if (typeof window === 'undefined') return false;
+  const ua = navigator.userAgent;
+  // iOS Safari / any mobile browser: popup frequently blocked or broken
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(ua);
+  // In-app browsers (Line, FB, IG) always block popups
+  const isInApp = /FBAN|FBAV|Instagram|Line|WeChat|Twitter/i.test(ua);
+  return isMobile || isInApp;
 }
 
 // ── Sub-components ──────────────────────────────────────────────────────────
@@ -87,8 +106,48 @@ function AuthScreen({ onLogin }: { onLogin: (user: User | DemoUser, demo?: boole
 
   async function doGoogleLogin() {
     if (isDemoMode) { onLogin(DEMO_USER, true); return; }
-    try { const r = await signInWithPopup(getFirebaseAuth(), new GoogleAuthProvider()); onLogin(r.user); }
-    catch (e: any) { setLoginErr(parseFirebaseError(e.code)); }
+    setLoginErr(''); setLoading(true);
+
+    const auth = getFirebaseAuth();
+    const provider = new GoogleAuthProvider();
+    // Request standard email/profile scopes explicitly
+    provider.addScope('email');
+    provider.addScope('profile');
+    provider.setCustomParameters({ prompt: 'select_account' });
+
+    // Mobile / in-app browsers: redirect is the only reliable path
+    if (shouldUseRedirect()) {
+      try {
+        await signInWithRedirect(auth, provider);
+        // browser navigates away — no code after this runs until redirect returns
+      } catch (e: any) {
+        setLoginErr(parseFirebaseError(e.code));
+        setLoading(false);
+      }
+      return;
+    }
+
+    // Desktop: try popup first, fall back to redirect if blocked
+    try {
+      const r = await signInWithPopup(auth, provider);
+      onLogin(r.user);
+    } catch (e: any) {
+      const code = e?.code || '';
+      if (code === 'auth/popup-blocked' ||
+          code === 'auth/popup-closed-by-user' ||
+          code === 'auth/cancelled-popup-request') {
+        // Popup blocked or abruptly closed — retry with redirect
+        try {
+          await signInWithRedirect(auth, provider);
+        } catch (e2: any) {
+          setLoginErr(parseFirebaseError(e2.code));
+        }
+      } else {
+        setLoginErr(parseFirebaseError(code));
+      }
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -450,7 +509,16 @@ export default function MemberClient() {
       setOrders(DEMO_ORDERS); setIsDemo(true); setState('dashboard');
       return;
     }
-    const unsub = onAuthStateChanged(getFirebaseAuth(), async user => {
+
+    const auth = getFirebaseAuth();
+
+    // Pick up the result of signInWithRedirect (fires once on first mount
+    // after the redirect round-trip). Safe to call even if no redirect occurred.
+    getRedirectResult(auth).catch((err) => {
+      console.warn('[auth] getRedirectResult error:', err?.code, err?.message);
+    });
+
+    const unsub = onAuthStateChanged(auth, async user => {
       if (user) {
         setCurrentUser(user);
         try {
