@@ -127,8 +127,125 @@ html.dark .dm-toggle:hover { border-color: var(--ink); color: var(--ink); }
     font-size: 0.9rem !important; letter-spacing: 0.15em;
     color: var(--ink) !important;
   }
-  .nav-menu li a:hover { color: var(--accent) !important; }
   html.dark .nav-menu { background: #141210; border-color: var(--light-rule); }
+
+  /* ─── GLOBAL MOBILE LAYOUT ─── */
+  /* Nav bar: tighten padding */
+  nav[style] { padding: 1rem 1.25rem !important; }
+
+  /* Sweep: all inline CSS grids → single column on mobile */
+  [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Section / header / hero padding compression */
+  main > section[style],
+  main > div > section[style] {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  /* In-page sticky tabs (homepage) — smaller text + tighter padding */
+  main > div[style*="position:sticky"] a,
+  main > div[style*="position: sticky"] a {
+    padding: 0.85rem 0.5rem !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  /* Blog hero block (top intro) */
+  main > div[style*="padding:10rem"],
+  main > div[style*="padding: '10rem"] {
+    padding: 6rem 1.25rem 2.5rem !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Filter bar wraps & shrinks */
+  .filter-bar {
+    padding: 1.25rem 1.25rem !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+  .filter-bar > span:first-child {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    margin-right: 0 !important;
+  }
+  .filter-bar > span {
+    border-left: none !important;
+    border-right: 1px solid var(--light-rule) !important;
+    padding: 0.35rem 0.85rem !important;
+  }
+
+  /* Featured article in blog (1fr 1fr → stacked) */
+  .featured-wrap { padding: 0 1.25rem !important; }
+  .featured-wrap > article > div[style*="padding:4rem"],
+  .featured-wrap > article > div[style*="padding: '4rem"] {
+    padding: 2rem 1.5rem !important;
+  }
+  .featured-wrap > article > div[style*="aspect-ratio"] {
+    border-right: none !important;
+    border-bottom: 1px solid var(--light-rule);
+  }
+
+  /* Posts grid container */
+  main > div[style*="padding:4rem"] { padding: 2rem 1.25rem !important; }
+
+  /* Blog cards: full width, swap right-border for bottom-border */
+  .post-card {
+    padding: 1.75rem 1.25rem !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--light-rule) !important;
+  }
+
+  /* Font cards on home */
+  .font-card {
+    padding: 2rem 1.5rem !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--light-rule);
+  }
+  .font-card:last-child { border-bottom: none; }
+
+  /* Glyphs strip: shrink large text */
+  .glyphs-strip {
+    padding: 2rem 1.25rem !important;
+  }
+  .glyphs-strip > div[style*="font-size:1.8rem"],
+  .glyphs-strip > div[style*="font-size: 1.8rem"] {
+    font-size: 1.05rem !important;
+    letter-spacing: 0.15em !important;
+  }
+  .glyphs-strip > div[style*="font-size:1.2rem"],
+  .glyphs-strip > div[style*="font-size: 1.2rem"] {
+    font-size: 0.85rem !important;
+    letter-spacing: 0.15em !important;
+    word-break: break-all;
+  }
+
+  /* TypeTester */
+  .type-tester {
+    padding: 1.5rem 1.25rem !important;
+    margin-bottom: 2rem !important;
+  }
+  .type-tester input[type="range"] { width: 90px !important; }
+
+  /* MDX article page: reduce gutter */
+  article[style*="max-width:780px"],
+  article[style*="max-width: 780px"] {
+    padding: 4rem 1.25rem 5rem !important;
+  }
+  .prose-content table { display: block; overflow-x: auto; }
+
+  /* Newsletter form: stacked */
+  .newsletter-form { width: 100%; }
+}
+
+/* ─── DISABLE HOVER ON TOUCH DEVICES ─── */
+@media (hover: none) and (pointer: coarse) {
+  .post-card:hover,
+  .font-card:hover { background: transparent !important; }
+  .nav-menu li a:hover { color: var(--ink) !important; }
+  .dm-toggle:hover { border-color: var(--light-rule); color: var(--warm-mid); }
 }
 
 /* ─── REVEAL ANIMATION ─── */

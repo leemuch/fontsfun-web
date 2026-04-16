@@ -53,12 +53,12 @@ export default function Nav() {
           }}>fontsfun</span>
         </Link>
 
-        <ul className="nav-menu" id="navMenu" style={{
+        <ul className={`nav-menu${menuOpen ? ' open' : ''}`} id="navMenu" style={{
           listStyle: 'none', display: 'flex', gap: '2.5rem',
         }}>
           {navLinks.map(({ href, label }) => (
             <li key={href}>
-              <Link href={href} style={{
+              <Link href={href} onClick={closeMenu} style={{
                 fontFamily: "'Noto Sans TC', sans-serif",
                 fontSize: '0.75rem', letterSpacing: '0.12em',
                 color: pathname.startsWith(href) ? 'var(--ink)' : 'var(--warm-mid)',

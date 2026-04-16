@@ -9,7 +9,7 @@ export default function TypeTester() {
   const display = text || '美好生活，從一款好字體開始。';
 
   return (
-    <div style={{
+    <div className="type-tester" style={{
       background: 'var(--ink)', color: 'var(--paper)',
       padding: '3rem 4rem', marginBottom: '4rem',
       border: '1px solid #2a2a2a',
