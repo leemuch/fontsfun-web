@@ -160,6 +160,11 @@ export default function PortfolioPage() {
       <section className="hero" style={{
         minHeight: '100vh', display: 'grid',
         gridTemplateColumns: '1fr 1fr', paddingTop: '5rem',
+        position: 'relative', isolation: 'isolate',
+        backgroundImage: 'linear-gradient(rgba(245, 242, 235, 0.82), rgba(245, 242, 235, 0.94)), url(/images/hero-portfolio.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}>
         <div className="hero-left" style={{
           display: 'flex', flexDirection: 'column', justifyContent: 'center',

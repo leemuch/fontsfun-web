@@ -62,6 +62,11 @@ export default function FontsPage() {
         justifyContent: 'center', alignItems: 'center',
         textAlign: 'center',
         borderBottom: '1px solid var(--light-rule)',
+        position: 'relative', isolation: 'isolate',
+        backgroundImage: 'linear-gradient(rgba(245, 242, 235, 0.86), rgba(245, 242, 235, 0.94)), url(/images/hero-fonts.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}>
         <p style={{
           fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
@@ -109,6 +114,41 @@ export default function FontsPage() {
               textDecoration: 'none', transition: 'opacity 0.2s',
             }}
           >嘖嘖募資中 ↗</a>
+        </div>
+      </section>
+
+      {/* SPECIMEN BANNER — 綿甜體意象 */}
+      <section style={{
+        display: 'grid', gridTemplateColumns: '1fr 1fr',
+        borderBottom: '1px solid var(--light-rule)',
+      }} className="specimen-banner">
+        <div style={{
+          aspectRatio: '4/3',
+          backgroundImage: 'url(/images/specimen-miantian.jpg)',
+          backgroundSize: 'cover', backgroundPosition: 'center',
+        }} aria-label="綿甜體意象 — 日式甜點粉色奶米色調" />
+        <div style={{
+          padding: '4rem 3rem',
+          display: 'flex', flexDirection: 'column', justifyContent: 'center',
+          background: 'var(--bg-alt)',
+        }}>
+          <p style={{
+            fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
+            fontSize: '0.85rem', color: 'var(--warm-mid)',
+            letterSpacing: '0.2em', marginBottom: '1.25rem',
+          }}>Typeface Inspiration</p>
+          <h2 style={{
+            fontFamily: "'Noto Serif TC', serif", fontWeight: 300,
+            fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+            lineHeight: 1.5, letterSpacing: '0.08em',
+            marginBottom: '1.5rem',
+          }}>綿甜如糕<br />甘美如蜜</h2>
+          <p style={{
+            fontFamily: "'Noto Sans TC', sans-serif",
+            fontSize: '0.9rem', color: 'var(--warm-mid)',
+            letterSpacing: '0.05em', lineHeight: 2.2,
+          }}>綿甜體的六種字重，如同日式和菓子的手工層次——從柔、光、霜、潤、醇、蜜，每一種都是文字與甜點共享的質地。
+          </p>
         </div>
       </section>
 
@@ -312,7 +352,8 @@ export default function FontsPage() {
 
       <style>{`
         @media (max-width: 900px) {
-          .weights-grid, .testimonials-grid {
+          .weights-grid, .testimonials-grid,
+          .specimen-banner {
             grid-template-columns: 1fr !important;
           }
         }

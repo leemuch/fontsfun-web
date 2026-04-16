@@ -34,80 +34,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ──────────────────────────────────────────────────────────────
- * GLOBAL TYPOGRAPHY ENFORCEMENT
- * Per spec: body content min 16px, secondary/meta min 14px,
- * applies all viewports. Inline 0.6–0.85rem fonts force-bumped.
- * ────────────────────────────────────────────────────────────── */
-
-/* HTML element baseline — force 16px on form / table / content elements */
-p, li, td, th, label, input, select, textarea, button, blockquote {
-  font-size: 16px;
-  line-height: 1.85;
-}
-
-/* Body content classes — explicit 16px floor */
-.post-excerpt, .service-desc, .step-desc, .about-body,
-.font-desc, .tl-desc, .work-result, .plan-features li,
-.orders-table td, .data-table td, .form-group label,
-.contact-note, .form-note, .form-field label,
-.testimonial p, .faq-question, .faq-answer,
-.hero-sub,
-.prose-content p, .prose-content li, .prose-content blockquote,
-.service-card p, .post-card p, .font-card p, .plan-card p,
-section p {
-  font-size: 16px !important;
-  line-height: 1.85 !important;
-  color: #262626 !important;
-}
-.prose-content p { font-size: 17px !important; }
-
-/* Nav menu items: 16px per spec (li requirement) */
-.nav-menu li a { font-size: 16px !important; }
-
-/* Form inputs: 16px prevents iOS Safari focus auto-zoom */
-input, select, textarea, button {
-  font-size: 16px !important;
-}
-
-/* Dark-bg sections need light text — restore for #ink/#1a1714 backgrounds */
-section[style*="background:var(--ink)"] p,
-section[style*="background: var(--ink)"] p,
-section[style*="background:#1a1714"] p,
-section[style*="background: #1a1714"] p,
-section[style*="background:#0e0c0a"] p,
-section[style*="color:var(--paper)"] p,
-section[style*="color: var(--paper)"] p { color: #d4d0c8 !important; }
-
-/* Secondary / meta text — explicit 14px / #404040 */
-.col-dim, .meta-item, .post-min,
-.work-cat, .service-price, .filter-btn,
-.stat-label, .post-meta, .post-cat, .post-date,
-.tag, .badge, .caption, .breadcrumb {
-  font-size: 14px !important;
-  color: #404040 !important;
-  line-height: 1.7 !important;
-}
-footer, footer span { color: #404040 !important; font-size: 14px !important; }
-
-/* Force-bump tiny inline font-sizes to 14px minimum (catches all rem-fractional) */
-[style*="font-size:0.5"], [style*="font-size: 0.5"],
-[style*="font-size:0.55"], [style*="font-size: 0.55"],
-[style*="font-size:0.58"], [style*="font-size: 0.58"],
-[style*="font-size:0.6"], [style*="font-size: 0.6"],
-[style*="font-size:0.62"], [style*="font-size: 0.62"],
-[style*="font-size:0.65"], [style*="font-size: 0.65"],
-[style*="font-size:0.68"], [style*="font-size: 0.68"],
-[style*="font-size:0.7rem"], [style*="font-size: 0.7rem"],
-[style*="font-size:0.7em"], [style*="font-size: 0.7em"],
-[style*="font-size:0.72"], [style*="font-size: 0.72"],
-[style*="font-size:0.75"], [style*="font-size: 0.75"],
-[style*="font-size:0.78"], [style*="font-size: 0.78"],
-[style*="font-size:0.8rem"], [style*="font-size: 0.8rem"],
-[style*="font-size:0.82"], [style*="font-size: 0.82"],
-[style*="font-size:0.85"], [style*="font-size: 0.85"] {
-  font-size: 14px !important;
-}
+/* (legacy typography overrides removed — superseded by NUCLEAR rule at file end) */
 
 /* Noise texture overlay */
 body::before {
@@ -200,8 +127,7 @@ html.dark .dm-toggle:hover { border-color: var(--ink); color: var(--ink); }
   .nav-menu li { border-bottom: 1px solid var(--light-rule); }
   .nav-menu li a {
     display: block; padding: 1.2rem 0;
-    font-size: 0.9rem !important; letter-spacing: 0.15em;
-    color: var(--ink) !important;
+    letter-spacing: 0.15em;
   }
   html.dark .nav-menu { background: #141210; border-color: var(--light-rule); }
 
@@ -314,56 +240,7 @@ html.dark .dm-toggle:hover { border-color: var(--ink); color: var(--ink); }
 
   /* Newsletter form: stacked */
   .newsletter-form { width: 100%; }
-
-  /* ─── MOBILE TYPOGRAPHY BASELINE (per CLAUDE.md §2 readability) ─── */
-  /* Body text: minimum 16px, line-height ≥ 1.85 */
-  p, li,
-  .post-excerpt, .service-desc, .step-desc, .about-body,
-  .font-desc, .tl-desc, .step-desc,
-  .prose-content p, .prose-content li, .prose-content blockquote,
-  .work-result, .contact-note, .form-note, .stat-label,
-  .testimonial p, .faq-question, .faq-answer {
-    font-size: 1rem !important;
-    line-height: 1.85 !important;
-    letter-spacing: 0.04em !important;
-  }
-
-  /* Secondary / meta text: minimum 14px */
-  .col-dim, .meta-item, .post-min,
-  .work-cat, .stat-num + span, .filter-btn,
-  .service-price, .step-num + *,
-  .nav-menu li a {
-    font-size: 0.875rem !important;
-    line-height: 1.75 !important;
-  }
-
-  /* Tighten very large hero/headline that would dominate small screens */
-  h1, .hero-title, .contact-headline { letter-spacing: 0.05em !important; }
-
-  /* MDX article body — bump up for comfortable reading */
-  article .prose-content p { font-size: 1.0625rem !important; }
-
-  /* Sweep: bump tiny inline font-size on spans/divs to readable size */
-  span[style*="font-size:0.6"],   span[style*="font-size: 0.6"],
-  span[style*="font-size:0.65"],  span[style*="font-size: 0.65"],
-  span[style*="font-size:0.7rem"], span[style*="font-size: 0.7rem"],
-  span[style*="font-size:0.72"],  span[style*="font-size: 0.72"],
-  div[style*="font-size:0.6"],    div[style*="font-size: 0.6"],
-  div[style*="font-size:0.65"],   div[style*="font-size: 0.65"],
-  div[style*="font-size:0.7rem"], div[style*="font-size: 0.7rem"] {
-    font-size: 0.875rem !important;  /* 14px minimum */
-  }
-  span[style*="font-size:0.75"],  span[style*="font-size: 0.75"],
-  span[style*="font-size:0.78"],  span[style*="font-size: 0.78"],
-  span[style*="font-size:0.8rem"], span[style*="font-size: 0.8rem"],
-  span[style*="font-size:0.85"],  span[style*="font-size: 0.85"],
-  div[style*="font-size:0.75"],   div[style*="font-size: 0.75"],
-  div[style*="font-size:0.78"],   div[style*="font-size: 0.78"],
-  div[style*="font-size:0.8rem"], div[style*="font-size: 0.8rem"],
-  p[style*="font-size:0.7"],      p[style*="font-size: 0.7"],
-  p[style*="font-size:0.78"],     p[style*="font-size: 0.78"] {
-    font-size: 1rem !important;  /* 16px for body-ish text */
-  }
+  /* (mobile typography baseline removed — superseded by NUCLEAR rule at file end) */
 }
 
 /* ─── DISABLE HOVER ON TOUCH DEVICES ─── */
@@ -485,3 +362,18 @@ html.dark .dm-toggle:hover { border-color: var(--ink); color: var(--ink); }
   border-bottom: 1px solid var(--accent);
 }
 .prose-content a:hover { opacity: 0.7; }
+
+/* ═════════════════════════════════════════════════════════════
+ * NUCLEAR TYPOGRAPHY OVERRIDE — FORCE RECOMPILE
+ * ALL elements forced to 16px; only h1-h4 keep native sizes.
+ * ALL text colors forced to #1a1a1a (overrides inline grays).
+ * ═════════════════════════════════════════════════════════════ */
+* {
+  font-size: 16px !important;
+}
+h1, h2, h3, h4 {
+  font-size: revert !important;
+}
+body, p, li, td, th, span, div, a, button, input, select, textarea, label {
+  color: #1a1a1a !important;
+}
