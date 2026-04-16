@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 export interface Work {
   cat: 'brand' | 'editorial' | 'packaging' | 'type';
@@ -10,7 +10,10 @@ export interface Work {
   result: string;
   img: string;
   alt: string;
+  /** Legacy layout hint — retained but no longer changes span; content is always full-bleed now */
   span?: 'wide' | 'tall';
+  /** Optional English title. Falls back to workCat if absent. */
+  titleEn?: string;
 }
 
 interface Props { works: Work[] }
@@ -26,15 +29,12 @@ const FILTERS = [
 export default function WorksGrid({ works }: Props) {
   const [active, setActive] = useState<string>('all');
   const [lightbox, setLightbox] = useState<Work | null>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
 
-  // Lock body scroll when lightbox is open
   useEffect(() => {
     document.body.style.overflow = lightbox ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [lightbox]);
 
-  // Esc to close lightbox
   useEffect(() => {
     if (!lightbox) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightbox(null); };
@@ -46,7 +46,7 @@ export default function WorksGrid({ works }: Props) {
     <>
       {/* Filter Bar */}
       <div className="works-filter" style={{
-        display: 'flex', gap: '1rem', marginBottom: '3rem', flexWrap: 'wrap',
+        display: 'flex', gap: '1rem', marginBottom: '0', flexWrap: 'wrap',
       }}>
         {FILTERS.map(f => {
           const isActive = active === f.key;
@@ -58,12 +58,12 @@ export default function WorksGrid({ works }: Props) {
               className={`filter-btn${isActive ? ' active' : ''}`}
               style={{
                 fontFamily: "'Noto Sans TC', sans-serif",
-                fontSize: '0.7rem', letterSpacing: '0.12em',
+                fontSize: '14px', letterSpacing: '0.12em',
                 color: isActive ? 'var(--paper)' : 'var(--warm-mid)',
                 background: isActive ? 'var(--ink)' : 'none',
                 border: '1px solid',
                 borderColor: isActive ? 'var(--ink)' : 'var(--light-rule)',
-                padding: '0.4rem 1rem', cursor: 'pointer',
+                padding: '0.5rem 1.25rem', cursor: 'pointer',
                 transition: 'all 0.2s',
               }}
             >
@@ -73,55 +73,131 @@ export default function WorksGrid({ works }: Props) {
         })}
       </div>
 
-      {/* Works Grid */}
-      <div ref={gridRef} className="works-grid" style={{
-        display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2px',
+      {/* Works — full-bleed alternating layout
+          Breaks out of any padded parent via negative margin + 100vw trick */}
+      <div className="works-fullbleed" style={{
+        marginTop: '4rem',
+        marginLeft:  'calc(-50vw + 50%)',
+        marginRight: 'calc(-50vw + 50%)',
+        width: '100vw', maxWidth: '100vw',
       }}>
         {works.map((w, i) => {
           const visible = active === 'all' || w.cat === active;
+          if (!visible) return null;
+          const reverse = i % 2 === 1; // even-index (0,2,4…) image-left; odd reversed
           return (
             <article
               key={i}
-              className={`work-card${w.span ? ' ' + w.span : ''}`}
-              onClick={() => setLightbox(w)}
+              className={`work-row${reverse ? ' reverse' : ''}`}
               style={{
-                position: 'relative',
-                aspectRatio: w.span === 'tall' ? '3/4' : '4/3',
-                gridColumn: w.span === 'wide' ? 'span 2' : 'span 1',
-                gridRow:    w.span === 'tall' ? 'span 2' : 'span 1',
-                overflow: 'hidden', cursor: 'pointer',
-                background: '#f0ece3',
-                opacity: visible ? 1 : 0.15,
-                pointerEvents: visible ? 'auto' : 'none',
-                transform: visible ? 'scale(1)' : 'scale(0.97)',
-                transition: 'opacity 0.4s, transform 0.4s',
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                minHeight: '520px',
+                background: i % 2 === 0 ? 'var(--paper)' : 'var(--bg-alt)',
+                borderTop: i === 0 ? '1px solid var(--light-rule)' : 'none',
+                borderBottom: '1px solid var(--light-rule)',
+                direction: reverse ? 'rtl' : 'ltr',
               }}
             >
-              <img className="work-img" src={w.img} alt={w.alt} loading="lazy" style={{
-                width: '100%', height: '100%', objectFit: 'contain',
-                display: 'block', transition: 'transform 0.5s ease',
-              }} />
-              <div className="work-overlay" style={{
-                position: 'absolute', inset: 0,
-                background: 'rgba(26,23,20,.88)',
-                display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
-                padding: '2rem', opacity: 0, transition: 'opacity 0.35s ease',
-              }}>
-                <p className="work-cat" style={{
+              {/* Image side */}
+              <div
+                onClick={() => setLightbox(w)}
+                className="work-img-wrap"
+                style={{
+                  direction: 'ltr',
+                  position: 'relative',
+                  minHeight: '520px',
+                  overflow: 'hidden',
+                  cursor: 'pointer',
+                  background: '#f0ece3',
+                }}
+              >
+                <img
+                  className="work-img"
+                  src={w.img}
+                  alt={w.alt}
+                  loading={i < 2 ? 'eager' : 'lazy'}
+                  style={{
+                    width: '100%', height: '100%',
+                    objectFit: 'cover', display: 'block',
+                    transition: 'transform 0.6s ease',
+                    position: 'absolute', inset: 0,
+                  }}
+                />
+              </div>
+
+              {/* Content side */}
+              <div
+                className="work-copy"
+                style={{
+                  direction: 'ltr',
+                  display: 'flex', flexDirection: 'column', justifyContent: 'center',
+                  padding: '4.5rem 4rem',
+                  gap: '1.25rem',
+                }}
+              >
+                {/* Index number */}
+                <span style={{
                   fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-                  fontSize: '0.75rem', color: 'var(--warm-mid)',
-                  letterSpacing: '0.15em', marginBottom: '0.5rem',
+                  fontSize: '1rem', color: 'var(--warm-mid)',
+                  letterSpacing: '0.2em',
+                }}>
+                  {String(i + 1).padStart(2, '0')} / {String(works.length).padStart(2, '0')}
+                </span>
+
+                {/* Service type */}
+                <p style={{
+                  fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
+                  fontSize: '14px', color: 'var(--accent)',
+                  letterSpacing: '0.25em', textTransform: 'uppercase',
+                  margin: 0,
                 }}>{w.workCat}</p>
-                <h3 className="work-title" style={{
-                  fontFamily: "'Noto Serif TC', serif", fontWeight: 400,
-                  fontSize: '1.1rem', color: '#f5f2eb',
-                  letterSpacing: '0.1em', marginBottom: '0.5rem',
-                }}>{w.title}</h3>
-                <p className="work-result" style={{
-                  fontFamily: "'Noto Sans TC', sans-serif",
-                  fontSize: '0.7rem', color: '#aaa',
-                  letterSpacing: '0.08em', lineHeight: 1.7,
-                }}>{w.result}</p>
+
+                {/* English title (big) */}
+                <h3 style={{
+                  fontFamily: "'Cormorant Garamond', serif", fontWeight: 400,
+                  fontSize: 'clamp(2rem, 3.5vw, 3.25rem)',
+                  lineHeight: 1.15, letterSpacing: '0.02em',
+                  color: 'var(--ink)', margin: 0,
+                }}>{w.titleEn || w.workCat}</h3>
+
+                {/* Chinese title */}
+                <h4 style={{
+                  fontFamily: "'Noto Serif TC', serif", fontWeight: 500,
+                  fontSize: 'clamp(1.1rem, 1.5vw, 1.35rem)',
+                  lineHeight: 1.5, letterSpacing: '0.08em',
+                  color: 'var(--ink)', margin: 0,
+                }}>{w.title}</h4>
+
+                {/* Description */}
+                <p style={{
+                  fontFamily: "'Noto Sans TC', sans-serif", fontWeight: 300,
+                  fontSize: '16px', lineHeight: 1.95,
+                  letterSpacing: '0.04em', color: '#262626',
+                  maxWidth: '32rem', margin: '0.5rem 0 0',
+                }}>{w.desc}</p>
+
+                {/* CTA */}
+                <button
+                  type="button"
+                  onClick={() => setLightbox(w)}
+                  style={{
+                    alignSelf: 'flex-start',
+                    marginTop: '1.5rem',
+                    padding: '0.75rem 0',
+                    background: 'none', border: 'none',
+                    borderBottom: '1px solid var(--ink)',
+                    fontFamily: "'Noto Sans TC', sans-serif",
+                    fontSize: '14px', letterSpacing: '0.2em',
+                    color: 'var(--ink)', cursor: 'pointer',
+                    display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
+                    transition: 'gap 0.3s, color 0.2s',
+                  }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.gap = '1.25rem'; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.gap = '0.75rem'; }}
+                >
+                  查看詳情 <span aria-hidden>→</span>
+                </button>
               </div>
             </article>
           );
@@ -148,16 +224,16 @@ export default function WorksGrid({ works }: Props) {
             style={{
               display: 'grid',
               gridTemplateColumns: '1fr 360px',
-              gap: 0,
               maxWidth: '1200px', width: '100%',
               maxHeight: '88vh', overflow: 'hidden',
               background: 'var(--paper)',
               boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+              position: 'relative',
             }}
           >
             <div style={{
-              background: '#0e0c0a', display: 'flex',
-              alignItems: 'center', justifyContent: 'center',
+              background: '#0e0c0a',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
               minHeight: '40vh', overflow: 'hidden',
             }}>
               <img src={lightbox.img} alt={lightbox.alt} style={{
@@ -171,7 +247,7 @@ export default function WorksGrid({ works }: Props) {
             }}>
               <p style={{
                 fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-                fontSize: '0.8rem', color: 'var(--warm-mid)',
+                fontSize: '14px', color: 'var(--warm-mid)',
                 letterSpacing: '0.18em',
               }}>{lightbox.workCat}</p>
               <h3 style={{
@@ -181,8 +257,8 @@ export default function WorksGrid({ works }: Props) {
               }}>{lightbox.title}</h3>
               <p style={{
                 fontFamily: "'Noto Sans TC', sans-serif", fontWeight: 300,
-                fontSize: '0.78rem', lineHeight: 2,
-                letterSpacing: '0.04em', color: 'var(--ink)',
+                fontSize: '16px', lineHeight: 2,
+                letterSpacing: '0.04em', color: '#262626',
                 marginTop: '0.5rem',
               }}>{lightbox.desc}</p>
             </div>
@@ -204,9 +280,30 @@ export default function WorksGrid({ works }: Props) {
 
       <style jsx>{`
         @keyframes lbFadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+        /* Desktop hover */
         @media (hover: hover) {
-          .work-card:hover .work-overlay { opacity: 1 !important; }
-          .work-card:hover :global(.work-img) { transform: scale(1.05); }
+          .work-row :global(.work-img-wrap):hover :global(.work-img) {
+            transform: scale(1.04);
+          }
+        }
+
+        /* Mobile: image-top / copy-bottom, single column */
+        @media (max-width: 900px) {
+          .work-row {
+            grid-template-columns: 1fr !important;
+            min-height: 0 !important;
+            direction: ltr !important;
+          }
+          .work-row.reverse { /* no-op: same stack order on mobile */ }
+          .work-row :global(.work-img-wrap) {
+            min-height: 320px !important;
+            aspect-ratio: 4/3;
+          }
+          .work-row :global(.work-copy) {
+            padding: 2.5rem 1.5rem !important;
+            gap: 1rem !important;
+          }
         }
       `}</style>
     </>
