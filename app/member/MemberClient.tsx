@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import {
   signInWithEmailAndPassword, createUserWithEmailAndPassword,
-  GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult,
+  GoogleAuthProvider, signInWithRedirect, getRedirectResult,
   signOut, onAuthStateChanged,
   updateProfile, type User,
 } from 'firebase/auth';
@@ -61,16 +61,7 @@ function parseFirebaseError(code: string) {
   return map[code] || `發生錯誤（${code || 'unknown'}），請稍後再試`;
 }
 
-// Detect when popup-based Google sign-in is unlikely to work
-function shouldUseRedirect() {
-  if (typeof window === 'undefined') return false;
-  const ua = navigator.userAgent;
-  // iOS Safari / any mobile browser: popup frequently blocked or broken
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(ua);
-  // In-app browsers (Line, FB, IG) always block popups
-  const isInApp = /FBAN|FBAV|Instagram|Line|WeChat|Twitter/i.test(ua);
-  return isMobile || isInApp;
-}
+// (popup detection removed — now always using redirect)
 
 // ── Sub-components ──────────────────────────────────────────────────────────
 function AuthScreen({ onLogin }: { onLogin: (user: User | DemoUser, demo?: boolean) => void }) {
@@ -110,42 +101,16 @@ function AuthScreen({ onLogin }: { onLogin: (user: User | DemoUser, demo?: boole
 
     const auth = getFirebaseAuth();
     const provider = new GoogleAuthProvider();
-    // Request standard email/profile scopes explicitly
     provider.addScope('email');
     provider.addScope('profile');
     provider.setCustomParameters({ prompt: 'select_account' });
 
-    // Mobile / in-app browsers: redirect is the only reliable path
-    if (shouldUseRedirect()) {
-      try {
-        await signInWithRedirect(auth, provider);
-        // browser navigates away — no code after this runs until redirect returns
-      } catch (e: any) {
-        setLoginErr(parseFirebaseError(e.code));
-        setLoading(false);
-      }
-      return;
-    }
-
-    // Desktop: try popup first, fall back to redirect if blocked
+    // Always use redirect — popup is unreliable across browsers/devices
     try {
-      const r = await signInWithPopup(auth, provider);
-      onLogin(r.user);
+      await signInWithRedirect(auth, provider);
+      // Browser navigates away; code after this won't run until redirect returns
     } catch (e: any) {
-      const code = e?.code || '';
-      if (code === 'auth/popup-blocked' ||
-          code === 'auth/popup-closed-by-user' ||
-          code === 'auth/cancelled-popup-request') {
-        // Popup blocked or abruptly closed — retry with redirect
-        try {
-          await signInWithRedirect(auth, provider);
-        } catch (e2: any) {
-          setLoginErr(parseFirebaseError(e2.code));
-        }
-      } else {
-        setLoginErr(parseFirebaseError(code));
-      }
-    } finally {
+      setLoginErr(parseFirebaseError(e.code));
       setLoading(false);
     }
   }
