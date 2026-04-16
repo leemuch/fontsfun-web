@@ -6,11 +6,12 @@ import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
 
 const navLinks = [
-  { href: '/fonts',    label: '字體' },
-  { href: '/buy',      label: '購買' },
-  { href: '/releases', label: '新品' },
-  { href: '/blog',     label: '筆記' },
-  { href: '/member',   label: '會員' },
+  { href: '/fonts',     label: '字體' },
+  { href: '/portfolio', label: '作品' },
+  { href: '/buy',       label: '購買' },
+  { href: '/releases',  label: '新品' },
+  { href: '/blog',      label: '筆記' },
+  { href: '/member',    label: '會員' },
 ];
 
 export default function Nav() {
