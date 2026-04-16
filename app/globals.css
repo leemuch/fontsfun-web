@@ -34,22 +34,42 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── GLOBAL TYPOGRAPHY (all viewports) ─── */
-/* Body / paragraph / description text — unified 16px / #262626 */
-p, li,
+/* ──────────────────────────────────────────────────────────────
+ * GLOBAL TYPOGRAPHY ENFORCEMENT
+ * Per spec: body content min 16px, secondary/meta min 14px,
+ * applies all viewports. Inline 0.6–0.85rem fonts force-bumped.
+ * ────────────────────────────────────────────────────────────── */
+
+/* HTML element baseline — force 16px on form / table / content elements */
+p, li, td, th, label, input, select, textarea, button, blockquote {
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+/* Body content classes — explicit 16px floor */
 .post-excerpt, .service-desc, .step-desc, .about-body,
-.font-desc, .tl-desc,
-.prose-content p, .prose-content li, .prose-content blockquote,
-.contact-note, .form-note,
+.font-desc, .tl-desc, .work-result, .plan-features li,
+.orders-table td, .data-table td, .form-group label,
+.contact-note, .form-note, .form-field label,
 .testimonial p, .faq-question, .faq-answer,
 .hero-sub,
-.service-card p, .step-desc, .post-card p,
+.prose-content p, .prose-content li, .prose-content blockquote,
+.service-card p, .post-card p, .font-card p, .plan-card p,
 section p {
   font-size: 16px !important;
   line-height: 1.85 !important;
   color: #262626 !important;
 }
 .prose-content p { font-size: 17px !important; }
+
+/* Nav menu items: 16px per spec (li requirement) */
+.nav-menu li a { font-size: 16px !important; }
+
+/* Form inputs: 16px prevents iOS Safari focus auto-zoom */
+input, select, textarea, button {
+  font-size: 16px !important;
+}
+
 /* Dark-bg sections need light text — restore for #ink/#1a1714 backgrounds */
 section[style*="background:var(--ink)"] p,
 section[style*="background: var(--ink)"] p,
@@ -59,16 +79,35 @@ section[style*="background:#0e0c0a"] p,
 section[style*="color:var(--paper)"] p,
 section[style*="color: var(--paper)"] p { color: #d4d0c8 !important; }
 
-/* Secondary / meta text — 14px / #404040 */
+/* Secondary / meta text — explicit 14px / #404040 */
 .col-dim, .meta-item, .post-min,
-.work-cat, .work-result, .service-price, .filter-btn,
+.work-cat, .service-price, .filter-btn,
 .stat-label, .post-meta, .post-cat, .post-date,
-.tag, .caption, .breadcrumb {
+.tag, .badge, .caption, .breadcrumb {
   font-size: 14px !important;
   color: #404040 !important;
   line-height: 1.7 !important;
 }
-footer, footer span { color: #404040 !important; }
+footer, footer span { color: #404040 !important; font-size: 14px !important; }
+
+/* Force-bump tiny inline font-sizes to 14px minimum (catches all rem-fractional) */
+[style*="font-size:0.5"], [style*="font-size: 0.5"],
+[style*="font-size:0.55"], [style*="font-size: 0.55"],
+[style*="font-size:0.58"], [style*="font-size: 0.58"],
+[style*="font-size:0.6"], [style*="font-size: 0.6"],
+[style*="font-size:0.62"], [style*="font-size: 0.62"],
+[style*="font-size:0.65"], [style*="font-size: 0.65"],
+[style*="font-size:0.68"], [style*="font-size: 0.68"],
+[style*="font-size:0.7rem"], [style*="font-size: 0.7rem"],
+[style*="font-size:0.7em"], [style*="font-size: 0.7em"],
+[style*="font-size:0.72"], [style*="font-size: 0.72"],
+[style*="font-size:0.75"], [style*="font-size: 0.75"],
+[style*="font-size:0.78"], [style*="font-size: 0.78"],
+[style*="font-size:0.8rem"], [style*="font-size: 0.8rem"],
+[style*="font-size:0.82"], [style*="font-size: 0.82"],
+[style*="font-size:0.85"], [style*="font-size: 0.85"] {
+  font-size: 14px !important;
+}
 
 /* Noise texture overlay */
 body::before {
