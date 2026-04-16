@@ -98,12 +98,21 @@ export default function BlogPage() {
             <div style={{
               aspectRatio: '16/10',
               background: '#e0d8cc',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-              color: '#bbb', borderRight: '1px solid var(--light-rule)',
-              overflow: 'hidden',
+              borderRight: '1px solid var(--light-rule)',
+              overflow: 'hidden', position: 'relative',
             }}>
-              [ 精選文章封面圖 ]
+              {featured.coverImage ? (
+                <img src={featured.coverImage} alt={featured.title} loading="eager" style={{
+                  width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+                }} />
+              ) : (
+                <div style={{
+                  width: '100%', height: '100%',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
+                  color: '#bbb',
+                }}>[ 精選文章封面圖 ]</div>
+              )}
             </div>
             <div style={{
               padding: '4rem 3rem',
@@ -166,10 +175,21 @@ export default function BlogPage() {
                 <div style={{
                   aspectRatio: '16/9', background: '#e8e0d5',
                   marginBottom: '1.5rem',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-                  fontSize: '0.8rem', color: '#ccc', overflow: 'hidden',
-                }}>[ 圖片 ]</div>
+                  overflow: 'hidden', position: 'relative',
+                }}>
+                  {post.coverImage ? (
+                    <img src={post.coverImage} alt={post.title} loading="lazy" style={{
+                      width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+                    }} />
+                  ) : (
+                    <div style={{
+                      width: '100%', height: '100%',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
+                      fontSize: '0.8rem', color: '#ccc',
+                    }}>[ 圖片 ]</div>
+                  )}
+                </div>
                 <span style={{
                   display: 'inline-block', marginBottom: '1rem',
                   fontFamily: "'Noto Sans TC', sans-serif",
