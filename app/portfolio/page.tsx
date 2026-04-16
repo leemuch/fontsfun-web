@@ -122,7 +122,6 @@ const works: Work[] = [
 
 const services = [
   { icon: 'Aa', name: '品牌識別系統', desc: 'Logo設計・色彩規範・字體系統・品牌手冊。為你的品牌建立一致、有說服力的視覺語言。', price: 'from NT$80,000' },
-  { icon: '字', name: '字體設計與授權', desc: '原創繁體中文字體設計、企業客製字體、字體授權方案。字趣 fontsfun 出品，品質保證。', price: '授權方案洽詢' },
   { icon: '⊞', name: '排版與印刷品設計', desc: '書籍・年報・宣傳手冊・文化出版品排版設計。精通繁體中文排版美學，細節講究。', price: 'from NT$15,000' },
   { icon: '◎', name: '政府標案視覺設計', desc: '展覽視覺・城市形象・文宣物料・活動主視覺。熟悉政府採購流程，交件準時可靠。', price: '依標案規模報價' },
   { icon: '◈', name: '影視企劃書設計', desc: '提案書版型・視覺敘事規劃・高質感印刷企劃書製作。讓你的提案第一眼就脫穎而出。', price: 'from NT$20,000' },
@@ -242,7 +241,7 @@ export default function PortfolioPage() {
             <div key={s.name} className="service-card" style={{
               padding: '3rem 2.5rem',
               borderRight: (i + 1) % 3 !== 0 ? '1px solid #2a2a2a' : 'none',
-              borderBottom: i < services.length - 3 ? '1px solid #2a2a2a' : 'none',
+              borderBottom: Math.floor(i / 3) < Math.floor((services.length - 1) / 3) ? '1px solid #2a2a2a' : 'none',
               transition: 'background 0.3s',
             }}>
               <div style={{
@@ -443,6 +442,44 @@ export default function PortfolioPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* MEMBER CTA */}
+      <section id="member-cta" style={{
+        background: '#1a1714', color: 'var(--paper)',
+        padding: '6rem 4rem',
+        borderTop: '1px solid #2a2a2a',
+        textAlign: 'center',
+      }}>
+        <p style={{
+          fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
+          fontSize: '0.85rem', color: 'var(--accent)',
+          letterSpacing: '0.2em', marginBottom: '1.5rem',
+        }}>Member Zone</p>
+        <h2 style={{
+          fontFamily: "'Noto Serif TC', serif", fontWeight: 300,
+          fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
+          lineHeight: 1.4, letterSpacing: '0.08em',
+          marginBottom: '1.5rem',
+        }}>加入字趣會員</h2>
+        <p style={{
+          fontFamily: "'Noto Sans TC', sans-serif",
+          fontSize: '0.85rem', color: '#999',
+          letterSpacing: '0.06em', lineHeight: 2.2,
+          maxWidth: '34rem', margin: '0 auto 3rem',
+        }}>
+          購買字體後可在會員專區下載字體檔案、查看授權證書，<br />
+          並隨時掌握新字體發布、優惠活動與更新通知。
+        </p>
+        <a href="/member" style={{
+          display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
+          padding: '1rem 2.5rem',
+          background: 'var(--accent)', color: '#fff',
+          fontFamily: "'Noto Sans TC', sans-serif",
+          fontSize: '0.78rem', letterSpacing: '0.18em',
+          textDecoration: 'none',
+          transition: 'opacity 0.2s, gap 0.3s',
+        }}>立即加入 →</a>
       </section>
 
       {/* CONTACT */}

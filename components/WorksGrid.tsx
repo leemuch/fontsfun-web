@@ -86,11 +86,11 @@ export default function WorksGrid({ works }: Props) {
               onClick={() => setLightbox(w)}
               style={{
                 position: 'relative',
-                aspectRatio: w.span === 'tall' ? 'auto' : '4/3',
+                aspectRatio: w.span === 'tall' ? '3/4' : '4/3',
                 gridColumn: w.span === 'wide' ? 'span 2' : 'span 1',
                 gridRow:    w.span === 'tall' ? 'span 2' : 'span 1',
                 overflow: 'hidden', cursor: 'pointer',
-                background: 'var(--light-rule)',
+                background: '#f0ece3',
                 opacity: visible ? 1 : 0.15,
                 pointerEvents: visible ? 'auto' : 'none',
                 transform: visible ? 'scale(1)' : 'scale(0.97)',
@@ -98,7 +98,7 @@ export default function WorksGrid({ works }: Props) {
               }}
             >
               <img className="work-img" src={w.img} alt={w.alt} loading="lazy" style={{
-                width: '100%', height: '100%', objectFit: 'cover',
+                width: '100%', height: '100%', objectFit: 'contain',
                 display: 'block', transition: 'transform 0.5s ease',
               }} />
               <div className="work-overlay" style={{

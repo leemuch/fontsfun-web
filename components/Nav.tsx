@@ -41,18 +41,33 @@ export default function Nav() {
         background: 'var(--paper)',
         borderBottom: '1px solid var(--light-rule)',
       }}>
-        <Link href="/" style={{
-          fontFamily: "'Noto Serif TC', serif",
-          fontWeight: 500, fontSize: '1rem',
-          letterSpacing: '0.15em', color: 'var(--ink)', textDecoration: 'none',
-        }}>
-          字趣{' '}
-          <span style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontStyle: 'italic', fontWeight: 300, fontSize: '0.85rem',
-            color: 'var(--warm-mid)', marginLeft: '0.5rem',
-          }}>fontsfun</span>
-        </Link>
+        {pathname.startsWith('/portfolio') ? (
+          <Link href="/portfolio" style={{
+            fontFamily: "'Noto Serif TC', serif",
+            fontWeight: 500, fontSize: '1rem',
+            letterSpacing: '0.15em', color: 'var(--ink)', textDecoration: 'none',
+          }}>
+            盛和設計{' '}
+            <span style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontStyle: 'italic', fontWeight: 300, fontSize: '0.85rem',
+              color: 'var(--warm-mid)', marginLeft: '0.5rem',
+            }}>Shenghe Design</span>
+          </Link>
+        ) : (
+          <Link href="/" style={{
+            fontFamily: "'Noto Serif TC', serif",
+            fontWeight: 500, fontSize: '1rem',
+            letterSpacing: '0.15em', color: 'var(--ink)', textDecoration: 'none',
+          }}>
+            字趣{' '}
+            <span style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontStyle: 'italic', fontWeight: 300, fontSize: '0.85rem',
+              color: 'var(--warm-mid)', marginLeft: '0.5rem',
+            }}>fontsfun</span>
+          </Link>
+        )}
 
         <ul className={`nav-menu${menuOpen ? ' open' : ''}`} id="navMenu" style={{
           listStyle: 'none', display: 'flex', gap: '2.5rem',
