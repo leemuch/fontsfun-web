@@ -6,12 +6,12 @@ import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
 
 const navLinks = [
-  { href: '/fonts',     label: '字體' },
-  { href: '/portfolio', label: '作品' },
-  { href: '/buy',       label: '購買' },
-  { href: '/releases',  label: '新品' },
-  { href: '/blog',      label: '筆記' },
-  { href: '/member',    label: '會員' },
+  { href: '/',         label: '首頁' },
+  { href: '/fonts',    label: '字體' },
+  { href: '/#works',   label: '作品' },
+  { href: '/buy',      label: '購買' },
+  { href: '/blog',     label: '筆記' },
+  { href: '/member',   label: '會員' },
 ];
 
 export default function Nav() {
@@ -41,8 +41,8 @@ export default function Nav() {
         background: 'var(--paper)',
         borderBottom: '1px solid var(--light-rule)',
       }}>
-        {pathname.startsWith('/portfolio') ? (
-          <Link href="/portfolio" style={{
+        {(pathname === '/' || pathname.startsWith('/portfolio')) ? (
+          <Link href="/" style={{
             fontFamily: "'Noto Serif TC', serif",
             fontWeight: 500, fontSize: '1rem',
             letterSpacing: '0.15em', color: 'var(--ink)', textDecoration: 'none',
@@ -55,7 +55,7 @@ export default function Nav() {
             }}>Shenghe Design</span>
           </Link>
         ) : (
-          <Link href="/" style={{
+          <Link href="/fonts" style={{
             fontFamily: "'Noto Serif TC', serif",
             fontWeight: 500, fontSize: '1rem',
             letterSpacing: '0.15em', color: 'var(--ink)', textDecoration: 'none',
@@ -72,18 +72,25 @@ export default function Nav() {
         <ul className={`nav-menu${menuOpen ? ' open' : ''}`} id="navMenu" style={{
           listStyle: 'none', display: 'flex', gap: '2.5rem',
         }}>
-          {navLinks.map(({ href, label }) => (
-            <li key={href}>
-              <Link href={href} onClick={closeMenu} style={{
-                fontFamily: "'Noto Sans TC', sans-serif",
-                fontSize: '0.75rem', letterSpacing: '0.12em',
-                color: pathname.startsWith(href) ? 'var(--ink)' : 'var(--warm-mid)',
-                textDecoration: 'none', transition: 'color 0.2s',
-              }}>
-                {label}
-              </Link>
-            </li>
-          ))}
+          {navLinks.map(({ href, label }) => {
+            const cleanHref = href.split('#')[0] || '/';
+            const isActive =
+              cleanHref === '/'
+                ? pathname === '/'
+                : pathname.startsWith(cleanHref);
+            return (
+              <li key={href}>
+                <Link href={href} onClick={closeMenu} style={{
+                  fontFamily: "'Noto Sans TC', sans-serif",
+                  fontSize: '0.75rem', letterSpacing: '0.12em',
+                  color: isActive ? 'var(--ink)' : 'var(--warm-mid)',
+                  textDecoration: 'none', transition: 'color 0.2s',
+                }}>
+                  {label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
