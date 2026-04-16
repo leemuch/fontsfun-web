@@ -26,13 +26,49 @@ html.dark {
 html { scroll-behavior: smooth; }
 body {
   background: var(--paper);
-  color: var(--ink);
+  color: #262626;
   font-family: 'Noto Serif TC', serif;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.85;
   overflow-x: hidden;
 }
+
+/* ─── GLOBAL TYPOGRAPHY (all viewports) ─── */
+/* Body / paragraph / description text — unified 16px / #262626 */
+p, li,
+.post-excerpt, .service-desc, .step-desc, .about-body,
+.font-desc, .tl-desc,
+.prose-content p, .prose-content li, .prose-content blockquote,
+.contact-note, .form-note,
+.testimonial p, .faq-question, .faq-answer,
+.hero-sub,
+.service-card p, .step-desc, .post-card p,
+section p {
+  font-size: 16px !important;
+  line-height: 1.85 !important;
+  color: #262626 !important;
+}
+.prose-content p { font-size: 17px !important; }
+/* Dark-bg sections need light text — restore for #ink/#1a1714 backgrounds */
+section[style*="background:var(--ink)"] p,
+section[style*="background: var(--ink)"] p,
+section[style*="background:#1a1714"] p,
+section[style*="background: #1a1714"] p,
+section[style*="background:#0e0c0a"] p,
+section[style*="color:var(--paper)"] p,
+section[style*="color: var(--paper)"] p { color: #d4d0c8 !important; }
+
+/* Secondary / meta text — 14px / #404040 */
+.col-dim, .meta-item, .post-min,
+.work-cat, .work-result, .service-price, .filter-btn,
+.stat-label, .post-meta, .post-cat, .post-date,
+.tag, .caption, .breadcrumb {
+  font-size: 14px !important;
+  color: #404040 !important;
+  line-height: 1.7 !important;
+}
+footer, footer span { color: #404040 !important; }
 
 /* Noise texture overlay */
 body::before {
