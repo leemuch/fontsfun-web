@@ -42,6 +42,53 @@ const STYLE_BASE =
 
 // ── Image specs ──
 const IMAGES = [
+  // ── Hero carousel (3 slides, 16:9) ──
+  {
+    slug: 'hero-slide-1',
+    aspect: '16:9',
+    out: 'public/images/hero/hero-slide-1.jpg',
+    prompt:
+      'Wide cinematic photograph of a minimalist Japanese-inspired design studio interior at golden hour, ' +
+      'tall windows with soft amber sunlight streaming in, a large walnut drafting desk ' +
+      'in the foreground with scattered sketches, oak bookshelves filled with art books lining the back wall, ' +
+      'a single pendant lamp with warm glow, terracotta concrete floor, ' +
+      'cream and honey-amber color palette, shallow depth of field, no people, no readable text. ' + STYLE_BASE,
+  },
+  {
+    slug: 'hero-slide-2',
+    aspect: '16:9',
+    out: 'public/images/hero/hero-slide-2.jpg',
+    prompt:
+      'Overhead flat-lay photograph of a premium brand identity design workspace on a pale oak desk: ' +
+      'leather-bound sketchbook open to abstract logo studies, a neat row of color swatch cards in cream / terracotta / sage, ' +
+      'three blank business card mockups, brass paperclip, ceramic cup of matcha, ' +
+      'all arranged with generous negative space around, soft diffused morning light from upper-left, ' +
+      'warm beige and earthy color palette, no readable letters, no visible logos. ' + STYLE_BASE,
+  },
+  {
+    slug: 'hero-slide-3',
+    aspect: '16:9',
+    out: 'public/images/hero/hero-slide-3.jpg',
+    prompt:
+      'Cinematic photograph of an elegant art gallery hallway at dusk, ' +
+      'pristine white plaster walls, three softly framed monochrome prints sparsely hung, ' +
+      'glossy polished concrete floor reflecting warm amber overhead spotlights, ' +
+      'a single wooden bench in the foreground, soft shadows, ' +
+      'cream and honey-gold tones, wide-angle composition, no people, no readable text. ' + STYLE_BASE,
+  },
+  // ── Designer / studio portrait ──
+  {
+    slug: 'designer-studio',
+    aspect: '4:3',
+    out: 'public/images/designer-studio.jpg',
+    prompt:
+      'Atmospheric photograph of a designer\'s hands at work on a wooden drafting table, ' +
+      'hands holding a black fountain pen drawing an abstract typography sketch on tracing paper, ' +
+      'surrounded by scattered color swatches, a cup of black coffee, vintage brass ruler, ' +
+      'soft natural window light from the side casting gentle shadows, ' +
+      'focused on hands and paper (face not visible), warm cream and brown tones, ' +
+      'shallow depth of field, intimate workspace feel, no readable text or letters. ' + STYLE_BASE,
+  },
   {
     slug: 'blog-typography',
     aspect: '16:9',

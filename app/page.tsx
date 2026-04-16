@@ -1,10 +1,38 @@
 import type { Metadata } from 'next';
 import WorksGrid, { type Work } from '../components/WorksGrid';
+import HeroCarousel, { type HeroSlide } from '../components/HeroCarousel';
 
 export const metadata: Metadata = {
   title: '盛和設計 — 平面設計・字體・品牌視覺',
   description: '專注品牌識別、字體排版與文化視覺設計。從企業品牌到政府標案，讓你的形象說話。',
 };
+
+const heroSlides: HeroSlide[] = [
+  {
+    img: '/images/hero/hero-slide-1.jpg',
+    alt: '盛和設計工作室',
+    eyebrow: 'Shenghe Design Studio',
+    title: '設計，是溝通的最短距離',
+    titleAccent: '溝通',
+    subtitle: '專注品牌識別、字體排版與文化視覺設計。從企業品牌到政府標案，讓你的形象說話。',
+  },
+  {
+    img: '/images/hero/hero-slide-2.jpg',
+    alt: '品牌識別設計工作桌',
+    eyebrow: 'Brand Identity · Typography',
+    title: '從策略到視覺，一步到位',
+    titleAccent: '一步到位',
+    subtitle: '深耕平面設計逾十年，為每位客戶量身打造具備說服力的品牌視覺系統。',
+  },
+  {
+    img: '/images/hero/hero-slide-3.jpg',
+    alt: '展覽空間視覺設計',
+    eyebrow: 'Editorial Design · Exhibition',
+    title: '讓好設計，說好的故事',
+    titleAccent: '好的故事',
+    subtitle: '書籍裝幀、年報排版、展覽主視覺——細節決定質感，質感塑造信任。',
+  },
+];
 
 const works: Work[] = [
   { cat: 'brand', workCat: 'Brand Visual', titleEn: 'Cloud Bookfont',
@@ -156,70 +184,8 @@ const clientNames = ['臺大出版中心', '正官庄 CKJ', '字趣 fontsfun', '
 export default function PortfolioPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="hero" style={{
-        minHeight: '100vh', display: 'grid',
-        gridTemplateColumns: '1fr 1fr', paddingTop: '5rem',
-        position: 'relative', isolation: 'isolate',
-        backgroundImage: 'linear-gradient(rgba(245, 242, 235, 0.82), rgba(245, 242, 235, 0.94)), url(/images/hero-portfolio.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}>
-        <div className="hero-left" style={{
-          display: 'flex', flexDirection: 'column', justifyContent: 'center',
-          padding: '6rem 4rem', borderRight: '1px solid var(--light-rule)',
-        }}>
-          <p style={{
-            fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-            fontSize: '0.85rem', color: 'var(--warm-mid)',
-            letterSpacing: '0.2em', marginBottom: '2rem',
-          }}>Brand Identity · Typography · Editorial Design</p>
-          <h1 style={{
-            fontFamily: "'Noto Serif TC', serif", fontWeight: 300,
-            fontSize: 'clamp(2.8rem, 5vw, 5rem)',
-            lineHeight: 1.25, letterSpacing: '0.05em',
-          }}>
-            設計，<br />是<em style={{ fontStyle: 'normal', color: 'var(--accent)' }}>溝通</em>的<br />最短距離
-          </h1>
-          <p style={{
-            fontFamily: "'Noto Sans TC', sans-serif", fontWeight: 300,
-            fontSize: '0.85rem', color: 'var(--warm-mid)',
-            letterSpacing: '0.08em', marginTop: '2rem',
-            maxWidth: '28rem', lineHeight: 2,
-          }}>專注品牌識別、字體排版與文化視覺設計。<br />從企業品牌到政府標案，讓你的形象說話。</p>
-          <a href="#works" style={{
-            display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
-            marginTop: '3rem', alignSelf: 'flex-start',
-            fontFamily: "'Noto Sans TC', sans-serif",
-            fontSize: '0.75rem', letterSpacing: '0.15em',
-            color: 'var(--ink)', textDecoration: 'none',
-            borderBottom: '1px solid var(--ink)', paddingBottom: '0.3rem',
-          }}>查看作品集 →</a>
-        </div>
-        <div className="hero-right" style={{
-          display: 'grid', gridTemplateRows: '1fr 1fr', gridTemplateColumns: '1fr 1fr',
-        }}>
-          {stats.map((s, i) => (
-            <div key={s.label} style={{
-              display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
-              padding: '2.5rem',
-              borderRight: i % 2 === 0 ? '1px solid var(--light-rule)' : 'none',
-              borderBottom: i < 2 ? '1px solid var(--light-rule)' : 'none',
-            }}>
-              <span style={{
-                fontFamily: "'Cormorant Garamond', serif", fontWeight: 300,
-                fontSize: '3.5rem', lineHeight: 1, color: 'var(--ink)',
-              }}>{s.num}</span>
-              <span style={{
-                fontFamily: "'Noto Sans TC', sans-serif",
-                fontSize: '0.7rem', color: 'var(--warm-mid)',
-                letterSpacing: '0.12em', marginTop: '0.5rem',
-              }}>{s.label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* HERO CAROUSEL */}
+      <HeroCarousel slides={heroSlides} />
 
       {/* SERVICES */}
       <section id="services" style={{
@@ -449,6 +415,73 @@ export default function PortfolioPage() {
         </div>
       </section>
 
+      {/* ABOUT THE DESIGNER */}
+      <section id="designer" style={{
+        display: 'grid', gridTemplateColumns: '1fr 1fr', padding: 0,
+      }} className="designer-section">
+        <div style={{
+          position: 'relative', minHeight: '420px', overflow: 'hidden',
+          background: '#e8e3d8',
+        }}>
+          <img
+            src="/images/designer-studio.jpg"
+            alt="設計師工作室"
+            loading="lazy"
+            style={{
+              width: '100%', height: '100%',
+              objectFit: 'cover', display: 'block',
+              position: 'absolute', inset: 0,
+            }}
+          />
+        </div>
+        <div style={{
+          padding: '5rem 4rem',
+          display: 'flex', flexDirection: 'column', justifyContent: 'center',
+          background: 'var(--bg-alt)',
+        }}>
+          <p style={{
+            fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
+            fontSize: '14px', color: 'var(--accent)',
+            letterSpacing: '0.25em', marginBottom: '1.5rem',
+          }}>About the Designer</p>
+          <h2 style={{
+            fontFamily: "'Noto Serif TC', serif", fontWeight: 300,
+            fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)',
+            lineHeight: 1.5, letterSpacing: '0.08em',
+            marginBottom: '2rem',
+          }}>設計，是讓複雜的事<br />變得簡單且美好</h2>
+          <p style={{
+            fontFamily: "'Noto Serif TC', serif", fontWeight: 300,
+            fontSize: '16px', lineHeight: 2.2,
+            letterSpacing: '0.05em', color: '#262626',
+          }}>
+            深耕平面設計逾十年，專注於繁體中文字體與排版美學的探索與實踐。主持字趣 fontsfun 字型工作室，同時以盛和有限公司承接品牌識別、出版設計、政府視覺標案等多元設計專案。
+          </p>
+          <div style={{
+            display: 'flex', gap: '3rem', marginTop: '2.5rem',
+            paddingTop: '2rem', borderTop: '1px solid var(--light-rule)',
+          }}>
+            {[
+              { num: '10+', label: '年設計經驗' },
+              { num: '50+', label: '完成專案' },
+              { num: '3',   label: '原創字體' },
+            ].map(s => (
+              <div key={s.label} style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+                <span style={{
+                  fontFamily: "'Cormorant Garamond', serif", fontWeight: 300,
+                  fontSize: '2.2rem', lineHeight: 1, color: 'var(--ink)',
+                }}>{s.num}</span>
+                <span style={{
+                  fontFamily: "'Noto Sans TC', sans-serif",
+                  fontSize: '14px', color: 'var(--warm-mid)',
+                  letterSpacing: '0.1em',
+                }}>{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* MEMBER CTA */}
       <section id="member-cta" style={{
         background: '#1a1714', color: 'var(--paper)',
@@ -549,10 +582,7 @@ export default function PortfolioPage() {
 
         /* ─── PORTFOLIO MOBILE RWD (page-scoped) ─── */
         @media (max-width: 900px) {
-          #portfolio-page .hero,
-          #about, #contact { grid-template-columns: 1fr !important; }
-          .hero-right { grid-template-columns: 1fr 1fr !important; }
-          .hero-left { padding: 4rem 1.5rem !important; border-right: none !important; border-bottom: 1px solid var(--light-rule); }
+          #about, #contact, #designer, .designer-section { grid-template-columns: 1fr !important; }
           .services-grid, .process-steps { grid-template-columns: 1fr !important; }
           .service-card { border-right: none !important; border-bottom: 1px solid #2a2a2a !important; }
           .process-step { border-right: none !important; border-bottom: 1px solid #2a2a2a !important; }
