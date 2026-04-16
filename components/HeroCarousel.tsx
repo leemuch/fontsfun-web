@@ -73,9 +73,10 @@ export default function HeroCarousel({ slides, intervalMs = DEFAULT_INTERVAL }: 
             }}
           />
           {/* Dark gradient overlay for text legibility */}
+          {/* Stronger gradient for text legibility */}
           <div style={{
             position: 'absolute', inset: 0,
-            background: 'linear-gradient(180deg, rgba(20,18,16,0.1) 0%, rgba(20,18,16,0.55) 55%, rgba(20,18,16,0.75) 100%)',
+            background: 'linear-gradient(180deg, rgba(20,18,16,0.25) 0%, rgba(20,18,16,0.6) 40%, rgba(20,18,16,0.82) 100%)',
           }} />
 
           {/* Copy */}
@@ -89,8 +90,9 @@ export default function HeroCarousel({ slides, intervalMs = DEFAULT_INTERVAL }: 
           className="hero-copy">
             <p style={{
               fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-              fontSize: '1rem', letterSpacing: '0.25em',
+              fontSize: '16px', letterSpacing: '0.25em',
               color: '#c9b88a', marginBottom: '1.25rem',
+              textShadow: '0 1px 4px rgba(0,0,0,0.4)',
               opacity: i === idx ? 1 : 0,
               transform: i === idx ? 'translateY(0)' : 'translateY(16px)',
               transition: 'opacity 1s ease 0.3s, transform 1s ease 0.3s',
@@ -98,9 +100,10 @@ export default function HeroCarousel({ slides, intervalMs = DEFAULT_INTERVAL }: 
 
             <h1 style={{
               fontFamily: "'Noto Serif TC', serif", fontWeight: 300,
-              fontSize: 'clamp(2.4rem, 5.5vw, 5rem)',
+              fontSize: 'clamp(3rem, 6vw, 5rem)',
               lineHeight: 1.2, letterSpacing: '0.05em',
               color: '#f5f2eb', margin: 0, maxWidth: '32ch',
+              textShadow: '0 2px 8px rgba(0,0,0,0.35)',
               opacity: i === idx ? 1 : 0,
               transform: i === idx ? 'translateY(0)' : 'translateY(24px)',
               transition: 'opacity 1s ease 0.5s, transform 1s ease 0.5s',
@@ -116,9 +119,10 @@ export default function HeroCarousel({ slides, intervalMs = DEFAULT_INTERVAL }: 
 
             <p style={{
               fontFamily: "'Noto Sans TC', sans-serif", fontWeight: 300,
-              fontSize: '16px', color: '#d4d0c8',
+              fontSize: '18px', color: '#e8e4dc',
               letterSpacing: '0.06em', lineHeight: 2,
               marginTop: '1.75rem', maxWidth: '34rem',
+              textShadow: '0 1px 3px rgba(0,0,0,0.3)',
               opacity: i === idx ? 1 : 0,
               transform: i === idx ? 'translateY(0)' : 'translateY(16px)',
               transition: 'opacity 1s ease 0.7s, transform 1s ease 0.7s',
@@ -216,6 +220,14 @@ export default function HeroCarousel({ slides, intervalMs = DEFAULT_INTERVAL }: 
       </div>
 
       <style jsx>{`
+        /* Force light text on dark photo overlay — override globals theme rules */
+        .hero-carousel :global(h1),
+        .hero-carousel :global(p),
+        .hero-carousel :global(span),
+        .hero-carousel :global(em),
+        .hero-carousel :global(a) {
+          color: inherit !important;
+        }
         @media (max-width: 900px) {
           .hero-carousel :global(.hero-copy) {
             padding: 3rem 1.5rem 4rem !important;

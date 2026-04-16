@@ -364,16 +364,88 @@ html.dark .dm-toggle:hover { border-color: var(--ink); color: var(--ink); }
 .prose-content a:hover { opacity: 0.7; }
 
 /* ═════════════════════════════════════════════════════════════
- * NUCLEAR TYPOGRAPHY OVERRIDE — FORCE RECOMPILE
- * ALL elements forced to 16px; only h1-h4 keep native sizes.
- * ALL text colors forced to #1a1a1a (overrides inline grays).
+ * GLOBAL VISIBILITY FIX — theme-aware color enforcement
+ * Replaces old nuclear rule that broke dark mode & dark-bg sections.
  * ═════════════════════════════════════════════════════════════ */
-* {
-  font-size: 16px !important;
-}
-h1, h2, h3, h4 {
-  font-size: revert !important;
-}
-body, p, li, td, th, span, div, a, button, input, select, textarea, label {
+
+/* ── Light mode ── */
+html:not(.dark) body {
+  background-color: #f5f2eb !important;
   color: #1a1a1a !important;
 }
+html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3,
+html:not(.dark) p, html:not(.dark) span, html:not(.dark) div,
+html:not(.dark) li, html:not(.dark) td, html:not(.dark) th,
+html:not(.dark) a, html:not(.dark) button, html:not(.dark) label {
+  color: #1a1a1a !important;
+}
+
+/* ── Dark mode ── */
+html.dark body {
+  background-color: #141210 !important;
+  color: #e8e4dc !important;
+}
+html.dark h1, html.dark h2, html.dark h3,
+html.dark p, html.dark span, html.dark div,
+html.dark li, html.dark td, html.dark th,
+html.dark a, html.dark button, html.dark label {
+  color: #e8e4dc !important;
+}
+
+/* ── Dark-bg sections (in light mode) need light text ── */
+html:not(.dark) section[style*="background:var(--ink)"] *,
+html:not(.dark) section[style*="background: var(--ink)"] *,
+html:not(.dark) section[style*="background:#1a1714"] *,
+html:not(.dark) section[style*="background: #1a1714"] *,
+html:not(.dark) #services *,
+html:not(.dark) #process *,
+html:not(.dark) #member-cta *,
+html:not(.dark) #contact * {
+  color: #e8e4dc !important;
+}
+/* Accent color still works on dark-bg */
+html:not(.dark) #services .service-icon,
+html:not(.dark) #member-cta p:first-child {
+  color: var(--accent);
+}
+
+/* ── Components with intentional dark backgrounds → light text ── */
+/* Must match or exceed html:not(.dark) specificity */
+html:not(.dark) .hero-carousel h1,
+html:not(.dark) .hero-carousel h2,
+html:not(.dark) .hero-carousel p,
+html:not(.dark) .hero-carousel span,
+html:not(.dark) .hero-carousel a,
+html:not(.dark) .hero-carousel em,
+html.dark .hero-carousel h1,
+html.dark .hero-carousel h2,
+html.dark .hero-carousel p,
+html.dark .hero-carousel span,
+html.dark .hero-carousel a,
+html.dark .hero-carousel em { color: #f5f2eb !important; }
+/* Accent color within hero */
+html:not(.dark) .hero-carousel em,
+html.dark .hero-carousel em { color: #e05545 !important; }
+/* Eyebrow gold */
+html:not(.dark) .hero-carousel .hero-copy > p:first-child,
+html.dark .hero-carousel .hero-copy > p:first-child { color: #c9b88a !important; }
+/* Work-card hover overlay — always light text on dark gradient */
+html:not(.dark) .work-sq-overlay h3,
+html.dark .work-sq-overlay h3 { color: #f5f2eb !important; }
+html:not(.dark) .work-sq-overlay p,
+html.dark .work-sq-overlay p { color: var(--accent) !important; }
+/* Dark mode toggle */
+html:not(.dark) .dm-toggle,
+html.dark .dm-toggle { color: inherit !important; }
+/* Nav menu links — let var(--ink)/var(--warm-mid) from inline work */
+html:not(.dark) .nav-menu li a,
+html.dark .nav-menu li a { color: inherit !important; }
+
+/* ── Footer (always dark bg) ── */
+footer, footer span, footer a { color: #999 !important; }
+
+/* ── Font-size floor: body 16px, headings revert ── */
+* { font-size: 16px !important; }
+h1, h2, h3, h4 { font-size: revert !important; }
+/* Form inputs: 16px to prevent iOS zoom */
+input, select, textarea, button { font-size: 16px !important; }
