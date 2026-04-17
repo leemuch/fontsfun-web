@@ -73,7 +73,9 @@ export default function WorksGrid({ works }: Props) {
       <div className="works-square-grid" style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: '3px',
+        gap: '4px',
+        background: 'var(--light-rule)',
+        border: '1px solid var(--light-rule)',
       }}>
         {filtered.map((w, i) => (
           <article

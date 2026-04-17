@@ -547,8 +547,8 @@ export default function PortfolioPage() {
             marginTop: '3rem', display: 'flex', flexDirection: 'column', gap: '1.5rem',
           }}>
             {[
-              { label: 'Email',         value: <a href="mailto:hello@shenghe.design" style={{ color: 'var(--paper)', textDecoration: 'none' }}>hello@shenghe.design</a> },
-              { label: 'Phone / LINE',  value: '+886 9XX-XXX-XXX' },
+              { label: 'Email',         value: <a href="mailto:muchbin@gmail.com" style={{ color: 'var(--paper)', textDecoration: 'none' }}>muchbin@gmail.com</a> },
+              { label: 'Phone / LINE',  value: '0938-938-862' },
               { label: '字體工作室',     value: <a href="https://fontsfun.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--paper)', textDecoration: 'none' }}>fontsfun.com</a> },
             ].map(it => (
               <div key={it.label} style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>

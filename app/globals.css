@@ -47,6 +47,17 @@ body::before {
   opacity: 0.5;
 }
 
+/* ─── SECTION SEPARATORS ─── */
+section + section,
+.hero-carousel + section {
+  border-top: 1px solid var(--light-rule);
+}
+/* Extra breathing room between major sections */
+main > section,
+main > .hero-carousel {
+  margin-bottom: 0;
+}
+
 /* ─── TRANSITIONS ─── */
 body, nav, footer, section,
 .work-card, .service-card, .post-card, .font-card, .plan-card,
@@ -444,8 +455,18 @@ html.dark .nav-menu li a { color: inherit !important; }
 /* ── Footer (always dark bg) ── */
 footer, footer span, footer a { color: #999 !important; }
 
-/* ── Font-size floor: body 16px, headings revert ── */
+/* ── Font-size floor: body 16px, headings + inline inherit revert ── */
 * { font-size: 16px !important; }
 h1, h2, h3, h4 { font-size: revert !important; }
+/* Inline elements inside headings must inherit parent size, not 16px */
+h1 em, h1 span, h1 strong, h1 a,
+h2 em, h2 span, h2 strong, h2 a,
+h3 em, h3 span, h3 strong, h3 a { font-size: inherit !important; }
+/* Cormorant stat numbers (decorative large text) */
+[style*="font-size:3.5rem"], [style*="font-size: 3.5rem"],
+[style*="font-size:2.2rem"], [style*="font-size: 2.2rem"],
+[style*="font-size:4rem"],   [style*="font-size: 4rem"],
+[style*="font-size:5rem"],   [style*="font-size: 5rem"],
+[style*="font-size:3rem"],   [style*="font-size: 3rem"] { font-size: inherit !important; }
 /* Form inputs: 16px to prevent iOS zoom */
 input, select, textarea, button { font-size: 16px !important; }

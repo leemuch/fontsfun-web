@@ -47,6 +47,7 @@ export default function HeroCarousel({ slides, intervalMs = DEFAULT_INTERVAL }: 
         minHeight: '520px',
         overflow: 'hidden',
         marginTop: 0,
+        borderBottom: '1px solid var(--light-rule)',
       }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
