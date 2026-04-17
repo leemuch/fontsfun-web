@@ -500,3 +500,51 @@ h3 em, h3 span, h3 strong, h3 a { font-size: inherit !important; }
 [style*="font-size:3rem"],   [style*="font-size: 3rem"] { font-size: inherit !important; }
 /* Form inputs: 16px to prevent iOS zoom */
 input, select, textarea, button { font-size: 16px !important; }
+
+/* ===== EMERGENCY FIX: dark-bg text visibility (absolute last rule) ===== */
+/* Attribute selectors for ALL inline dark backgrounds */
+[style*="background:#1a1714"] *,
+[style*="background: #1a1714"] *,
+[style*="background:#0e0c0a"] *,
+[style*="background: #0e0c0a"] *,
+[style*="background:#141210"] *,
+[style*="background: #141210"] *,
+[style*="background:var(--ink)"] *,
+[style*="background: var(--ink)"] *,
+[style*="background-color:#1a1714"] *,
+[style*="background-color: #1a1714"] *,
+[style*="background-color:#0e0c0a"] *,
+[style*="background-color: #0e0c0a"] *,
+[style*="background-color:#141210"] *,
+[style*="background-color: #141210"] * {
+  color: #f5f2eb !important;
+}
+
+/* ID + class based targets */
+#section-buy, #section-buy *,
+#services, #services *,
+#process, #process *,
+#member-cta, #member-cta *,
+#contact, #contact *,
+.plan-card, .plan-card *,
+.plan-type, .plan-name, .plan-price,
+.plan-price-note, .plan-features li,
+.buy-intro, .plans-grid * {
+  color: #f5f2eb !important;
+}
+
+/* Preserve accent red */
+#section-buy .plan-price,
+#services .service-icon,
+#member-cta > p:first-of-type { color: var(--accent) !important; }
+
+/* Preserve green checkmarks */
+[style*="color: rgb(122, 196, 122)"],
+[style*="color:#7ac47a"],
+[style*="color: #7ac47a"] { color: #7ac47a !important; }
+
+/* Auth buttons must keep their explicit colors */
+html.dark button.auth-btn-primary,
+html:not(.dark) button.auth-btn-primary { color: #f5f2eb !important; background: #1a1714 !important; }
+html.dark button.auth-btn-google,
+html:not(.dark) button.auth-btn-google { color: #1a1714 !important; background: #ffffff !important; }
