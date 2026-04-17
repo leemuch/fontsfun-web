@@ -403,22 +403,34 @@ html.dark a, html.dark button, html.dark label {
   color: #e8e4dc !important;
 }
 
-/* ── Dark-bg sections (in light mode) need light text ── */
-html:not(.dark) section[style*="background:var(--ink)"] *,
-html:not(.dark) section[style*="background: var(--ink)"] *,
-html:not(.dark) section[style*="background:#1a1714"] *,
-html:not(.dark) section[style*="background: #1a1714"] *,
-html:not(.dark) #services *,
-html:not(.dark) #process *,
-html:not(.dark) #member-cta *,
-html:not(.dark) #contact * {
-  color: #e8e4dc !important;
+/* ── Dark-bg elements (ANY mode) need light text ──
+   Catches ALL inline background: var(--ink) / #1a1714 / #0e0c0a / #141210 */
+[style*="background:var(--ink)"] *,
+[style*="background: var(--ink)"] *,
+[style*="background:#1a1714"] *,
+[style*="background: #1a1714"] *,
+[style*="background:#0e0c0a"] *,
+[style*="background: #0e0c0a"] *,
+[style*="background:#141210"] *,
+[style*="background: #141210"] *,
+#services *, #process *, #member-cta *, #contact *,
+footer * {
+  color: #f5f2eb !important;
 }
-/* Accent color still works on dark-bg */
-html:not(.dark) #services .service-icon,
-html:not(.dark) #member-cta p:first-child {
-  color: var(--accent);
+/* Accent color overrides on dark-bg */
+[style*="background:var(--ink)"] em,
+[style*="background: var(--ink)"] em,
+#services .service-icon,
+#member-cta p:first-child {
+  color: var(--accent) !important;
 }
+/* Contact form inputs on dark bg — light text + visible placeholder */
+#contact input, #contact select, #contact textarea {
+  color: #f5f2eb !important;
+  border-color: #3a3630 !important;
+}
+/* Footer link hover */
+footer a:hover { color: #e8e4dc !important; }
 
 /* ── Components with intentional dark backgrounds → light text ── */
 /* Must match or exceed html:not(.dark) specificity */

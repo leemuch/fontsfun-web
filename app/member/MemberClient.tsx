@@ -465,8 +465,16 @@ export default function MemberClient() {
   const [fonts, setFonts] = useState<FontItem[]>([]);
   const [orders, setOrders] = useState<OrderItem[]>([]);
   const [isDemo, setIsDemo] = useState(false);
+  const [authDebug, setAuthDebug] = useState<string[]>([]);
 
   const isDemoConfig = process.env.NEXT_PUBLIC_FIREBASE_API_KEY === 'YOUR_API_KEY';
+
+  // Helper: append debug message (shown on-page in auth screen)
+  function addDebug(msg: string) {
+    const ts = new Date().toLocaleTimeString('zh-TW', { hour12: false });
+    setAuthDebug(prev => [...prev.slice(-9), `[${ts}] ${msg}`]);
+    console.log('[auth-debug]', msg);
+  }
 
   useEffect(() => {
     if (isDemoConfig) {
@@ -477,11 +485,27 @@ export default function MemberClient() {
 
     const auth = getFirebaseAuth();
 
-    // Pick up the result of signInWithRedirect (fires once on first mount
-    // after the redirect round-trip). Safe to call even if no redirect occurred.
-    getRedirectResult(auth).catch((err) => {
-      console.warn('[auth] getRedirectResult error:', err?.code, err?.message);
-    });
+    // Log env var status for debugging
+    const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY || '';
+    const authDomain = process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || '';
+    addDebug(`Firebase init: apiKey=${apiKey.slice(0, 8)}…, authDomain=${authDomain}`);
+
+    // Pick up the result of signInWithRedirect
+    addDebug('Calling getRedirectResult...');
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result?.user) {
+          addDebug(`Redirect 登入成功: ${result.user.email}`);
+        } else {
+          addDebug('getRedirectResult: no user (no redirect in progress)');
+        }
+      })
+      .catch((err) => {
+        const code = err?.code || 'unknown';
+        const msg = err?.message || '';
+        addDebug(`getRedirectResult ERROR: ${code} — ${msg}`);
+        console.error('[auth] getRedirectResult error:', err);
+      });
 
     const unsub = onAuthStateChanged(auth, async user => {
       if (user) {
@@ -522,7 +546,24 @@ export default function MemberClient() {
     );
   }
 
-  if (state === 'auth') return <AuthScreen onLogin={handleLogin} />;
+  if (state === 'auth') return (
+    <>
+      <AuthScreen onLogin={handleLogin} />
+      {/* Debug panel — visible on auth screen for troubleshooting */}
+      {authDebug.length > 0 && (
+        <div style={{
+          position: 'fixed', bottom: 0, left: 0, right: 0,
+          background: 'rgba(0,0,0,0.85)', color: '#7f7',
+          fontFamily: 'monospace', fontSize: '11px', lineHeight: 1.6,
+          padding: '0.75rem 1rem', maxHeight: '180px', overflowY: 'auto',
+          zIndex: 9999,
+        }}>
+          <strong style={{ color: '#ff0' }}>Auth Debug Log:</strong>
+          {authDebug.map((m, i) => <div key={i}>{m}</div>)}
+        </div>
+      )}
+    </>
+  );
 
   return (
     <Dashboard
