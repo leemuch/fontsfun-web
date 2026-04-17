@@ -405,9 +405,8 @@ html:not(.dark) body {
   color: #1a1a1a !important;
 }
 html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3,
-html:not(.dark) p, html:not(.dark) span, html:not(.dark) div,
-html:not(.dark) li, html:not(.dark) td, html:not(.dark) th,
-html:not(.dark) a, html:not(.dark) button, html:not(.dark) label {
+html:not(.dark) p, html:not(.dark) li, html:not(.dark) td, html:not(.dark) th,
+html:not(.dark) label {
   color: #1a1a1a !important;
 }
 
@@ -417,9 +416,8 @@ html.dark body {
   color: #e8e4dc !important;
 }
 html.dark h1, html.dark h2, html.dark h3,
-html.dark p, html.dark span, html.dark div,
-html.dark li, html.dark td, html.dark th,
-html.dark a, html.dark button, html.dark label {
+html.dark p, html.dark li, html.dark td, html.dark th,
+html.dark label {
   color: #e8e4dc !important;
 }
 
@@ -505,21 +503,28 @@ html:not(.dark) button.auth-btn-google { color: #1a1714 !important; background: 
 /* ── Footer (always dark bg) ── */
 footer, footer span, footer a { color: #999 !important; }
 
-/* ── Font-size floor: body 16px, headings + inline inherit revert ── */
-* { font-size: 16px !important; }
+/* ── Font-size floor: targeted 16px minimum (not * wildcard) ── */
+/* Body text elements */
+p, li, td, th, label, blockquote { font-size: 16px !important; }
+/* Form elements (also prevents iOS zoom) */
+input, select, textarea { font-size: 16px !important; }
+/* Headings keep their own sizes */
 h1, h2, h3, h4 { font-size: revert !important; }
-/* Inline elements inside headings must inherit parent size, not 16px */
-h1 em, h1 span, h1 strong, h1 a,
-h2 em, h2 span, h2 strong, h2 a,
-h3 em, h3 span, h3 strong, h3 a { font-size: inherit !important; }
-/* Cormorant stat numbers (decorative large text) */
-[style*="font-size:3.5rem"], [style*="font-size: 3.5rem"],
-[style*="font-size:2.2rem"], [style*="font-size: 2.2rem"],
-[style*="font-size:4rem"],   [style*="font-size: 4rem"],
-[style*="font-size:5rem"],   [style*="font-size: 5rem"],
-[style*="font-size:3rem"],   [style*="font-size: 3rem"] { font-size: inherit !important; }
-/* Form inputs: 16px to prevent iOS zoom */
-input, select, textarea, button { font-size: 16px !important; }
+/* Inline elements inside headings inherit */
+h1 em, h1 span, h1 strong, h2 em, h2 span, h3 em, h3 span { font-size: inherit !important; }
+/* Buttons keep their own size (arrows, toggles, CTAs) */
+button { font-size: inherit; }
+/* Nav links */
+.nav-menu li a { font-size: 16px !important; }
+/* Carousel arrows — large icon, light color */
+.hero-carousel button[aria-label] {
+  font-size: 1.5rem !important;
+  color: #f5f2eb !important;
+}
+/* Carousel dot indicators */
+.hero-carousel button:not([aria-label]) {
+  font-size: 0 !important; /* dots have no text */
+}
 
 /* ===== EMERGENCY FIX: dark-bg text visibility (absolute last rule) ===== */
 /* Attribute selectors for ALL inline dark backgrounds */

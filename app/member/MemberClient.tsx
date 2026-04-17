@@ -72,7 +72,8 @@ function AuthScreen({ onLogin }: { onLogin: (user: User | DemoUser, demo?: boole
   const [loginErr, setLoginErr] = useState(''); const [regErr, setRegErr] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const isDemoMode = process.env.NEXT_PUBLIC_FIREBASE_API_KEY === 'YOUR_API_KEY';
+  const _apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY || '';
+  const isDemoMode = !_apiKey || _apiKey === 'YOUR_API_KEY';
 
   async function doLogin() {
     if (isDemoMode) { onLogin(DEMO_USER, true); return; }
@@ -467,7 +468,8 @@ export default function MemberClient() {
   const [isDemo, setIsDemo] = useState(false);
   const [authDebug, setAuthDebug] = useState<string[]>([]);
 
-  const isDemoConfig = process.env.NEXT_PUBLIC_FIREBASE_API_KEY === 'YOUR_API_KEY';
+  const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY || '';
+  const isDemoConfig = !apiKey || apiKey === 'YOUR_API_KEY';
 
   // Helper: append debug message (shown on-page in auth screen)
   function addDebug(msg: string) {
