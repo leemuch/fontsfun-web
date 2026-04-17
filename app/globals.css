@@ -464,6 +464,24 @@ html.dark .dm-toggle { color: inherit !important; }
 html:not(.dark) .nav-menu li a,
 html.dark .nav-menu li a { color: inherit !important; }
 
+/* ── Member page button overrides (beats html.dark button specificity) ── */
+html.dark button.auth-btn-primary,
+html:not(.dark) button.auth-btn-primary { color: #f5f2eb !important; background: #1a1714 !important; border: 1px solid #555 !important; }
+html.dark button.auth-btn-google,
+html:not(.dark) button.auth-btn-google { color: #1a1714 !important; background: #ffffff !important; border: 1px solid #ddd !important; }
+
+/* ── Member auth visual (dark panel) ── */
+[style*="background: var(--ink)"] h1,
+[style*="background: var(--ink)"] h2,
+[style*="background: var(--ink)"] p,
+[style*="background: var(--ink)"] span,
+[style*="background: var(--ink)"] em,
+[style*="background:var(--ink)"] h1,
+[style*="background:var(--ink)"] h2,
+[style*="background:var(--ink)"] p,
+[style*="background:var(--ink)"] span,
+[style*="background:var(--ink)"] em { color: #f5f2eb !important; }
+
 /* ── Footer (always dark bg) ── */
 footer, footer span, footer a { color: #999 !important; }
 

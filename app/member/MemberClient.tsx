@@ -181,7 +181,7 @@ function AuthScreen({ onLogin }: { onLogin: (user: User | DemoUser, demo?: boole
                     style={{ background: 'transparent', border: 'none', borderBottom: '1px solid var(--light-rule)', padding: '0.5rem 0', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.82rem', color: 'var(--ink)', outline: 'none', letterSpacing: '0.05em' }} />
                 </div>
               ))}
-              <button onClick={doLogin} disabled={loading} style={{ width: '100%', padding: '0.9rem', background: 'var(--ink)', color: 'var(--paper)', border: '1px solid var(--ink)', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.72rem', letterSpacing: '0.15em', cursor: 'pointer', marginTop: '0.5rem', opacity: loading ? 0.5 : 1 }}>
+              <button className="auth-btn-primary" onClick={doLogin} disabled={loading} style={{ width: '100%', padding: '0.9rem', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '16px', letterSpacing: '0.15em', cursor: 'pointer', marginTop: '0.5rem', opacity: loading ? 0.5 : 1 }}>
                 {loading ? '登入中…' : '登入'}
               </button>
               {loginErr && <p style={{ fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.7rem', color: 'var(--accent)', marginTop: '0.75rem' }}>{loginErr}</p>}
@@ -190,7 +190,7 @@ function AuthScreen({ onLogin }: { onLogin: (user: User | DemoUser, demo?: boole
                 <span style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: '0.75rem', color: '#bbb' }}>或</span>
                 <div style={{ flex: 1, height: '1px', background: 'var(--light-rule)' }} />
               </div>
-              <button onClick={doGoogleLogin} style={{ width: '100%', padding: '0.85rem', background: 'transparent', border: '1px solid var(--light-rule)', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.72rem', letterSpacing: '0.12em', color: 'var(--ink)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
+              <button className="auth-btn-google" onClick={doGoogleLogin} style={{ width: '100%', padding: '0.85rem', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '16px', letterSpacing: '0.12em', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
                 <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" /><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" /><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" /><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" /></svg>
                 使用 Google 帳號登入
               </button>
@@ -206,11 +206,11 @@ function AuthScreen({ onLogin }: { onLogin: (user: User | DemoUser, demo?: boole
                     style={{ background: 'transparent', border: 'none', borderBottom: '1px solid var(--light-rule)', padding: '0.5rem 0', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.82rem', color: 'var(--ink)', outline: 'none', letterSpacing: '0.05em' }} />
                 </div>
               ))}
-              <button onClick={doRegister} disabled={loading} style={{ width: '100%', padding: '0.9rem', background: 'var(--ink)', color: 'var(--paper)', border: '1px solid var(--ink)', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.72rem', letterSpacing: '0.15em', cursor: 'pointer', marginTop: '0.5rem', opacity: loading ? 0.5 : 1 }}>
+              <button className="auth-btn-primary" onClick={doRegister} disabled={loading} style={{ width: '100%', padding: '0.9rem', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '16px', letterSpacing: '0.15em', cursor: 'pointer', marginTop: '0.5rem', opacity: loading ? 0.5 : 1 }}>
                 {loading ? '建立中…' : '建立帳號'}
               </button>
-              {regErr && <p style={{ fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.7rem', color: 'var(--accent)', marginTop: '0.75rem' }}>{regErr}</p>}
-              <button onClick={doGoogleLogin} style={{ width: '100%', padding: '0.85rem', background: 'transparent', border: '1px solid var(--light-rule)', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.72rem', letterSpacing: '0.12em', color: 'var(--ink)', cursor: 'pointer', marginTop: '1rem' }}>
+              {regErr && <p style={{ fontFamily: "'Noto Sans TC', sans-serif", fontSize: '16px', color: 'var(--accent)', marginTop: '0.75rem' }}>{regErr}</p>}
+              <button className="auth-btn-google" onClick={doGoogleLogin} style={{ width: '100%', padding: '0.85rem', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '16px', letterSpacing: '0.12em', cursor: 'pointer', marginTop: '1rem' }}>
                 使用 Google 帳號註冊
               </button>
             </>
@@ -308,7 +308,7 @@ function Dashboard({
                   </div>
                   <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.5rem' }}>
                     <button onClick={() => alert(isDemo ? '⚠️ 示範模式：實際部署後請在 Firebase Storage 存放字體檔案。' : '下載中…')}
-                      style={{ flex: 1, padding: '0.65rem', background: 'var(--ink)', color: 'var(--paper)', border: '1px solid var(--ink)', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.65rem', letterSpacing: '0.12em', cursor: 'pointer' }}>
+                      style={{ flex: 1, padding: '0.65rem', background: '#1a1714', color: '#f5f2eb', border: '1px solid #555', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.65rem', letterSpacing: '0.12em', cursor: 'pointer' }}>
                       ⬇ 下載字體
                     </button>
                     <button onClick={() => setCertFont(f)}
