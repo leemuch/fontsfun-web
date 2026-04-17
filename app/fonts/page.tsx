@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import FAQAccordion from '../../components/FAQAccordion';
+import ScrollReveal from '../../components/ScrollReveal';
 
 export const metadata: Metadata = {
   title: '字趣 fontsfun — 原創繁體中文字型工作室',
@@ -174,16 +175,15 @@ export default function FontsPage() {
             letterSpacing: '0.15em',
           }}>柔 · 光 · 霜 · 潤 · 醇 · 蜜</span>
         </div>
-        <div className="weights-grid" style={{
+        <ScrollReveal className="weights-grid" style={{
           display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px',
           background: 'var(--light-rule)',
           border: '1px solid var(--light-rule)',
         }}>
           {weights.map((w) => (
-            <div key={w.name} style={{
+            <div key={w.name} className="stagger-item" style={{
               background: 'var(--paper)', padding: '3rem 2rem',
               display: 'flex', flexDirection: 'column', gap: '1rem',
-              transition: 'background 0.3s',
             }}>
               <div style={{
                 fontFamily: "'Noto Serif TC', serif",
@@ -212,7 +212,7 @@ export default function FontsPage() {
               }}>{w.desc}</p>
             </div>
           ))}
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* TESTIMONIALS */}
@@ -339,6 +339,7 @@ export default function FontsPage() {
         <a
           href="https://www.zeczec.com/projects/ten"
           target="_blank" rel="noopener noreferrer"
+          className="pulse"
           style={{
             display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
             padding: '1.1rem 3rem',

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import ScrollReveal from '../../components/ScrollReveal';
 
 export const metadata: Metadata = {
   title: '購買授權 — 字趣 fontsfun',
@@ -91,12 +92,12 @@ export default function BuyPage() {
       </p>
 
       {/* Plans Grid */}
-      <div style={{
+      <ScrollReveal style={{
         display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
         border: '1px solid #2a2a2a', marginBottom: '4rem',
       }}>
         {plans.map((plan, i) => (
-          <div key={plan.type} className="plan-card" style={{
+          <div key={plan.type} className="plan-card stagger-item hover-lift" style={{
             padding: '3rem 2.5rem',
             borderRight: i < 2 ? '1px solid #2a2a2a' : 'none',
             position: 'relative',
@@ -164,7 +165,7 @@ export default function BuyPage() {
             }}>{plan.btnLabel}</Link>
           </div>
         ))}
-      </div>
+      </ScrollReveal>
 
       {/* Comparison Table */}
       <h3 style={{

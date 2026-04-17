@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import WorksGrid, { type Work } from '../components/WorksGrid';
 import HeroCarousel, { type HeroSlide } from '../components/HeroCarousel';
+import ScrollReveal from '../components/ScrollReveal';
 
 export const metadata: Metadata = {
   title: '盛和設計 — 平面設計・字體・品牌視覺',
@@ -205,11 +206,11 @@ export default function PortfolioPage() {
             fontSize: '1.1rem', letterSpacing: '0.15em', color: 'var(--paper)',
           }}>服務項目</h2>
         </div>
-        <div className="services-grid" style={{
+        <ScrollReveal className="services-grid" style={{
           display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
         }}>
           {services.map((s, i) => (
-            <div key={s.name} className="service-card" style={{
+            <div key={s.name} className="service-card stagger-item hover-lift" style={{
               padding: '3rem 2.5rem',
               borderRight: (i + 1) % 3 !== 0 ? '1px solid #2a2a2a' : 'none',
               borderBottom: Math.floor(i / 3) < Math.floor((services.length - 1) / 3) ? '1px solid #2a2a2a' : 'none',
@@ -236,7 +237,7 @@ export default function PortfolioPage() {
               }}>{s.price}</p>
             </div>
           ))}
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* WORKS */}
@@ -276,11 +277,11 @@ export default function PortfolioPage() {
             fontSize: '1.1rem', letterSpacing: '0.15em', color: 'var(--paper)',
           }}>合作流程</h2>
         </div>
-        <div className="process-steps" style={{
+        <ScrollReveal className="process-steps" style={{
           display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
         }}>
           {processSteps.map((p, i) => (
-            <div key={p.num} className="process-step" style={{
+            <div key={p.num} className="process-step stagger-item" style={{
               padding: '3rem 2rem',
               borderRight: i < processSteps.length - 1 ? '1px solid #2a2a2a' : 'none',
             }}>
@@ -300,7 +301,7 @@ export default function PortfolioPage() {
               }}>{p.desc}</p>
             </div>
           ))}
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* ABOUT */}
