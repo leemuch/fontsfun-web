@@ -7,11 +7,12 @@ import { useState, useEffect } from 'react';
 
 const navLinks = [
   { href: '/',              label: '首頁' },
-  { href: '/fonts',         label: '字體' },
   { href: '/#works',        label: '作品' },
   { href: '/crowdfunding',  label: '募資' },
+  { href: '/publishing',    label: '出版' },
   { href: '/buy',           label: '購買' },
-  { href: '/blog',          label: '筆記' },
+  { href: '/blog',          label: '部落格' },
+  { href: '/fonts',         label: '字體' },
   { href: '/member',        label: '會員' },
 ];
 
