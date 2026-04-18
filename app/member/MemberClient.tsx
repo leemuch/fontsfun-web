@@ -97,21 +97,26 @@ function AuthScreen({ onLogin }: { onLogin: (user: User | DemoUser, demo?: boole
   }
 
   async function doGoogleLogin() {
-    if (isDemoMode) { onLogin(DEMO_USER, true); return; }
+    console.log('[auth] Google login button clicked');
+    if (isDemoMode) { console.log('[auth] Demo mode — skipping real auth'); onLogin(DEMO_USER, true); return; }
     setLoginErr(''); setLoading(true);
 
     const auth = getFirebaseAuth();
+    console.log('[auth] Firebase auth object:', auth ? 'OK' : 'NULL');
     const provider = new GoogleAuthProvider();
     provider.addScope('email');
     provider.addScope('profile');
     provider.setCustomParameters({ prompt: 'select_account' });
 
-    // Always use redirect — popup is unreliable across browsers/devices
     try {
+      console.log('[auth] Calling signInWithRedirect...');
       await signInWithRedirect(auth, provider);
-      // Browser navigates away; code after this won't run until redirect returns
+      console.log('[auth] signInWithRedirect returned (browser should navigate away)');
     } catch (e: any) {
-      setLoginErr(parseFirebaseError(e.code));
+      const code = e?.code || 'unknown';
+      const msg = e?.message || String(e);
+      console.error('[auth] signInWithRedirect ERROR:', code, msg);
+      setLoginErr(`${parseFirebaseError(code)} (${code})`);
       setLoading(false);
     }
   }
