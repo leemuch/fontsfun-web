@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#F5F4F0"/>
+  <rect x="460" y="180" width="1000" height="620" rx="12" fill="#fafaf8" stroke="#d4d0c8" stroke-width="1.5"/>
+  <rect x="520" y="260" width="200" height="120" rx="4" fill="#2a3a5c" opacity="0.06"/>
+  <rect x="520" y="400" width="200" height="80" rx="4" fill="#2a3a5c" opacity="0.04"/>
+  <polyline points="800,500 900,420 1000,460 1100,350 1200,380" fill="none" stroke="#e8725c" stroke-width="2" opacity="0.5"/>
+  <circle cx="1200" cy="380" r="6" fill="#e8725c" opacity="0.7"/>
+  <rect x="300" y="850" width="160" height="100" rx="2" fill="none" stroke="#d4d0c8" stroke-width="1"/>
+  <text x="960" y="950" text-anchor="middle" font-family="serif" font-size="20" fill="#e8725c" opacity="0.5">廣告投放與流量操盤</text>
+</svg>

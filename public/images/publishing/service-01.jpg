@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#F5F4F0"/>
+  <rect x="560" y="200" width="500" height="650" rx="2" fill="#fafaf8" stroke="#d4d0c8" stroke-width="1"/>
+  <line x1="600" y1="280" x2="1000" y2="280" stroke="#d4d0c8" stroke-width="0.6"/>
+  <line x1="600" y1="310" x2="980" y2="310" stroke="#d4d0c8" stroke-width="0.6"/>
+  <line x1="600" y1="340" x2="1020" y2="340" stroke="#d4d0c8" stroke-width="0.6"/>
+  <circle cx="620" cy="400" r="12" fill="none" stroke="#c0392b" stroke-width="1.5" opacity="0.5"/>
+  <line x1="600" y1="450" x2="700" y2="430" stroke="#c0392b" stroke-width="1" opacity="0.4"/>
+  <rect x="1200" y="350" width="300" height="400" rx="2" fill="none" stroke="#d4d0c8" stroke-width="1"/>
+  <text x="960" y="960" text-anchor="middle" font-family="serif" font-size="20" fill="#c0392b" opacity="0.5">出版企劃與編輯</text>
+</svg>

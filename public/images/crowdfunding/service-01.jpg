@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#F5F4F0"/>
+  <rect x="660" y="280" width="600" height="400" rx="4" fill="none" stroke="#d4d0c8" stroke-width="1.5"/>
+  <line x1="720" y1="340" x2="1200" y2="340" stroke="#d4d0c8" stroke-width="0.8"/>
+  <line x1="720" y1="380" x2="1100" y2="380" stroke="#d4d0c8" stroke-width="0.8"/>
+  <line x1="720" y1="420" x2="1150" y2="420" stroke="#d4d0c8" stroke-width="0.8"/>
+  <circle cx="400" cy="350" r="60" fill="none" stroke="#c4876a" stroke-width="1.5" opacity="0.4"/>
+  <rect x="1350" y="300" width="180" height="120" rx="2" fill="#c4876a" opacity="0.12"/>
+  <line x1="500" y1="750" x2="600" y2="750" stroke="#1a1714" stroke-width="1" opacity="0.2"/>
+  <text x="960" y="900" text-anchor="middle" font-family="serif" font-size="20" fill="#c4876a" opacity="0.5">募資企劃與執行</text>
+</svg>

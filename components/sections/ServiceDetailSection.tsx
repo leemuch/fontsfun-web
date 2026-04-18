@@ -2,6 +2,7 @@ interface ServiceDetail {
   headline: string;
   items: string[];
   differentiator: string;
+  image?: string;
 }
 
 interface Props {
@@ -52,17 +53,25 @@ export default function ServiceDetailSection({ services }: Props) {
                 marginTop: '2rem', fontStyle: 'italic',
               }}>{s.differentiator}</p>
             </div>
-            {/* Visual placeholder */}
+            {/* Visual */}
             <div style={{
               direction: 'ltr',
-              aspectRatio: '4/3',
+              aspectRatio: '16/9',
               background: 'var(--bg-alt)',
               border: '1px solid var(--light-rule)',
+              overflow: 'hidden',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-              fontSize: '3rem', color: 'var(--light-rule)',
             }}>
-              {String(i + 1).padStart(2, '0')}
+              {s.image ? (
+                <img src={s.image} alt={s.headline} loading="lazy" style={{
+                  width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+                }} />
+              ) : (
+                <span style={{
+                  fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
+                  fontSize: '3rem', color: 'var(--light-rule)',
+                }}>{String(i + 1).padStart(2, '0')}</span>
+              )}
             </div>
           </div>
         );

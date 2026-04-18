@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#F5F4F0"/>
+  <rect x="500" y="250" width="220" height="320" rx="3" fill="#fafaf8" stroke="#d4d0c8" stroke-width="1.5"/>
+  <rect x="780" y="230" width="220" height="320" rx="3" fill="none" stroke="#2a3a5c" stroke-width="1.5" opacity="0.3"/>
+  <rect x="1060" y="270" width="220" height="320" rx="3" fill="#fafaf8" stroke="#d4d0c8" stroke-width="1"/>
+  <rect x="500" y="680" width="600" height="8" rx="4" fill="#d4d0c8" opacity="0.3"/>
+  <rect x="500" y="700" width="400" height="8" rx="4" fill="#d4d0c8" opacity="0.2"/>
+  <circle cx="1350" cy="650" r="30" fill="none" stroke="#d4d0c8" stroke-width="1"/>
+  <text x="960" y="960" text-anchor="middle" font-family="serif" font-size="20" fill="#2a3a5c" opacity="0.5">書籍設計與印製</text>
+</svg>
