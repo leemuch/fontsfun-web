@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ScrollReveal from '../../components/ScrollReveal';
+import PageHero from '../../components/PageHero';
 
 export const metadata: Metadata = {
   title: '購買授權 — 字趣 fontsfun',
@@ -60,6 +61,11 @@ const compareRows = [
 
 export default function BuyPage() {
   return (
+    <>
+    <PageHero
+      title="為品牌而做的字，現在就能用"
+      subtitle="商用授權一次購足，支援品牌、包裝、數位全場景"
+    />
     <section id="section-buy" style={{
       padding: '6rem 4rem',
       background: 'var(--ink)', color: 'var(--paper)',
@@ -202,5 +208,6 @@ export default function BuyPage() {
         </tbody>
       </table>
     </section>
+    </>
   );
 }

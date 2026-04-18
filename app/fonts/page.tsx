@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import FAQAccordion from '../../components/FAQAccordion';
 import ScrollReveal from '../../components/ScrollReveal';
+import PageHero from '../../components/PageHero';
 
 export const metadata: Metadata = {
   title: '字趣 fontsfun — 原創繁體中文字型工作室',
@@ -55,68 +56,14 @@ const testimonials = [
 export default function FontsPage() {
   return (
     <>
-      {/* HERO */}
-      <section style={{
-        minHeight: '78vh',
-        padding: '7rem 4rem 5rem',
-        display: 'flex', flexDirection: 'column',
-        justifyContent: 'center', alignItems: 'center',
-        textAlign: 'center',
-        borderBottom: '1px solid var(--light-rule)',
-        position: 'relative', isolation: 'isolate',
-        backgroundImage: 'linear-gradient(rgba(245, 242, 235, 0.86), rgba(245, 242, 235, 0.94)), url(/images/hero-fonts.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}>
-        <p style={{
-          fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-          fontSize: '0.9rem', color: 'var(--warm-mid)',
-          letterSpacing: '0.25em', marginBottom: '2rem',
-        }}>fontsfun · 原創字型工作室</p>
-        <h1 style={{
-          fontFamily: "'Noto Serif TC', serif", fontWeight: 300,
-          fontSize: 'clamp(3rem, 6vw, 6rem)',
-          lineHeight: 1.2, letterSpacing: '0.08em',
-          marginBottom: '2rem',
-        }}>
-          每一個字，<br />都<em style={{ fontStyle: 'normal', color: 'var(--accent)' }}>有溫度</em>
-        </h1>
-        <p style={{
-          fontFamily: "'Noto Sans TC', sans-serif", fontWeight: 300,
-          fontSize: '0.9rem', color: 'var(--warm-mid)',
-          letterSpacing: '0.08em', lineHeight: 2.2,
-          maxWidth: '32rem',
-        }}>
-          專為繁體中文設計的原創字型工作室。<br />
-          從一筆一畫的細節，建立屬於華文閱讀的美感。
-        </p>
-        <div style={{
-          marginTop: '3rem', display: 'flex', gap: '1.25rem',
-          flexWrap: 'wrap', justifyContent: 'center',
-        }}>
-          <Link href="/buy" style={{
-            display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
-            padding: '0.95rem 2.25rem',
-            background: 'var(--ink)', color: 'var(--paper)',
-            fontFamily: "'Noto Sans TC', sans-serif",
-            fontSize: '0.78rem', letterSpacing: '0.18em',
-            textDecoration: 'none', transition: 'opacity 0.2s',
-          }}>查看授權方案 →</Link>
-          <a
-            href="https://www.zeczec.com/projects/ten"
-            target="_blank" rel="noopener noreferrer"
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
-              padding: '0.95rem 2.25rem',
-              background: 'var(--accent)', color: '#fff',
-              fontFamily: "'Noto Sans TC', sans-serif",
-              fontSize: '0.78rem', letterSpacing: '0.18em',
-              textDecoration: 'none', transition: 'opacity 0.2s',
-            }}
-          >嘖嘖募資中 ↗</a>
-        </div>
-      </section>
+      <PageHero
+        title="讓你的品牌，有自己的聲音"
+        subtitle="原創繁體中文字型 × 品牌客製字開發，從識別到應用一次到位"
+        ctas={[
+          { label: '查看授權方案 →', href: '/buy', variant: 'primary' },
+          { label: '嘖嘖募資中 ↗', href: 'https://www.zeczec.com/projects/ten', variant: 'secondary' },
+        ]}
+      />
 
       {/* SPECIMEN BANNER — 綿甜體意象 */}
       <section style={{

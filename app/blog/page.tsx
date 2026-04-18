@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllPosts } from '../../lib/blog';
+import PageHero from '../../components/PageHero';
 
 export const metadata: Metadata = {
   title: '設計筆記 — 字趣 fontsfun',
@@ -32,35 +33,10 @@ export default function BlogPage() {
 
   return (
     <>
-      {/* Page Hero */}
-      <div style={{
-        padding: '10rem 4rem 4rem',
-        borderBottom: '1px solid var(--light-rule)',
-        display: 'grid', gridTemplateColumns: '1fr 1fr',
-        gap: '4rem', alignItems: 'end',
-      }}>
-        <div>
-          <p style={{
-            fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-            fontSize: '0.85rem', color: 'var(--warm-mid)',
-            letterSpacing: '0.2em', marginBottom: '1rem',
-          }}>Design Notes · 設計筆記</p>
-          <h1 style={{
-            fontFamily: "'Noto Serif TC', serif",
-            fontWeight: 300, fontSize: 'clamp(2.5rem, 4vw, 4rem)',
-            lineHeight: 1.3, letterSpacing: '0.06em',
-          }}>
-            思考<span style={{ color: 'var(--accent)' }}>設計</span>，<br />紀錄創作
-          </h1>
-        </div>
-        <div>
-          <p style={{
-            fontFamily: "'Noto Sans TC', sans-serif",
-            fontSize: '0.8rem', color: 'var(--warm-mid)',
-            lineHeight: 2, letterSpacing: '0.06em', maxWidth: '28rem',
-          }}>記錄關於字體、排版、品牌設計的思考與觀察。從工藝細節到設計哲學，分享創作過程中的所見所想。</p>
-        </div>
-      </div>
+      <PageHero
+        title="設計現場的方法與思考"
+        subtitle="字體、排版、品牌、標案——第一手的實戰觀察"
+      />
 
       {/* Filter Bar */}
       <div className="filter-bar" style={{
