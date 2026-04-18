@@ -1,41 +1,17 @@
 import type { Metadata } from 'next';
-import WorksGrid, { type Work } from '../components/WorksGrid';
-import HeroCarousel, { type HeroSlide } from '../components/HeroCarousel';
+import WorksGrid from '../components/WorksGrid';
+import HeroCarousel from '../components/HeroCarousel';
 import ScrollReveal from '../components/ScrollReveal';
+import { HERO_SLIDES, WORKS } from '../lib/constants';
 
 export const metadata: Metadata = {
   title: '盛和設計 — 平面設計・字體・品牌視覺',
   description: '專注品牌識別、字體排版與文化視覺設計。從企業品牌到政府標案，讓你的形象說話。',
 };
 
-const heroSlides: HeroSlide[] = [
-  {
-    img: '/images/hero/hero-slide-1.jpg',
-    alt: '盛和設計工作室',
-    eyebrow: 'Shenghe Design Studio',
-    title: '設計，是溝通的最短距離',
-    titleAccent: '溝通',
-    subtitle: '專注品牌識別、字體排版與文化視覺設計。從企業品牌到政府標案，讓你的形象說話。',
-  },
-  {
-    img: '/images/hero/hero-slide-2.jpg',
-    alt: '品牌識別設計工作桌',
-    eyebrow: 'Brand Identity · Typography',
-    title: '從策略到視覺，一步到位',
-    titleAccent: '一步到位',
-    subtitle: '深耕平面設計逾十年，為每位客戶量身打造具備說服力的品牌視覺系統。',
-  },
-  {
-    img: '/images/hero/hero-slide-3.jpg',
-    alt: '展覽空間視覺設計',
-    eyebrow: 'Editorial Design · Exhibition',
-    title: '讓好設計，說好的故事',
-    titleAccent: '好的故事',
-    subtitle: '書籍裝幀、年報排版、展覽主視覺——細節決定質感，質感塑造信任。',
-  },
-];
+// heroSlides + works → imported from lib/constants.ts
 
-const works: Work[] = [
+/* WORKS_CUT_START
   { cat: 'brand', workCat: 'Brand Visual', titleEn: 'Cloud Bookfont',
     title: '字趣 雲書體 主視覺',
     desc: '字趣 fontsfun 2025 年度新作「雲書體」發表主視覺。以青空、雲形、墨痕構成飄逸書寫意象，強調「圓潤筆觸 · 現代優雅」的字型氣質。',
@@ -147,7 +123,7 @@ const works: Work[] = [
     result: '原創 IP 無尾熊角色設計',
     img: '/images/works/type/koala-character-set.jpg',
     alt: '無尾熊 字符組' },
-];
+WORKS_CUT_END */
 
 const services = [
   { icon: 'Aa', name: '品牌識別系統', desc: 'Logo設計・色彩規範・字體系統・品牌手冊。為你的品牌建立一致、有說服力的視覺語言。', price: 'from NT$80,000' },
@@ -186,7 +162,7 @@ export default function PortfolioPage() {
   return (
     <>
       {/* HERO CAROUSEL */}
-      <HeroCarousel slides={heroSlides} />
+      <HeroCarousel slides={HERO_SLIDES} />
 
       {/* SERVICES */}
       <section id="services" style={{
@@ -256,7 +232,7 @@ export default function PortfolioPage() {
             fontSize: '1.1rem', letterSpacing: '0.15em',
           }}>精選作品</h2>
         </div>
-        <WorksGrid works={works} />
+        <WorksGrid works={WORKS} />
       </section>
 
       {/* PROCESS */}
