@@ -223,7 +223,7 @@ export default function PortfolioPage() {
         <div className="svc-img" style={{
           width: '100%', height: '400px', overflow: 'hidden', background: '#e8e4db',
         }}>
-          <img src="/images/crowdfunding/service-01.svg" alt="募資服務" loading="lazy" style={{
+          <img src="/images/crowdfunding/service-01.jpg" alt="募資服務" loading="lazy" style={{
             width: '100%', height: '100%', objectFit: 'cover', display: 'block',
           }} />
         </div>
@@ -266,7 +266,7 @@ export default function PortfolioPage() {
         <div className="svc-img" style={{
           width: '100%', height: '400px', overflow: 'hidden', background: '#e8e4db',
         }}>
-          <img src="/images/publishing/service-01.svg" alt="出版服務" loading="lazy" style={{
+          <img src="/images/publishing/service-01.jpg" alt="出版服務" loading="lazy" style={{
             width: '100%', height: '100%', objectFit: 'cover', display: 'block',
           }} />
         </div>

@@ -26,22 +26,22 @@ export default function PublishingPage() {
       <JapaneseProcess steps={[
         {
           num: '01', title: '想法', subtitle: 'Concept',
-          image: '/images/publishing/service-01.svg',
+          image: '/images/publishing/service-01.jpg',
           desc: '從一個想法開始。我們協助你釐清出版方向、讀者定位與核心訊息，讓書從一開始就走在對的路上。',
         },
         {
           num: '02', title: '編輯', subtitle: 'Editorial',
-          image: '/images/publishing/service-02.svg',
+          image: '/images/publishing/service-02.jpg',
           desc: '文字是書的靈魂。我們協助整理稿件結構、潤飾文字節奏，讓內容清晰有力、易於閱讀。',
         },
         {
           num: '03', title: '設計', subtitle: 'Design',
-          image: '/images/publishing/service-03.svg',
+          image: '/images/publishing/service-03.jpg',
           desc: '封面是書的第一印象。我們設計封面、規劃內頁排版，讓視覺語言與內容完美呼應。',
         },
         {
           num: '04', title: '印製', subtitle: 'Production',
-          image: '/images/publishing/service-04.svg',
+          image: '/images/publishing/service-04.jpg',
           desc: '從數位到實體。我們確認印刷規格、紙張選擇與裝幀方式，交付高品質的出版成品。',
         },
       ]} />
@@ -63,19 +63,19 @@ export default function PublishingPage() {
           headline: '把文字整理成讀者願意翻下去的節奏',
           items: ['內容架構與章節規劃', '文字編輯與校對', 'ISBN 書號與 CIP 申請'],
           differentiator: '不只幫你排版，是把原稿當一本真正的書來對待。',
-          image: '/images/publishing/service-01.svg',
+          image: '/images/publishing/service-01.jpg',
         },
         {
           headline: '紙張、字型、油墨——都是這本書的一部分',
           items: ['封面設計與裝幀選擇', '內頁排版與字型選用', '紙張、加工與印刷監製'],
           differentiator: '字型工作室的血統，內文的字距、行高比一般美編更講究。',
-          image: '/images/publishing/service-02.svg',
+          image: '/images/publishing/service-02.jpg',
         },
         {
           headline: '書印出來只是開始，讓書走到讀者手上才是結束',
           items: ['新書預購／募資規劃', '獨立書店與通路鋪貨', '新書發表會與媒體合作'],
           differentiator: '同時做募資——如果你的書適合走募資通路，我們可以直接銜接。',
-          image: '/images/publishing/service-03.svg',
+          image: '/images/publishing/service-03.jpg',
         },
       ]} />
 
