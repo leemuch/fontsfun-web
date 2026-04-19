@@ -236,7 +236,7 @@ export default function BlogPage() {
             />
             <button type="submit" style={{
               padding: '0.75rem 1.5rem',
-              background: 'var(--ink)', color: 'var(--paper)',
+              background: '#1a1714', color: '#f5f2eb',
               border: '1px solid var(--ink)',
               fontFamily: "'Noto Sans TC', sans-serif",
               fontSize: '0.7rem', letterSpacing: '0.12em',

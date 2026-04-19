@@ -67,7 +67,7 @@ export default function ReleasesPage() {
       }}>
         {/* Visual */}
         <div style={{
-          background: 'var(--ink)', minHeight: '28rem',
+          background: '#f0ece3', minHeight: '28rem',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           flexDirection: 'column', gap: '1rem', padding: '4rem',
           position: 'relative', overflow: 'hidden',
@@ -76,13 +76,13 @@ export default function ReleasesPage() {
             position: 'absolute', top: '2rem', left: '2rem',
             fontFamily: "'Noto Sans TC', sans-serif",
             fontSize: '0.6rem', letterSpacing: '0.2em',
-            background: 'var(--accent)', color: 'var(--paper)',
+            background: 'var(--accent)', color: '#262626',
             padding: '0.3rem 0.8rem',
           }}>最新發布</span>
           <div style={{
             fontFamily: "'Noto Serif TC', serif",
             fontSize: '5rem', fontWeight: 300,
-            color: 'var(--paper)', letterSpacing: '0.1em',
+            color: '#262626', letterSpacing: '0.1em',
             lineHeight: 1.2, textAlign: 'center',
           }}>綿甜體<br />2.0</div>
           <div style={{
@@ -143,7 +143,7 @@ export default function ReleasesPage() {
               fontFamily: "'Noto Sans TC', sans-serif",
               fontSize: '0.72rem', letterSpacing: '0.15em',
               textDecoration: 'none', display: 'inline-block',
-              background: 'var(--ink)', color: 'var(--paper)',
+              background: '#f0ece3', color: '#262626',
               border: '1px solid var(--ink)', transition: 'all 0.25s',
             }}>立即購買</Link>
             <Link href="#timeline" style={{
@@ -213,7 +213,7 @@ export default function ReleasesPage() {
       {/* Notify Strip */}
       <div style={{
         marginTop: '5rem', padding: '3rem 4rem',
-        background: 'var(--ink)', color: 'var(--paper)',
+        background: '#f0ece3', color: '#262626',
         display: 'grid', gridTemplateColumns: '1fr 1fr',
         gap: '4rem', alignItems: 'center',
       }}>
@@ -235,13 +235,13 @@ export default function ReleasesPage() {
             style={{
               flex: 1, padding: '0.85rem 1rem',
               background: '#222', border: '1px solid #333', borderRight: 'none',
-              color: 'var(--paper)',
+              color: '#262626',
               fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.75rem', outline: 'none',
             }}
           />
           <button type="submit" style={{
             padding: '0.85rem 1.5rem',
-            background: 'var(--accent)', color: 'var(--paper)',
+            background: 'var(--accent)', color: '#262626',
             border: '1px solid var(--accent)',
             fontFamily: "'Noto Sans TC', sans-serif",
             fontSize: '0.7rem', letterSpacing: '0.12em',

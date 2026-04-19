@@ -142,7 +142,7 @@ export default function CrowdfundingPage() {
                 display: 'flex', flexDirection: 'column',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
               }}>
-              <div style={{ aspectRatio: '16/9', overflow: 'hidden', background: '#1a1714' }}>
+              <div style={{ aspectRatio: '16/9', overflow: 'hidden', background: '#e8e4db' }}>
                 <img src={c.cover} alt={c.fullTitle} loading="lazy" style={{
                   width: '100%', height: '100%', objectFit: 'cover', display: 'block',
                 }} />

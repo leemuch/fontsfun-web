@@ -149,7 +149,7 @@ export default function WorksGrid({ works }: Props) {
             }}
           >
             <div style={{
-              background: '#0e0c0a', display: 'flex',
+              background: '#f0ece3', display: 'flex',
               alignItems: 'center', justifyContent: 'center',
               minHeight: '40vh', overflow: 'hidden',
             }}>

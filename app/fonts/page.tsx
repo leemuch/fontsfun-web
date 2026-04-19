@@ -211,7 +211,7 @@ export default function FontsPage() {
                 <div style={{
                   width: '2.5rem', height: '2.5rem',
                   borderRadius: '50%',
-                  background: 'var(--ink)', color: 'var(--paper)',
+                  background: '#e8e4db',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontFamily: "'Noto Serif TC', serif",
                   fontSize: '0.85rem', letterSpacing: '0.05em',
@@ -259,7 +259,7 @@ export default function FontsPage() {
       {/* CROWDFUNDING CTA */}
       <section style={{
         padding: '6rem 4rem',
-        background: 'var(--ink)', color: 'var(--paper)',
+        background: '#e8e4db',
         textAlign: 'center',
       }}>
         <p style={{

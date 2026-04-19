@@ -166,12 +166,12 @@ export default function PortfolioPage() {
 
       {/* SERVICES */}
       <section id="services" style={{
-        padding: '6rem 4rem', background: 'var(--ink)', color: 'var(--paper)',
+        padding: '6rem 4rem', background: '#f0ece3',
       }}>
         <div style={{
           display: 'flex', alignItems: 'baseline', gap: '1.5rem',
           marginBottom: '4rem', paddingBottom: '1rem',
-          borderBottom: '1px solid #2a2a2a',
+          borderBottom: '1px solid var(--light-rule)',
         }}>
           <span style={{
             fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
@@ -179,7 +179,7 @@ export default function PortfolioPage() {
           }}>01</span>
           <h2 style={{
             fontFamily: "'Noto Serif TC', serif", fontWeight: 500,
-            fontSize: '1.1rem', letterSpacing: '0.15em', color: 'var(--paper)',
+            fontSize: '1.1rem', letterSpacing: '0.15em', color: '#262626',
           }}>服務項目</h2>
         </div>
         <ScrollReveal className="services-grid" style={{
@@ -237,12 +237,12 @@ export default function PortfolioPage() {
 
       {/* PROCESS */}
       <section id="process" style={{
-        padding: '6rem 4rem', background: '#1a1714', color: 'var(--paper)',
+        padding: '6rem 4rem', background: '#e8e4db',
       }}>
         <div style={{
           display: 'flex', alignItems: 'baseline', gap: '1.5rem',
           marginBottom: '4rem', paddingBottom: '1rem',
-          borderBottom: '1px solid #2a2a2a',
+          borderBottom: '1px solid var(--light-rule)',
         }}>
           <span style={{
             fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
@@ -250,7 +250,7 @@ export default function PortfolioPage() {
           }}>03</span>
           <h2 style={{
             fontFamily: "'Noto Serif TC', serif", fontWeight: 500,
-            fontSize: '1.1rem', letterSpacing: '0.15em', color: 'var(--paper)',
+            fontSize: '1.1rem', letterSpacing: '0.15em', color: '#262626',
           }}>合作流程</h2>
         </div>
         <ScrollReveal className="process-steps" style={{
@@ -461,7 +461,7 @@ export default function PortfolioPage() {
 
       {/* MEMBER CTA */}
       <section id="member-cta" style={{
-        background: '#1a1714', color: 'var(--paper)',
+        background: '#e8e4db',
         padding: '6rem 4rem',
         borderTop: '1px solid #2a2a2a',
         textAlign: 'center',
@@ -499,11 +499,11 @@ export default function PortfolioPage() {
 
       {/* CONTACT */}
       <section id="contact" style={{
-        background: 'var(--ink)', color: 'var(--paper)',
+        background: '#f0ece3',
         display: 'grid', gridTemplateColumns: '1fr 1fr', padding: 0,
       }}>
         <div className="contact-left" style={{
-          padding: '6rem 4rem', borderRight: '1px solid #2a2a2a',
+          padding: '6rem 4rem', borderRight: '1px solid var(--light-rule)',
           display: 'flex', flexDirection: 'column', justifyContent: 'center',
         }}>
           <h2 style={{
@@ -524,9 +524,9 @@ export default function PortfolioPage() {
             marginTop: '3rem', display: 'flex', flexDirection: 'column', gap: '1.5rem',
           }}>
             {[
-              { label: 'Email',         value: <a href="mailto:muchbin@gmail.com" style={{ color: 'var(--paper)', textDecoration: 'none' }}>muchbin@gmail.com</a> },
+              { label: 'Email',         value: <a href="mailto:muchbin@gmail.com" style={{ color: '#262626', textDecoration: 'none' }}>muchbin@gmail.com</a> },
               { label: 'Phone / LINE',  value: '0938-938-862' },
-              { label: '字體工作室',     value: <a href="https://fontsfun.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--paper)', textDecoration: 'none' }}>fontsfun.com</a> },
+              { label: '字體工作室',     value: <a href="https://fontsfun.com" target="_blank" rel="noopener noreferrer" style={{ color: '#262626', textDecoration: 'none' }}>fontsfun.com</a> },
             ].map(it => (
               <div key={it.label} style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
                 <span style={{
@@ -535,7 +535,7 @@ export default function PortfolioPage() {
                 }}>{it.label}</span>
                 <span style={{
                   fontFamily: "'Noto Serif TC', serif",
-                  fontSize: '0.95rem', color: 'var(--paper)', letterSpacing: '0.1em',
+                  fontSize: '0.95rem', color: '#262626', letterSpacing: '0.1em',
                 }}>{it.value}</span>
               </div>
             ))}
@@ -547,8 +547,8 @@ export default function PortfolioPage() {
           <h3 style={{
             fontFamily: "'Noto Serif TC', serif", fontWeight: 400,
             fontSize: '1rem', letterSpacing: '0.15em',
-            color: 'var(--paper)', marginBottom: '2rem',
-            paddingBottom: '1rem', borderBottom: '1px solid #2a2a2a',
+            color: '#262626', marginBottom: '2rem',
+            paddingBottom: '1rem', borderBottom: '1px solid var(--light-rule)',
           }}>傳送訊息</h3>
           <ContactForm />
         </div>
@@ -598,7 +598,7 @@ function ContactForm() {
     fontSize: '0.7rem', color: 'var(--warm-mid)', letterSpacing: '0.15em',
   };
   const inputStyle: React.CSSProperties = {
-    background: 'transparent', color: 'var(--paper)',
+    background: 'transparent', color: '#262626',
     border: 'none', borderBottom: '1px solid #3a3a3a',
     padding: '0.65rem 0',
     fontFamily: "'Noto Sans TC', sans-serif",

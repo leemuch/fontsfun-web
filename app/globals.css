@@ -2,7 +2,7 @@
 
 /* ─── DESIGN TOKENS ─── */
 :root {
-  --ink:        #1a1714;
+  --ink:        #1a1714; /* kept for buttons/logos only */
   --paper:      #f5f2eb;
   --warm-mid:   #8b7355;
   --accent:     #c0392b;
@@ -421,32 +421,7 @@ html.dark label {
   color: #e8e4dc !important;
 }
 
-/* ── Dark-bg elements (ANY mode) need light text ──
-   Catches ALL inline background: var(--ink) / #1a1714 / #0e0c0a / #141210 */
-[style*="background:var(--ink)"] *,
-[style*="background: var(--ink)"] *,
-[style*="background:#1a1714"] *,
-[style*="background: #1a1714"] *,
-[style*="background:#0e0c0a"] *,
-[style*="background: #0e0c0a"] *,
-[style*="background:#141210"] *,
-[style*="background: #141210"] *,
-#services *, #process *, #member-cta *, #contact *,
-footer * {
-  color: #f5f2eb !important;
-}
-/* Accent color overrides on dark-bg */
-[style*="background:var(--ink)"] em,
-[style*="background: var(--ink)"] em,
-#services .service-icon,
-#member-cta p:first-child {
-  color: var(--accent) !important;
-}
-/* Contact form inputs on dark bg — light text + visible placeholder */
-#contact input, #contact select, #contact textarea {
-  color: #f5f2eb !important;
-  border-color: #3a3630 !important;
-}
+/* (dark-bg override rules removed — site is now all-light) */
 /* Footer link hover */
 footer a:hover { color: #e8e4dc !important; }
 
@@ -488,20 +463,10 @@ html:not(.dark) button.auth-btn-primary { color: #f5f2eb !important; background:
 html.dark button.auth-btn-google,
 html:not(.dark) button.auth-btn-google { color: #1a1714 !important; background: #ffffff !important; border: 1px solid #ddd !important; }
 
-/* ── Member auth visual (dark panel) ── */
-[style*="background: var(--ink)"] h1,
-[style*="background: var(--ink)"] h2,
-[style*="background: var(--ink)"] p,
-[style*="background: var(--ink)"] span,
-[style*="background: var(--ink)"] em,
-[style*="background:var(--ink)"] h1,
-[style*="background:var(--ink)"] h2,
-[style*="background:var(--ink)"] p,
-[style*="background:var(--ink)"] span,
-[style*="background:var(--ink)"] em { color: #f5f2eb !important; }
+/* (member auth dark panel rules removed — now light bg) */
 
-/* ── Footer (always dark bg) ── */
-footer, footer span, footer a { color: #999 !important; }
+/* ── Footer (now light bg) ── */
+footer, footer span, footer a { color: #5a5550 !important; }
 
 /* ── Font-size floor: targeted 16px minimum (not * wildcard) ── */
 /* Body text elements */
@@ -526,47 +491,7 @@ button { font-size: inherit; }
   font-size: 0 !important; /* dots have no text */
 }
 
-/* ===== EMERGENCY FIX: dark-bg text visibility (absolute last rule) ===== */
-/* Attribute selectors for ALL inline dark backgrounds */
-[style*="background:#1a1714"] *,
-[style*="background: #1a1714"] *,
-[style*="background:#0e0c0a"] *,
-[style*="background: #0e0c0a"] *,
-[style*="background:#141210"] *,
-[style*="background: #141210"] *,
-[style*="background:var(--ink)"] *,
-[style*="background: var(--ink)"] *,
-[style*="background-color:#1a1714"] *,
-[style*="background-color: #1a1714"] *,
-[style*="background-color:#0e0c0a"] *,
-[style*="background-color: #0e0c0a"] *,
-[style*="background-color:#141210"] *,
-[style*="background-color: #141210"] * {
-  color: #f5f2eb !important;
-}
-
-/* ID + class based targets */
-#section-buy, #section-buy *,
-#services, #services *,
-#process, #process *,
-#member-cta, #member-cta *,
-#contact, #contact *,
-.plan-card, .plan-card *,
-.plan-type, .plan-name, .plan-price,
-.plan-price-note, .plan-features li,
-.buy-intro, .plans-grid * {
-  color: #f5f2eb !important;
-}
-
-/* Preserve accent red */
-#section-buy .plan-price,
-#services .service-icon,
-#member-cta > p:first-of-type { color: var(--accent) !important; }
-
-/* Preserve green checkmarks */
-[style*="color: rgb(122, 196, 122)"],
-[style*="color:#7ac47a"],
-[style*="color: #7ac47a"] { color: #7ac47a !important; }
+/* (emergency dark-bg rules removed — site is now all-light) */
 
 /* Auth buttons must keep their explicit colors */
 html.dark button.auth-btn-primary,

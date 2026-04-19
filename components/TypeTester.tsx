@@ -10,9 +10,9 @@ export default function TypeTester() {
 
   return (
     <div className="type-tester" style={{
-      background: 'var(--ink)', color: 'var(--paper)',
+      background: '#f0ece3', color: '#1a1714',
       padding: '3rem 4rem', marginBottom: '4rem',
-      border: '1px solid #2a2a2a',
+      border: '1px solid var(--light-rule)',
     }}>
       <p style={{
         fontFamily: "'Cormorant Garamond', serif",
@@ -33,7 +33,7 @@ export default function TypeTester() {
           placeholder="輸入文字即時預覽字體效果…"
           style={{
             flex: 1, minWidth: '200px', padding: '0.7rem 1rem',
-            background: '#222', border: '1px solid #333', color: 'var(--paper)',
+            background: '#e8e4db', border: '1px solid var(--light-rule)', color: '#1a1714',
             fontFamily: "'Noto Serif TC', serif", fontSize: '0.85rem',
             letterSpacing: '0.05em', outline: 'none',
           }}
@@ -61,7 +61,7 @@ export default function TypeTester() {
         minHeight: '6rem', display: 'flex', alignItems: 'center',
         fontFamily: "'Noto Serif TC', serif",
         fontSize: `${size}px`,
-        lineHeight: 1.4, letterSpacing: '0.06em', color: 'var(--paper)',
+        lineHeight: 1.4, letterSpacing: '0.06em', color: '#1a1714',
         borderTop: '1px solid #2a2a2a', paddingTop: '2rem',
         wordBreak: 'break-all', transition: 'font-size 0.2s',
       }}>

@@ -133,14 +133,14 @@ function AuthScreen({ onLogin }: { onLogin: (user: User | DemoUser, demo?: boole
       }}>
         {/* Visual */}
         <div style={{
-          background: 'var(--ink)', padding: '4rem',
+          background: '#f0ece3', padding: '4rem',
           display: 'flex', flexDirection: 'column', justifyContent: 'center',
           position: 'relative', overflow: 'hidden',
         }}>
           <div style={{
             fontFamily: "'Noto Serif TC', serif",
             fontWeight: 300, fontSize: 'clamp(1.8rem, 3vw, 3rem)',
-            lineHeight: 1.3, letterSpacing: '0.06em', color: '#f5f2eb',
+            lineHeight: 1.3, letterSpacing: '0.06em', color: '#1a1714',
           }}>
             你的字體，<br />永遠<span style={{ color: 'var(--accent)' }}>在這裡</span>
           </div>

@@ -68,14 +68,14 @@ export default function BuyPage() {
     />
     <section id="section-buy" style={{
       padding: '6rem 4rem',
-      background: 'var(--ink)', color: 'var(--paper)',
+      background: '#f0ece3',
       minHeight: '100vh',
     }}>
       {/* Section header */}
       <div style={{
         display: 'flex', alignItems: 'baseline', gap: '1.5rem',
         marginBottom: '4rem', paddingBottom: '1rem',
-        borderBottom: '1px solid #2a2a2a',
+        borderBottom: '1px solid var(--light-rule)',
       }}>
         <span style={{
           fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
@@ -100,7 +100,7 @@ export default function BuyPage() {
       {/* Plans Grid */}
       <ScrollReveal style={{
         display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
-        border: '1px solid #2a2a2a', marginBottom: '4rem',
+        border: '1px solid var(--light-rule)', marginBottom: '4rem',
       }}>
         {plans.map((plan, i) => (
           <div key={plan.type} className="plan-card stagger-item hover-lift" style={{
@@ -147,7 +147,7 @@ export default function BuyPage() {
                   fontSize: '0.72rem',
                   color: f.included ? 'var(--paper)' : '#666',
                   padding: '0.6rem 0',
-                  borderBottom: '1px solid #2a2a2a',
+                  borderBottom: '1px solid var(--light-rule)',
                   letterSpacing: '0.06em',
                   display: 'flex', alignItems: 'center', gap: '0.75rem',
                 }}>
@@ -185,7 +185,7 @@ export default function BuyPage() {
             {['使用場景', '個人授權', '工作室授權', '企業授權'].map(h => (
               <th key={h} style={{
                 padding: '1rem 1.5rem',
-                borderBottom: '1px solid #2a2a2a',
+                borderBottom: '1px solid var(--light-rule)',
                 fontFamily: "'Noto Sans TC', sans-serif",
                 fontSize: '0.72rem', color: 'var(--warm-mid)',
                 fontWeight: 300, letterSpacing: '0.15em',
@@ -197,9 +197,9 @@ export default function BuyPage() {
         <tbody>
           {compareRows.map(row => (
             <tr key={row.label}>
-              <td style={{ padding: '1rem 1.5rem', borderBottom: '1px solid #2a2a2a', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.72rem', letterSpacing: '0.06em', color: 'var(--paper)' }}>{row.label}</td>
+              <td style={{ padding: '1rem 1.5rem', borderBottom: '1px solid var(--light-rule)', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.72rem', letterSpacing: '0.06em', color: 'var(--paper)' }}>{row.label}</td>
               {[row.personal, row.studio, row.enterprise].map((v, i) => (
-                <td key={i} style={{ padding: '1rem 1.5rem', borderBottom: '1px solid #2a2a2a', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.72rem', color: v ? '#7ac47a' : '#555' }}>
+                <td key={i} style={{ padding: '1rem 1.5rem', borderBottom: '1px solid var(--light-rule)', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.72rem', color: v ? '#7ac47a' : '#555' }}>
                   {v ? '✓' : '✗'}
                 </td>
               ))}
