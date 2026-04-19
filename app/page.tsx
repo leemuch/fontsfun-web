@@ -216,94 +216,91 @@ export default function PortfolioPage() {
         </ScrollReveal>
       </section>
 
-      {/* SERVICE SHOWCASE — 募資 + 出版 */}
-      <section className="svc-showcase" style={{ borderTop: '1px solid var(--light-rule)' }}>
-        {/* 募資服務 — 圖左文右 */}
-        <div className="svc-showcase-row" style={{
-          display: 'grid', gridTemplateColumns: '1fr 1fr',
-          minHeight: '500px',
-        }}>
-          <div style={{ overflow: 'hidden', background: '#e8e4db' }}>
-            <img src="/images/crowdfunding/service-01.svg" alt="募資服務" loading="lazy" style={{
-              width: '100%', height: '100%', objectFit: 'cover', display: 'block',
-            }} />
-          </div>
-          <div style={{
-            padding: '5rem 4.5rem',
-            display: 'flex', flexDirection: 'column', justifyContent: 'center',
-          }}>
-            <p style={{
-              fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-              fontSize: '14px', color: 'var(--warm-mid)',
-              letterSpacing: '0.25em', marginBottom: '1rem',
-            }}>Crowdfunding Creative Direction</p>
-            <h2 style={{
-              fontFamily: "'Noto Serif TC', serif", fontWeight: 300,
-              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-              lineHeight: 1.3, letterSpacing: '0.06em',
-              marginBottom: '1.5rem',
-            }}>募資成敗，從設計與行銷開始</h2>
-            <p style={{
-              fontFamily: "'Noto Sans TC', sans-serif",
-              fontSize: '18px', lineHeight: 1.8,
-              color: '#5a5550', letterSpacing: '0.04em',
-              maxWidth: '30rem', marginBottom: '2.5rem',
-            }}>嘖嘖、貝殼放大專案代操 × 廣告投放 × 視覺設計一條龍</p>
-            <a href="/crowdfunding" style={{
-              alignSelf: 'flex-start',
-              fontFamily: "'Noto Sans TC', sans-serif",
-              fontSize: '16px', letterSpacing: '0.15em',
-              color: 'var(--ink)', textDecoration: 'none',
-              borderBottom: '1px solid var(--ink)',
-              paddingBottom: '0.3rem',
-              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-            }}>了解更多 →</a>
-          </div>
-        </div>
+      {/* SERVICE SHOWCASE — 圖上文下，Hero 風格 */}
 
-        {/* 出版服務 — 圖右文左 */}
-        <div className="svc-showcase-row" style={{
-          display: 'grid', gridTemplateColumns: '1fr 1fr',
-          minHeight: '500px', direction: 'rtl',
-          borderTop: '1px solid var(--light-rule)',
+      {/* 募資服務 */}
+      <section style={{ background: '#f5f2eb', borderTop: '1px solid var(--light-rule)' }}>
+        <div className="svc-img" style={{
+          width: '100%', height: '400px', overflow: 'hidden', background: '#e8e4db',
         }}>
-          <div style={{ direction: 'ltr', overflow: 'hidden', background: '#e8e4db' }}>
-            <img src="/images/publishing/service-01.svg" alt="出版服務" loading="lazy" style={{
-              width: '100%', height: '100%', objectFit: 'cover', display: 'block',
-            }} />
-          </div>
-          <div style={{
-            direction: 'ltr',
-            padding: '5rem 4.5rem',
-            display: 'flex', flexDirection: 'column', justifyContent: 'center',
-          }}>
-            <p style={{
-              fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-              fontSize: '14px', color: 'var(--warm-mid)',
-              letterSpacing: '0.25em', marginBottom: '1rem',
-            }}>Self-Publishing Full Service</p>
-            <h2 style={{
-              fontFamily: "'Noto Serif TC', serif", fontWeight: 300,
-              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-              lineHeight: 1.3, letterSpacing: '0.06em',
-              marginBottom: '1.5rem',
-            }}>從一個想法，到一本書</h2>
-            <p style={{
-              fontFamily: "'Noto Sans TC', sans-serif",
-              fontSize: '18px', lineHeight: 1.8,
-              color: '#5a5550', letterSpacing: '0.04em',
-              maxWidth: '30rem', marginBottom: '2.5rem',
-            }}>自費出版全流程｜詩集、散文、小說、設計雜誌——每一種書，都值得被好好做出來</p>
-            <a href="/publishing" style={{
-              alignSelf: 'flex-start',
-              fontFamily: "'Noto Sans TC', sans-serif",
-              fontSize: '16px', letterSpacing: '0.15em',
-              color: 'var(--ink)', textDecoration: 'none',
-              borderBottom: '1px solid var(--ink)',
-              paddingBottom: '0.3rem',
-              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-            }}>了解更多 →</a>
-          </div>
+          <img src="/images/crowdfunding/service-01.svg" alt="募資服務" loading="lazy" style={{
+            width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+          }} />
+        </div>
+        <div style={{
+          padding: '4rem 4rem 5rem',
+          maxWidth: '680px',
+          margin: '0 auto',
+          textAlign: 'center',
+        }}>
+          <p style={{
+            fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
+            fontSize: '14px', color: 'var(--warm-mid)',
+            letterSpacing: '0.25em', marginBottom: '1.25rem',
+          }}>Crowdfunding Creative Direction</p>
+          <h2 style={{
+            fontFamily: "'Noto Serif TC', serif", fontWeight: 300,
+            fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+            lineHeight: 1.3, letterSpacing: '0.06em',
+            color: '#1a1714', marginBottom: '1.5rem',
+          }}>募資成敗，從設計與行銷開始</h2>
+          <p style={{
+            fontFamily: "'Noto Sans TC', sans-serif",
+            fontSize: '18px', lineHeight: 1.8,
+            color: '#5a5550', letterSpacing: '0.04em',
+            marginBottom: '2.5rem',
+          }}>嘖嘖、貝殼放大專案代操 × 廣告投放 × 視覺設計一條龍</p>
+          <a href="/crowdfunding" style={{
+            fontFamily: "'Noto Sans TC', sans-serif",
+            fontSize: '16px', letterSpacing: '0.15em',
+            color: '#1a1714', textDecoration: 'none',
+            borderBottom: '1px solid #1a1714',
+            paddingBottom: '0.3rem',
+            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+          }}>了解服務 →</a>
+        </div>
+      </section>
+
+      {/* 出版服務 */}
+      <section style={{ background: '#f5f2eb', marginTop: '6rem', borderTop: '1px solid var(--light-rule)' }}>
+        <div className="svc-img" style={{
+          width: '100%', height: '400px', overflow: 'hidden', background: '#e8e4db',
+        }}>
+          <img src="/images/publishing/service-01.svg" alt="出版服務" loading="lazy" style={{
+            width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+          }} />
+        </div>
+        <div style={{
+          padding: '4rem 4rem 5rem',
+          maxWidth: '680px',
+          margin: '0 auto',
+          textAlign: 'center',
+        }}>
+          <p style={{
+            fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
+            fontSize: '14px', color: 'var(--warm-mid)',
+            letterSpacing: '0.25em', marginBottom: '1.25rem',
+          }}>Self-Publishing Full Service</p>
+          <h2 style={{
+            fontFamily: "'Noto Serif TC', serif", fontWeight: 300,
+            fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+            lineHeight: 1.3, letterSpacing: '0.06em',
+            color: '#1a1714', marginBottom: '1.5rem',
+          }}>從一個想法，到一本書</h2>
+          <p style={{
+            fontFamily: "'Noto Sans TC', sans-serif",
+            fontSize: '18px', lineHeight: 1.8,
+            color: '#5a5550', letterSpacing: '0.04em',
+            marginBottom: '2.5rem',
+          }}>自費出版全流程｜詩集、散文、小說、設計雜誌<br />每一種書，都值得被好好做出來</p>
+          <a href="/publishing" style={{
+            fontFamily: "'Noto Sans TC', sans-serif",
+            fontSize: '16px', letterSpacing: '0.15em',
+            color: '#1a1714', textDecoration: 'none',
+            borderBottom: '1px solid #1a1714',
+            paddingBottom: '0.3rem',
+            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+          }}>了解服務 →</a>
         </div>
       </section>
 
@@ -651,7 +648,7 @@ export default function PortfolioPage() {
         /* ─── PORTFOLIO MOBILE RWD (page-scoped) ─── */
         @media (max-width: 900px) {
           #about, #contact, #designer, .designer-section,
-          .svc-showcase-row { grid-template-columns: 1fr !important; direction: ltr !important; min-height: auto !important; }
+          .svc-img { height: 250px !important; }
           .services-grid, .process-steps { grid-template-columns: 1fr !important; }
           .service-card { border-right: none !important; border-bottom: 1px solid #2a2a2a !important; }
           .process-step { border-right: none !important; border-bottom: 1px solid #2a2a2a !important; }
