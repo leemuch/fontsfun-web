@@ -184,30 +184,30 @@ export default function BuyPage() {
       <h3 style={{
         fontFamily: "'Noto Serif TC', serif",
         fontWeight: 400, fontSize: '1rem',
-        letterSpacing: '0.15em', marginBottom: '2rem', color: 'var(--paper)',
+        letterSpacing: '0.15em', marginBottom: '2rem', color: '#1a1714',
       }}>授權比較一覽</h3>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <table className="compare-table" style={{ width: '100%', borderCollapse: 'collapse', background: '#f5f2eb', border: '1px solid #d4cfc7' }}>
         <thead>
           <tr>
             {['使用場景', '個人授權', '工作室授權', '企業授權'].map(h => (
               <th key={h} style={{
                 padding: '1rem 1.5rem',
-                borderBottom: '1px solid var(--light-rule)',
+                borderBottom: '2px solid #d4cfc7',
                 fontFamily: "'Noto Sans TC', sans-serif",
-                fontSize: '0.72rem', color: 'var(--warm-mid)',
-                fontWeight: 300, letterSpacing: '0.15em',
-                background: '#111', textAlign: 'left',
+                fontSize: '16px', color: '#1a1714',
+                fontWeight: 600, letterSpacing: '0.1em',
+                background: '#ede9e0', textAlign: 'left',
               }}>{h}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {compareRows.map(row => (
-            <tr key={row.label}>
-              <td style={{ padding: '1rem 1.5rem', borderBottom: '1px solid var(--light-rule)', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.72rem', letterSpacing: '0.06em', color: 'var(--paper)' }}>{row.label}</td>
+          {compareRows.map((row, ri) => (
+            <tr key={row.label} style={{ background: ri % 2 === 0 ? '#f5f2eb' : '#ede9e0' }}>
+              <td className="td-label" style={{ padding: '1rem 1.5rem', borderBottom: '1px solid #d4cfc7', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '16px', letterSpacing: '0.06em' }}>{row.label}</td>
               {[row.personal, row.studio, row.enterprise].map((v, i) => (
-                <td key={i} style={{ padding: '1rem 1.5rem', borderBottom: '1px solid var(--light-rule)', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.72rem', color: v ? '#7ac47a' : '#555' }}>
-                  {v ? '✓' : '✗'}
+                <td key={i} className={v ? 'td-check' : 'td-dash'} style={{ padding: '1rem 1.5rem', borderBottom: '1px solid #d4cfc7', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '16px' }}>
+                  {v ? '✓' : '—'}
                 </td>
               ))}
             </tr>
