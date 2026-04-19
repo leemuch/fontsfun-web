@@ -103,18 +103,18 @@ export default function BuyPage() {
         border: '1px solid var(--light-rule)', marginBottom: '4rem',
       }}>
         {plans.map((plan, i) => (
-          <div key={plan.type} className="plan-card stagger-item hover-lift" style={{
+          <div key={plan.type} className={`plan-card stagger-item hover-lift${plan.featured ? ' plan-featured' : ''}`} style={{
             padding: '3rem 2.5rem',
-            borderRight: i < 2 ? '1px solid #2a2a2a' : 'none',
+            borderRight: i < 2 ? '1px solid var(--light-rule)' : 'none',
             position: 'relative',
-            background: plan.featured ? '#222' : 'transparent',
+            background: plan.featured ? '#1a1714' : '#f5f2eb',
             transition: 'background 0.25s',
           }}>
             {plan.featured && (
               <span style={{
                 position: 'absolute', top: '-1px', left: '50%',
                 transform: 'translateX(-50%)',
-                background: 'var(--accent)', color: 'var(--paper)',
+                background: 'var(--accent)', color: '#fff',
                 fontFamily: "'Noto Sans TC', sans-serif",
                 fontSize: '0.6rem', letterSpacing: '0.15em',
                 padding: '0.3rem 1rem',
@@ -122,21 +122,23 @@ export default function BuyPage() {
             )}
             <p style={{
               fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-              fontSize: '0.8rem', color: 'var(--warm-mid)',
+              fontSize: '0.8rem', color: plan.featured ? '#a09880' : 'var(--warm-mid)',
               letterSpacing: '0.15em', marginBottom: '1rem',
             }}>{plan.type}</p>
             <h2 style={{
               fontFamily: "'Noto Serif TC', serif",
               fontWeight: 500, fontSize: '1.1rem',
               letterSpacing: '0.12em', marginBottom: '1.5rem',
+              color: plan.featured ? '#f5f2eb' : '#1a1714',
             }}>{plan.name}</h2>
             <div style={{
               fontFamily: "'Cormorant Garamond', serif",
               fontSize: '3rem', fontWeight: 300, lineHeight: 1, marginBottom: '0.3rem',
+              color: plan.featured ? '#f5f2eb' : '#1a1714',
             }}>{plan.price}</div>
             <p style={{
               fontFamily: "'Noto Sans TC', sans-serif",
-              fontSize: '0.65rem', color: '#666',
+              fontSize: '0.65rem', color: plan.featured ? '#999' : '#5a5550',
               letterSpacing: '0.1em', marginBottom: '2rem',
             }}>{plan.priceNote}</p>
 
@@ -145,13 +147,18 @@ export default function BuyPage() {
                 <li key={f.label} style={{
                   fontFamily: "'Noto Sans TC', sans-serif",
                   fontSize: '0.72rem',
-                  color: f.included ? 'var(--paper)' : '#666',
+                  color: plan.featured
+                    ? (f.included ? '#e8e4dc' : '#666')
+                    : (f.included ? '#1a1714' : '#999'),
                   padding: '0.6rem 0',
-                  borderBottom: '1px solid var(--light-rule)',
+                  borderBottom: `1px solid ${plan.featured ? '#2a2620' : 'var(--light-rule)'}`,
                   letterSpacing: '0.06em',
                   display: 'flex', alignItems: 'center', gap: '0.75rem',
                 }}>
-                  <span style={{ color: f.included ? '#7ac47a' : 'var(--warm-mid)', fontFamily: "'Cormorant Garamond', serif" }}>
+                  <span style={{
+                    color: f.included ? '#7ac47a' : (plan.featured ? '#555' : 'var(--warm-mid)'),
+                    fontFamily: "'Cormorant Garamond', serif",
+                  }}>
                     {f.included ? '✓' : '—'}
                   </span>
                   {f.label}
@@ -166,8 +173,8 @@ export default function BuyPage() {
               textAlign: 'center', textDecoration: 'none', cursor: 'pointer',
               transition: 'all 0.25s',
               ...(plan.btnPrimary
-                ? { background: 'var(--accent)', borderColor: 'var(--accent)', color: 'var(--paper)', border: '1px solid var(--accent)' }
-                : { background: 'none', border: '1px solid #444', color: '#999' }),
+                ? { background: 'var(--accent)', border: '1px solid var(--accent)', color: '#fff' }
+                : { background: 'none', border: '1px solid var(--light-rule)', color: '#5a5550' }),
             }}>{plan.btnLabel}</Link>
           </div>
         ))}

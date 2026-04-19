@@ -421,7 +421,21 @@ html.dark label {
   color: #e8e4dc !important;
 }
 
-/* (dark-bg override rules removed — site is now all-light) */
+/* Featured plan card (dark bg kept intentionally) */
+html:not(.dark) .plan-featured h2,
+html:not(.dark) .plan-featured div,
+html.dark .plan-featured h2,
+html.dark .plan-featured div {
+  color: #f5f2eb !important;
+}
+html:not(.dark) .plan-featured p,
+html.dark .plan-featured p {
+  color: #999 !important;
+}
+html:not(.dark) .plan-featured li,
+html.dark .plan-featured li {
+  color: #e8e4dc !important;
+}
 /* Footer link hover */
 footer a:hover { color: #e8e4dc !important; }
 
