@@ -8,6 +8,7 @@ import ProcessTimeline from '../../components/sections/ProcessTimeline';
 import FAQAccordion from '../../components/FAQAccordion';
 import CTASection from '../../components/sections/CTASection';
 import { crowdfundingCases } from '../../data/crowdfunding-cases';
+import { EyeSlash, CoinQuestion, PuzzleSplit, MapQuestion, TrophyIcon, HandshakeIcon, MagnifyIcon, FlagIcon, ChatBubbleSmall, LightbulbSmall, BrushSmall, FlameSmall, RocketSmall, EnvelopeStarSmall } from '../../components/icons/CrowdfundingIcons';
 
 export const metadata: Metadata = {
   title: '募資代操 — 盛和設計 × 字趣 fontsfun',
@@ -29,10 +30,10 @@ export default function CrowdfundingPage() {
       <PainPointCards
         sectionTitle="你是不是也遇過這些狀況？"
         items={[
-          { icon: '○', title: '募資頁做得漂亮，卻沒人看見', desc: '流量不來，再好的產品也賣不出去' },
-          { icon: '○', title: '廣告投了一堆，轉換率卻不如預期', desc: '素材、受眾、節奏——哪個環節出了問題？' },
-          { icon: '○', title: '設計跟行銷是兩批人，訊息接不起來', desc: '品牌語言被切碎，消費者看完也記不得你是誰' },
-          { icon: '○', title: '第一次做募資，不知道從哪一步開始', desc: '平台規則、提案格式、排程節奏，全靠自己摸索太慢' },
+          { icon: <EyeSlash />, title: '募資頁做得漂亮，卻沒人看見', desc: '流量不來，再好的產品也賣不出去' },
+          { icon: <CoinQuestion />, title: '廣告投了一堆，轉換率卻不如預期', desc: '素材、受眾、節奏——哪個環節出了問題？' },
+          { icon: <PuzzleSplit />, title: '設計跟行銷是兩批人，訊息接不起來', desc: '品牌語言被切碎，消費者看完也記不得你是誰' },
+          { icon: <MapQuestion />, title: '第一次做募資，不知道從哪一步開始', desc: '平台規則、提案格式、排程節奏，全靠自己摸索太慢' },
         ]}
       />
 
@@ -69,10 +70,10 @@ export default function CrowdfundingPage() {
       <WhyUsGrid
         sectionTitle="為什麼客戶選我們"
         items={[
-          { title: '我們自己跑過募資', desc: '娉婷體 1,488%、綿甜體 704%——下過場、拿過成績。你踩的坑我們都踩過。' },
-          { title: '設計與行銷同一組人', desc: '不用在兩個廠商間傳話，訊息不會被翻譯成兩種語言。' },
-          { title: '字型級的視覺細節', desc: '對排版、留白、筆畫的要求比一般行銷團隊更嚴格。' },
-          { title: '陪你走長線', desc: '粉絲、素材、數據資產都是品牌資本。我們幫你把流量變成品牌力。' },
+          { icon: <TrophyIcon />, title: '我們自己跑過募資', desc: '娉婷體 1,488%、綿甜體 704%——下過場、拿過成績。你踩的坑我們都踩過。' },
+          { icon: <HandshakeIcon />, title: '設計與行銷同一組人', desc: '不用在兩個廠商間傳話，訊息不會被翻譯成兩種語言。' },
+          { icon: <MagnifyIcon />, title: '字型級的視覺細節', desc: '對排版、留白、筆畫的要求比一般行銷團隊更嚴格。' },
+          { icon: <FlagIcon />, title: '陪你走長線', desc: '粉絲、素材、數據資產都是品牌資本。我們幫你把流量變成品牌力。' },
         ]}
       />
 
@@ -80,12 +81,12 @@ export default function CrowdfundingPage() {
       <ProcessTimeline
         title="從第一次聊天，到募資結案"
         steps={[
-          { num: '01', name: '初步諮詢', duration: '1 週', desc: '聊產品、目標、時程' },
-          { num: '02', name: '策略規劃', duration: '2-3 週', desc: '主軸、TA、回饋、排程' },
-          { num: '03', name: '視覺製作', duration: '4-6 週', desc: '主視覺、影片、募資頁' },
-          { num: '04', name: '預熱期', duration: '2-4 週', desc: '名單蒐集、廣告測試' },
-          { num: '05', name: '上線衝刺', duration: '30-60 天', desc: '即時操盤、每日優化' },
-          { num: '06', name: '結案交付', duration: '1-2 週', desc: '報告、發貨、粉絲經營' },
+          { num: '01', name: '初步諮詢', duration: '1 週', desc: '聊產品、目標、時程', icon: <ChatBubbleSmall /> },
+          { num: '02', name: '策略規劃', duration: '2-3 週', desc: '主軸、TA、回饋、排程', icon: <LightbulbSmall /> },
+          { num: '03', name: '視覺製作', duration: '4-6 週', desc: '主視覺、影片、募資頁', icon: <BrushSmall /> },
+          { num: '04', name: '預熱期', duration: '2-4 週', desc: '名單蒐集、廣告測試', icon: <FlameSmall /> },
+          { num: '05', name: '上線衝刺', duration: '30-60 天', desc: '即時操盤、每日優化', icon: <RocketSmall /> },
+          { num: '06', name: '結案交付', duration: '1-2 週', desc: '報告、發貨、粉絲經營', icon: <EnvelopeStarSmall /> },
         ]}
       />
 

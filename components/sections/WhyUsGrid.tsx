@@ -1,6 +1,9 @@
+import type { ReactNode } from 'react';
+
 interface WhyUsItem {
   title: string;
   desc: string;
+  icon?: ReactNode;
 }
 
 interface Props {
@@ -31,6 +34,7 @@ export default function WhyUsGrid({ sectionTitle, items }: Props) {
             padding: '2.5rem 2rem',
             background: '#e8e4db',
           }}>
+            {it.icon && <div style={{ marginBottom: '0.75rem', lineHeight: 0 }}>{it.icon}</div>}
             <h3 style={{
               fontFamily: "'Noto Serif TC', serif", fontWeight: 500,
               fontSize: '16px', letterSpacing: '0.06em', lineHeight: 1.6,

@@ -1,8 +1,11 @@
+import type { ReactNode } from 'react';
+
 interface Step {
   num: string;
   name: string;
   duration: string;
   desc: string;
+  icon?: ReactNode;
 }
 
 interface Props {
@@ -33,6 +36,7 @@ export default function ProcessTimeline({ title, steps }: Props) {
             alignItems: 'center', textAlign: 'center', gap: '0.75rem',
             position: 'relative',
           }}>
+            {s.icon && <div style={{ marginBottom: '0.5rem', lineHeight: 0 }}>{s.icon}</div>}
             <span style={{
               fontFamily: "'Cormorant Garamond', serif", fontWeight: 300,
               fontSize: 'clamp(2rem, 3vw, 3rem)',

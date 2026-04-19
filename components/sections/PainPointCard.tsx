@@ -1,5 +1,7 @@
+import type { ReactNode } from 'react';
+
 interface PainPoint {
-  icon: string;
+  icon: ReactNode;
   title: string;
   desc: string;
 }
@@ -28,7 +30,7 @@ export default function PainPointCards({ sectionTitle, items }: Props) {
             border: '1px solid var(--light-rule)',
             display: 'flex', flexDirection: 'column', gap: '0.75rem',
           }}>
-            <span style={{ fontSize: '1.5rem', lineHeight: 1 }}>{p.icon}</span>
+            <div style={{ lineHeight: 0 }}>{p.icon}</div>
             <h3 style={{
               fontFamily: "'Noto Serif TC', serif", fontWeight: 500,
               fontSize: '16px', letterSpacing: '0.06em', lineHeight: 1.6,
