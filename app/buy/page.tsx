@@ -2,11 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ScrollReveal from '../../components/ScrollReveal';
 import PageHero from '../../components/PageHero';
+import { PersonIcon, StudioIcon, CrownIcon } from '../../components/icons/ServiceIcons';
 
 export const metadata: Metadata = {
   title: '購買授權 — 字趣 fontsfun',
   description: '彈性字體授權方案，個人、工作室、企業皆有對應方案，買斷制永久使用。',
 };
+
+const planIcons = [<PersonIcon />, <StudioIcon />, <CrownIcon />];
 
 const plans = [
   {
@@ -120,6 +123,7 @@ export default function BuyPage() {
                 padding: '0.3rem 1rem',
               }}>推薦方案</span>
             )}
+            <div style={{ marginBottom: '1rem', opacity: plan.featured ? 0.8 : 0.6 }}>{planIcons[i]}</div>
             <p style={{
               fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
               fontSize: '0.8rem', color: plan.featured ? '#a09880' : 'var(--warm-mid)',

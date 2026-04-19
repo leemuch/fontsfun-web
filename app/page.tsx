@@ -4,6 +4,7 @@ import HeroCarousel from '../components/HeroCarousel';
 import ScrollReveal from '../components/ScrollReveal';
 import { HERO_SLIDES, WORKS } from '../lib/constants';
 import ProcessIllustrated from '../components/sections/ProcessIllustrated';
+import { BrandShield, TypographyA, BookDesign, GovBuilding, FilmSlate, CalendarIcon, FolderIcon, PenNibIcon } from '../components/icons/ServiceIcons';
 
 export const metadata: Metadata = {
   title: '盛和設計 — 平面設計・字體・品牌視覺',
@@ -126,12 +127,12 @@ export const metadata: Metadata = {
     alt: '無尾熊 字符組' },
 WORKS_CUT_END */
 
-const services = [
-  { icon: 'Aa', name: '品牌識別系統', desc: 'Logo設計・色彩規範・字體系統・品牌手冊。為你的品牌建立一致、有說服力的視覺語言。', price: 'from NT$80,000' },
-  { icon: '⊞', name: '排版與印刷品設計', desc: '書籍・年報・宣傳手冊・文化出版品排版設計。精通繁體中文排版美學，細節講究。', price: 'from NT$15,000' },
-  { icon: '◎', name: '政府標案視覺設計', desc: '展覽視覺・城市形象・文宣物料・活動主視覺。熟悉政府採購流程，交件準時可靠。', price: '依標案規模報價' },
-  { icon: '◈', name: '影視企劃書設計', desc: '提案書版型・視覺敘事規劃・高質感印刷企劃書製作。讓你的提案第一眼就脫穎而出。', price: 'from NT$20,000' },
-  { icon: '✦', name: '文化機構視覺顧問', desc: '長期視覺策略規劃・出版品整體設計・品牌年度維護。與機構建立深度合作關係。', price: '月顧問制洽詢' },
+const services: { icon: React.ReactNode; name: string; desc: string; price: string }[] = [
+  { icon: <BrandShield />, name: '品牌識別系統', desc: 'Logo設計・色彩規範・字體系統・品牌手冊。為你的品牌建立一致、有說服力的視覺語言。', price: 'from NT$80,000' },
+  { icon: <TypographyA />, name: '排版與印刷品設計', desc: '書籍・年報・宣傳手冊・文化出版品排版設計。精通繁體中文排版美學，細節講究。', price: 'from NT$15,000' },
+  { icon: <GovBuilding />, name: '政府標案視覺設計', desc: '展覽視覺・城市形象・文宣物料・活動主視覺。熟悉政府採購流程，交件準時可靠。', price: '依標案規模報價' },
+  { icon: <FilmSlate />, name: '影視企劃書設計', desc: '提案書版型・視覺敘事規劃・高質感印刷企劃書製作。讓你的提案第一眼就脫穎而出。', price: 'from NT$20,000' },
+  { icon: <BookDesign />, name: '文化機構視覺顧問', desc: '長期視覺策略規劃・出版品整體設計・品牌年度維護。與機構建立深度合作關係。', price: '月顧問制洽詢' },
 ];
 
 const processSteps = [
@@ -193,11 +194,7 @@ export default function PortfolioPage() {
               borderBottom: Math.floor(i / 3) < Math.floor((services.length - 1) / 3) ? '1px solid #2a2a2a' : 'none',
               transition: 'background 0.3s',
             }}>
-              <div style={{
-                fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-                fontSize: '2rem', color: 'var(--accent)',
-                lineHeight: 1, marginBottom: '1.5rem',
-              }}>{s.icon}</div>
+              <div style={{ marginBottom: '1.5rem' }}>{s.icon}</div>
               <h3 style={{
                 fontFamily: "'Noto Serif TC', serif", fontWeight: 500,
                 fontSize: '1rem', letterSpacing: '0.12em', marginBottom: '0.75rem',
@@ -485,21 +482,24 @@ export default function PortfolioPage() {
             display: 'flex', gap: '3rem', marginTop: '2.5rem',
             paddingTop: '2rem', borderTop: '1px solid var(--light-rule)',
           }}>
-            {[
-              { num: '10+', label: '年設計經驗' },
-              { num: '50+', label: '完成專案' },
-              { num: '3',   label: '原創字體' },
-            ].map(s => (
-              <div key={s.label} style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
-                <span style={{
-                  fontFamily: "'Cormorant Garamond', serif", fontWeight: 300,
-                  fontSize: '2.2rem', lineHeight: 1, color: 'var(--ink)',
-                }}>{s.num}</span>
-                <span style={{
-                  fontFamily: "'Noto Sans TC', sans-serif",
-                  fontSize: '14px', color: 'var(--warm-mid)',
-                  letterSpacing: '0.1em',
-                }}>{s.label}</span>
+            {([
+              { num: '10+', label: '年設計經驗', icon: <CalendarIcon /> },
+              { num: '50+', label: '完成專案',   icon: <FolderIcon /> },
+              { num: '3',   label: '原創字體',   icon: <PenNibIcon /> },
+            ] as const).map(s => (
+              <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ flexShrink: 0 }}>{s.icon}</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                  <span style={{
+                    fontFamily: "'Cormorant Garamond', serif", fontWeight: 300,
+                    fontSize: '2.2rem', lineHeight: 1, color: 'var(--ink)',
+                  }}>{s.num}</span>
+                  <span style={{
+                    fontFamily: "'Noto Sans TC', sans-serif",
+                    fontSize: '14px', color: 'var(--warm-mid)',
+                    letterSpacing: '0.1em',
+                  }}>{s.label}</span>
+                </div>
               </div>
             ))}
           </div>

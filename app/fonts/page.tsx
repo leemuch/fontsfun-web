@@ -3,19 +3,20 @@ import Link from 'next/link';
 import FAQAccordion from '../../components/FAQAccordion';
 import ScrollReveal from '../../components/ScrollReveal';
 import PageHero from '../../components/PageHero';
+import { FeatherIcon, SunRays, SnowflakeIcon, WaterDrop, CoffeeIcon, HoneyJar } from '../../components/icons/ServiceIcons';
 
 export const metadata: Metadata = {
   title: '字趣 fontsfun — 原創繁體中文字型工作室',
   description: '專為繁體中文設計的原創字型工作室。綿甜體六字重、雲書體、娉婷體系列，提供高品質手感字體授權。',
 };
 
-const weights = [
-  { name: '柔', en: 'Light',     pct: 18,  desc: '輕盈、空氣感，適合大標題與品牌主視覺' },
-  { name: '光', en: 'Regular',   pct: 36,  desc: '日常閱讀的標準字重，內文書封皆宜' },
-  { name: '霜', en: 'Medium',    pct: 54,  desc: '中等灰度，副標、強調段落的最佳選擇' },
-  { name: '潤', en: 'SemiBold',  pct: 72,  desc: '飽滿筆觸，適合介面 CTA 與標籤' },
-  { name: '醇', en: 'Bold',      pct: 88,  desc: '濃郁有力，主標題與廣告主視覺' },
-  { name: '蜜', en: 'Heavy',     pct: 100, desc: '極粗字重，封面、海報的視覺爆點' },
+const weights: { name: string; en: string; pct: number; desc: string; icon: React.ReactNode }[] = [
+  { name: '柔', en: 'Light',     pct: 18,  desc: '輕盈、空氣感，適合大標題與品牌主視覺', icon: <FeatherIcon /> },
+  { name: '光', en: 'Regular',   pct: 36,  desc: '日常閱讀的標準字重，內文書封皆宜', icon: <SunRays /> },
+  { name: '霜', en: 'Medium',    pct: 54,  desc: '中等灰度，副標、強調段落的最佳選擇', icon: <SnowflakeIcon /> },
+  { name: '潤', en: 'SemiBold',  pct: 72,  desc: '飽滿筆觸，適合介面 CTA 與標籤', icon: <WaterDrop /> },
+  { name: '醇', en: 'Bold',      pct: 88,  desc: '濃郁有力，主標題與廣告主視覺', icon: <CoffeeIcon /> },
+  { name: '蜜', en: 'Heavy',     pct: 100, desc: '極粗字重，封面、海報的視覺爆點', icon: <HoneyJar /> },
 ];
 
 const faqs = [
@@ -132,6 +133,7 @@ export default function FontsPage() {
               background: 'var(--paper)', padding: '3rem 2rem',
               display: 'flex', flexDirection: 'column', gap: '1rem',
             }}>
+              <div style={{ marginBottom: '0.75rem', opacity: 0.7 }}>{w.icon}</div>
               <div style={{
                 fontFamily: "'Noto Serif TC', serif",
                 fontSize: '5rem', lineHeight: 1, color: 'var(--ink)',
