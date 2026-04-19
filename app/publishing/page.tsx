@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import PageHero from '../../components/PageHero';
-import ServiceSpectrum from '../../components/sections/ServiceSpectrum';
 import PainPointCards from '../../components/sections/PainPointCard';
 import ServiceDetailSection from '../../components/sections/ServiceDetailSection';
 import WhyUsGrid from '../../components/sections/WhyUsGrid';
-import ProcessTimeline from '../../components/sections/ProcessTimeline';
+import JapaneseProcess from '../../components/sections/JapaneseProcess';
 import FAQAccordion from '../../components/FAQAccordion';
 import CTASection from '../../components/sections/CTASection';
 import { publishingCases } from '../../data/publishing-cases';
@@ -23,12 +22,29 @@ export default function PublishingPage() {
         subtitle="自費出版全流程｜詩集、散文、小說、設計雜誌——每一種書，都值得被好好做出來"
       />
 
-      {/* 2. 服務光譜 */}
-      <ServiceSpectrum
-        title="從想法到成書，我們全程陪你走"
-        subtitle="不論詩集、散文、小說或設計雜誌——每一種書，都能從零做到上架"
-        nodes={['想法', '編輯', '設計', '印製', '通路', '行銷']}
-      />
+      {/* 2. 出版流程（日式圖文 4 步驟） */}
+      <JapaneseProcess steps={[
+        {
+          num: '01', title: '想法', subtitle: 'Concept',
+          image: '/images/publishing/service-01.svg',
+          desc: '從一個想法開始。我們協助你釐清出版方向、讀者定位與核心訊息，讓書從一開始就走在對的路上。',
+        },
+        {
+          num: '02', title: '編輯', subtitle: 'Editorial',
+          image: '/images/publishing/service-02.svg',
+          desc: '文字是書的靈魂。我們協助整理稿件結構、潤飾文字節奏，讓內容清晰有力、易於閱讀。',
+        },
+        {
+          num: '03', title: '設計', subtitle: 'Design',
+          image: '/images/publishing/service-03.svg',
+          desc: '封面是書的第一印象。我們設計封面、規劃內頁排版，讓視覺語言與內容完美呼應。',
+        },
+        {
+          num: '04', title: '印製', subtitle: 'Production',
+          image: '/images/publishing/service-04.svg',
+          desc: '從數位到實體。我們確認印刷規格、紙張選擇與裝幀方式，交付高品質的出版成品。',
+        },
+      ]} />
 
       {/* 3. 問題意識 */}
       <PainPointCards
@@ -74,18 +90,7 @@ export default function PublishingPage() {
         ]}
       />
 
-      {/* 6. 合作流程 */}
-      <ProcessTimeline
-        title="從一個想法，到書在讀者手上"
-        steps={[
-          { num: '01', name: '初步諮詢', duration: '1 週', desc: '聊稿子、出版目標、預算' },
-          { num: '02', name: '編輯企劃', duration: '2-4 週', desc: '稿件評估、結構建議、裝幀方向' },
-          { num: '03', name: '設計製作', duration: '6-10 週', desc: '封面、內頁、打樣、校對' },
-          { num: '04', name: '印刷監製', duration: '2-3 週', desc: '紙張選擇、印刷廠溝通、成品把關' },
-          { num: '05', name: '通路與行銷', duration: '2-4 週', desc: '書號申請、上架、宣傳素材' },
-          { num: '06', name: '發表與延伸', duration: '1-2 個月', desc: '新書活動、讀者經營、再版規劃' },
-        ]}
-      />
+      {/* (old 6-step ProcessTimeline removed — replaced by JapaneseProcess above) */}
 
       {/* 7. 精選案例（placeholder） */}
       <section id="cases" style={{ padding: '7.5rem 4rem' }}>
