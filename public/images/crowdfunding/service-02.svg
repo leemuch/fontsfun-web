@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#e8e4db"/>
+  <rect x="200" y="180" width="600" height="420" rx="6" fill="#f5f2eb" stroke="#c4b89a" stroke-width="2"/>
+  <rect x="260" y="240" width="480" height="300" rx="4" fill="#2a3a5c" opacity="0.06"/>
+  <rect x="900" y="200" width="300" height="300" rx="6" fill="#f5f2eb" stroke="#c4b89a" stroke-width="1.5"/>
+  <rect x="1300" y="200" width="300" height="300" rx="6" fill="#f5f2eb" stroke="#c4b89a" stroke-width="1.5"/>
+  <rect x="900" y="580" width="300" height="220" rx="6" fill="#c87941" opacity="0.08" stroke="#c87941" stroke-width="1"/>
+  <rect x="200" y="680" width="400" height="160" rx="4" fill="#f5f2eb" stroke="#c4b89a" stroke-width="1"/>
+  <text x="960" y="960" text-anchor="middle" font-family="serif" font-size="28" fill="#8b7355" opacity="0.6">募資頁視覺設計</text>
+</svg>

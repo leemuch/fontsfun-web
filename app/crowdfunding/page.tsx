@@ -49,19 +49,19 @@ export default function CrowdfundingPage() {
           headline: '從 0 到 1，把好產品變成能賣的故事',
           items: ['平台選擇與提案策略', '回饋方案與定價邏輯', '上線節奏操盤'],
           differentiator: '不只是做一頁，而是陪你跑完 30-60 天的戰役。',
-          image: '/images/crowdfunding/service-01.jpg',
+          image: '/images/crowdfunding/service-01.svg',
         },
         {
           headline: '視覺，是讓人按下贊助的關鍵',
           items: ['主視覺與產品情境圖', '影片腳本與動態素材', '頁面敘事排版'],
           differentiator: '字型工作室的血統，讓版面的呼吸節奏比別人更講究。',
-          image: '/images/crowdfunding/service-02.jpg',
+          image: '/images/crowdfunding/service-02.svg',
         },
         {
           headline: '讓對的人，在對的時候看到你',
           items: ['Meta / Google 廣告規劃', '素材 A/B 測試', '即時數據調整'],
           differentiator: '數據是方向盤，不是後照鏡。',
-          image: '/images/crowdfunding/service-03.jpg',
+          image: '/images/crowdfunding/service-03.svg',
         },
       ]} />
 

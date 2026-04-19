@@ -47,19 +47,19 @@ export default function PublishingPage() {
           headline: '把文字整理成讀者願意翻下去的節奏',
           items: ['內容架構與章節規劃', '文字編輯與校對', 'ISBN 書號與 CIP 申請'],
           differentiator: '不只幫你排版，是把原稿當一本真正的書來對待。',
-          image: '/images/publishing/service-01.jpg',
+          image: '/images/publishing/service-01.svg',
         },
         {
           headline: '紙張、字型、油墨——都是這本書的一部分',
           items: ['封面設計與裝幀選擇', '內頁排版與字型選用', '紙張、加工與印刷監製'],
           differentiator: '字型工作室的血統，內文的字距、行高比一般美編更講究。',
-          image: '/images/publishing/service-02.jpg',
+          image: '/images/publishing/service-02.svg',
         },
         {
           headline: '書印出來只是開始，讓書走到讀者手上才是結束',
           items: ['新書預購／募資規劃', '獨立書店與通路鋪貨', '新書發表會與媒體合作'],
           differentiator: '同時做募資——如果你的書適合走募資通路，我們可以直接銜接。',
-          image: '/images/publishing/service-03.jpg',
+          image: '/images/publishing/service-03.svg',
         },
       ]} />
 
