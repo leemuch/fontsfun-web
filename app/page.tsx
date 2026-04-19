@@ -3,6 +3,7 @@ import WorksGrid from '../components/WorksGrid';
 import HeroCarousel from '../components/HeroCarousel';
 import ScrollReveal from '../components/ScrollReveal';
 import { HERO_SLIDES, WORKS } from '../lib/constants';
+import ProcessIllustrated from '../components/sections/ProcessIllustrated';
 
 export const metadata: Metadata = {
   title: '盛和設計 — 平面設計・字體・品牌視覺',
@@ -323,50 +324,8 @@ export default function PortfolioPage() {
         <WorksGrid works={WORKS} />
       </section>
 
-      {/* PROCESS */}
-      <section id="process" style={{
-        padding: '6rem 4rem', background: '#e8e4db',
-      }}>
-        <div style={{
-          display: 'flex', alignItems: 'baseline', gap: '1.5rem',
-          marginBottom: '4rem', paddingBottom: '1rem',
-          borderBottom: '1px solid var(--light-rule)',
-        }}>
-          <span style={{
-            fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-            fontSize: '0.8rem', color: 'var(--warm-mid)', letterSpacing: '0.15em',
-          }}>03</span>
-          <h2 style={{
-            fontFamily: "'Noto Serif TC', serif", fontWeight: 500,
-            fontSize: '1.1rem', letterSpacing: '0.15em', color: '#262626',
-          }}>合作流程</h2>
-        </div>
-        <ScrollReveal className="process-steps" style={{
-          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
-        }}>
-          {processSteps.map((p, i) => (
-            <div key={p.num} className="process-step stagger-item" style={{
-              padding: '3rem 2rem',
-              borderRight: i < processSteps.length - 1 ? '1px solid #2a2a2a' : 'none',
-            }}>
-              <div style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: '4rem', fontWeight: 300,
-                color: '#2a2a2a', lineHeight: 1, marginBottom: '1.5rem',
-              }}>{p.num}</div>
-              <h3 style={{
-                fontFamily: "'Noto Serif TC', serif", fontWeight: 500,
-                fontSize: '1rem', letterSpacing: '0.12em', marginBottom: '0.75rem',
-              }}>{p.title}</h3>
-              <p style={{
-                fontFamily: "'Noto Sans TC', sans-serif",
-                fontSize: '0.72rem', color: '#777',
-                lineHeight: 2, letterSpacing: '0.05em',
-              }}>{p.desc}</p>
-            </div>
-          ))}
-        </ScrollReveal>
-      </section>
+      {/* PROCESS — illustrated cartoon style */}
+      <ProcessIllustrated />
 
       {/* ABOUT */}
       <section id="about" style={{
