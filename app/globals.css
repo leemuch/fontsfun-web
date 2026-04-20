@@ -519,3 +519,20 @@ html.dark button.auth-btn-primary,
 html:not(.dark) button.auth-btn-primary { color: #f5f2eb !important; background: #1a1714 !important; }
 html.dark button.auth-btn-google,
 html:not(.dark) button.auth-btn-google { color: #1a1714 !important; background: #ffffff !important; }
+
+/* ─── MOBILE OVERLAP EMERGENCY FIX ─── */
+@media (max-width: 768px) {
+  .grid, [class*="grid"] {
+    grid-template-columns: 1fr !important;
+  }
+  [class*="flex"] {
+    flex-wrap: wrap !important;
+  }
+  img, video {
+    max-width: 100% !important;
+  }
+  [style*="position:absolute"],
+  [style*="position: absolute"] {
+    position: relative !important;
+  }
+}
