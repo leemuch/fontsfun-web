@@ -13,7 +13,7 @@ const navLinks = [
   { href: '/buy',           label: '購買' },
   { href: '/blog',          label: '部落格' },
   { href: '/fonts',         label: '字體' },
-  { href: '/member',        label: '會員' },
+  // { href: '/member',        label: '會員' }, // 封存於 2026-04-20：會員系統待未來重啟 — 路由會重導到首頁
 ];
 
 export default function Nav() {

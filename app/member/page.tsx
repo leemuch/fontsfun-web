@@ -1,19 +1,7 @@
-'use client';
-
-import dynamic from 'next/dynamic';
-import PageHero from '../../components/PageHero';
-
-// Firebase 只能在瀏覽器端執行，ssr: false 確保不會在 build/prerender 時觸發
-const MemberClient = dynamic(() => import('./MemberClient'), { ssr: false });
+// 封存於 2026-04-20：會員系統暫停運作，等待未來重啟。
+// MemberClient.tsx 與 Firebase auth 相關檔案保留不動，未來可直接恢復此檔。
+import { redirect } from 'next/navigation';
 
 export default function MemberPage() {
-  return (
-    <>
-      <PageHero
-        title="加入，就是你品牌的設計夥伴"
-        subtitle="字型優惠、新品搶先、設計資源，專屬設計人的社群"
-      />
-      <MemberClient />
-    </>
-  );
+  redirect('/');
 }
