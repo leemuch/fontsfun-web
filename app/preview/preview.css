@@ -1,0 +1,236 @@
+/* ═══════════════════════════════════════════════════════════════
+ * /preview 路由專用樣式
+ * 日式極簡 redesign 試作版 — 2026-04-21 起
+ *
+ * 綿甜體：字體檔到手後，取消下方 @font-face 註解並將檔案放到
+ *   public/fonts/miantian/miantian-regular.woff2
+ *   public/fonts/miantian/miantian-light.woff2
+ * 所有 component 已使用 var(--font-miantian)，無需改動 TSX。
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* 綿甜體 @font-face 暫停
+ *
+ * 2026-04-21 實測：public/fonts/miantian/miantian-regular.otf（822 KB）的 cmap
+ * 宣告 8729 字元覆蓋，但 glyph outline 大多為空 — 這是 WIP / skeleton 字體。
+ * 實測 4 個常用字中只有「和」有真正繪製，「盛、關、於」等皆渲染為空白。
+ *
+ * 後果：啟用 @font-face 時，瀏覽器在 CJK 範圍匹配到 Miantian（cmap 說有），
+ * 但實際繪空白，不會 fallback 到 Noto Serif TC（因為 cmap「有」該字）。
+ * → 頁面會看到缺字（例：「盛和設計」只剩「和設計」）。
+ *
+ * 待字趣團隊交付完整 Regular 字重後，取消下方註解即可自動啟用。
+ * 相關紀錄：docs/tech-debt-notes.md §2
+ */
+/*
+@font-face {
+  font-family: 'Miantian';
+  src: url('/fonts/miantian/miantian-regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+*/
+
+/* Root scope — 純白底、日式極簡基調，覆蓋 globals.css 的 paper 底色 */
+.preview-scope {
+  --font-miantian:  'Miantian', 'Noto Serif TC', serif;
+  --font-sans-zh:   'Noto Sans TC', system-ui, sans-serif;
+  --font-serif-en:  'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --font-sans-en:   'Inter', system-ui, sans-serif;
+
+  background: #ffffff;
+  color: #111111;
+  min-height: 100vh;
+  font-family: var(--font-sans-zh);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scoped font-family utility classes — 避免全域污染 */
+.preview-scope .font-miantian  { font-family: var(--font-miantian); }
+.preview-scope .font-sans-zh   { font-family: var(--font-sans-zh); }
+.preview-scope .font-serif-en  { font-family: var(--font-serif-en); }
+.preview-scope .font-sans-en   { font-family: var(--font-sans-en); }
+
+/* ─── Scoped spacing utilities ───
+ * globals.css 的 `* { margin: 0; padding: 0 }` reset 贏過 Tailwind utilities
+ * (經測試即使包 @layer 仍不生效)，故 /preview 的定位 spacing 改走 scoped CSS。
+ * 位置相關的 inline style 在 TSX 內，這裡處理需要 media query 的部分。
+ */
+.preview-scope .nav-inner         { padding-inline: 1.5rem; }
+@media (min-width: 768px) {
+  .preview-scope .nav-inner       { padding-inline: 2rem; }
+}
+@media (min-width: 1024px) {
+  .preview-scope .nav-inner       { padding-inline: 3rem; }
+}
+
+/* Hero text anchor — 理想 60vh 上方留白，但在矮 viewport 自動退讓
+ * 保留底部 400px 給文字塊 + scroll 指示的必要空間（避免重疊）*/
+.preview-scope .hero-text-anchor  { margin-top: min(60vh, calc(100vh - 440px)); }
+.preview-scope .hero-h1-gap       { margin-top: 20px; }
+.preview-scope .hero-sub-gap      { margin-top: 40px; }
+.preview-scope .hero-section      { padding-inline: 1.5rem; }
+
+/* ─── Concept section (關於盛和) ─── */
+.preview-scope .concept-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 768px) {
+  .preview-scope .concept-section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+.preview-scope .concept-container {
+  max-width: 640px;
+  margin-inline: auto;
+}
+.preview-scope .concept-title-gap  { margin-top: 8px; }
+.preview-scope .concept-rule {
+  width: 40px;
+  height: 1px;
+  background: #111;
+  margin-top: 32px;
+  margin-bottom: 40px;
+}
+.preview-scope .concept-body p {
+  font-size: 18px !important;   /* beats globals.css `p { font-size: 16px !important }` */
+  line-height: 1.8;
+}
+.preview-scope .concept-body p + p { margin-top: 1em; }
+.preview-scope .concept-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 48px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #111;
+  transition: opacity 0.2s ease;
+}
+.preview-scope .concept-cta:hover { opacity: 0.6; }
+
+/* /preview 裡 section+section 不要 globals.css 的 border-top 分隔線 */
+.preview-scope section + section { border-top: none; }
+
+/* ─── Works section (作品集) ─── */
+.preview-scope .works-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 768px) {
+  .preview-scope .works-section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    padding-inline: 2rem;
+  }
+}
+.preview-scope .works-container {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+.preview-scope .works-title-gap { margin-top: 8px; }
+.preview-scope .works-grid-gap  { margin-top: 56px; }
+
+/* Grid: 1 col (mobile) → 2 col (tablet/desktop), gap scales with breakpoint */
+.preview-scope .works-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 768px) {
+  .preview-scope .works-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+@media (min-width: 1024px) {
+  .preview-scope .works-grid { gap: 32px; }
+}
+
+/* Card — hover raises the whole article */
+.preview-scope .work-card {
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+  display: block;
+}
+.preview-scope .work-card:hover { transform: translateY(-4px); }
+
+/* Image placeholder with 4:5 aspect ratio */
+.preview-scope .work-image {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: #F5F5F5;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.preview-scope .work-image-label {
+  font-family: var(--font-sans-en);
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: #AAA;
+}
+
+/* Dark gradient overlay that rises on hover */
+.preview-scope .work-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  pointer-events: none;
+}
+.preview-scope .work-card:hover .work-overlay { opacity: 1; }
+
+/* Info block below the image */
+.preview-scope .work-info       { padding-top: 20px; }
+.preview-scope .work-meta-gap   { margin-top: 6px; }
+.preview-scope .work-year-gap   { margin-top: 4px; }
+
+/* Centered CTA below the grid (matches Concept's 了解更多 style) */
+.preview-scope .works-cta-wrap {
+  margin-top: 56px;
+  display: flex;
+  justify-content: center;
+}
+.preview-scope .works-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #111;
+  transition: opacity 0.2s ease;
+}
+.preview-scope .works-cta:hover { opacity: 0.6; }
+
+/* 隱藏 globals.css 的全站 noise overlay + paper 底色，讓 /preview 保持純白
+ * 特異度刻意用 `html:not(.dark) body:has(...)` 以壓過 globals.css 的
+ * `html:not(.dark) body { background-color: ... !important }`
+ */
+html:not(.dark) body:has(.preview-scope),
+html.dark      body:has(.preview-scope)       { background: #ffffff !important; }
+body:has(.preview-scope)::before              { display: none !important; }
+
+/* Hero 文字淡入上移 0.8s ease-out — 僅 page load 時觸發 */
+@keyframes preview-hero-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+.preview-hero-anim {
+  opacity: 0;
+  animation: preview-hero-in 0.8s ease-out forwards;
+}
+
+/* 尊重使用者 reduced-motion 偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .preview-hero-anim {
+    animation: none;
+    opacity: 1;
+  }
+}

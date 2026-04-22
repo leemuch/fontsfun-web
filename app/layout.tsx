@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
-import Nav from '../components/Nav';
-import Footer from '../components/Footer';
+import SiteChrome from '../components/SiteChrome';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -21,11 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          <Nav />
-          <main style={{ paddingTop: '61px' }}>
-            {children}
-          </main>
-          <Footer />
+          <SiteChrome>{children}</SiteChrome>
         </ThemeProvider>
       </body>
     </html>
