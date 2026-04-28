@@ -1,5 +1,37 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════
+ * MASCOT FAMILY · parallel design tokens (Tailwind v4 @theme)
+ * Scope: 怪獸 components + /preview/monsters 展示頁
+ * 既有 --ink / --accent / --paper 完全保留，不互相覆蓋
+ * 詳見 DESIGN_SYSTEM.md
+ * ═══════════════════════════════════════════════════════════════ */
+@theme {
+  /* Oreo blue（怪獸線條 / 深色 UI） */
+  --color-oreo-900: #1B2845;
+  --color-oreo-700: #2E4373;
+  --color-oreo-500: #4A6BA8;
+
+  /* Cream（米白底色） */
+  --color-cream-50:  #F5F1E8;
+  --color-cream-100: #EDE8DC;
+  --color-cream-200: #FAF7EE;
+
+  /* Accent（配件 / 點綴） */
+  --color-accent-orange: #FF8C42;
+  --color-accent-yellow: #FFD86B;
+  --color-accent-pink:   #F4A8C8;
+  --color-accent-blue:   #7FC5E8;
+
+  /* 中性 */
+  --color-ink-soft: #6B7A99;
+  --color-line:     #D4CCB8;
+
+  /* 形狀 */
+  --radius-card:   16px;
+  --radius-button: 12px;
+}
+
 /* ─── DESIGN TOKENS ─── */
 :root {
   --ink:        #1a1714; /* kept for buttons/logos only */
