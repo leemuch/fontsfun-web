@@ -5,6 +5,7 @@ import ScrollReveal from '../components/ScrollReveal';
 import { HERO_SLIDES, WORKS } from '../lib/constants';
 import ProcessIllustrated from '../components/sections/ProcessIllustrated';
 import { BrandShield, TypographyA, BookDesign, GovBuilding, FilmSlate, CalendarIcon, FolderIcon, PenNibIcon } from '../components/icons/ServiceIcons';
+import { MonsterFamily } from '../components/monsters';
 
 export const metadata: Metadata = {
   title: '盛和設計 — 平面設計・字體・品牌視覺',
@@ -399,6 +400,16 @@ export default function PortfolioPage() {
         </div>
       </section>
 
+      {/* MASCOT FAMILY — 盛和設計怪獸家族家庭照（融入現有設計、無標題、自己說話） */}
+      <section className="mascot-section" style={{
+        padding: '6rem 4rem',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+        <MonsterFamily className="mascot-img" />
+      </section>
+
       {/* CLIENTS */}
       <section id="clients" style={{ padding: '6rem 4rem' }}>
         <div style={{
@@ -603,6 +614,9 @@ export default function PortfolioPage() {
 
       <style>{`
         @keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+
+        /* Mascot family — responsive image inside the inserted section */
+        .mascot-img { width: 100%; max-width: 640px; height: auto; display: block; }
 
         /* ─── PORTFOLIO MOBILE RWD (page-scoped) ─── */
         @media (max-width: 900px) {
