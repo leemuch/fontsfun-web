@@ -400,14 +400,15 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* MASCOT FAMILY — 盛和設計怪獸家族家庭照（融入現有設計、無標題、自己說話） */}
-      <section className="mascot-section" style={{
-        padding: '6rem 4rem',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-        <MonsterFamily className="mascot-img" />
+      {/* MASCOT FAMILY — 盛和設計品牌家族（融入現有設計、無標題、自己說話） */}
+      <section
+        className="mascot-family-section"
+        aria-label="盛和設計品牌家族"
+        style={{ padding: '5rem 1.5rem' }}
+      >
+        <div className="mascot-family-container">
+          <MonsterFamily className="mascot-img" />
+        </div>
       </section>
 
       {/* CLIENTS */}
@@ -615,8 +616,11 @@ export default function PortfolioPage() {
       <style>{`
         @keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
 
-        /* Mascot family — responsive image inside the inserted section */
-        .mascot-img { width: 100%; max-width: 640px; height: auto; display: block; }
+        /* Mascot family — container drives RWD max-width, image fills it */
+        .mascot-family-container { width: 100%; margin-inline: auto; }
+        .mascot-img { width: 100%; height: auto; display: block; }
+        @media (min-width: 600px)  { .mascot-family-container { max-width: 80%; } }
+        @media (min-width: 960px)  { .mascot-family-container { max-width: 880px; } }
 
         /* ─── PORTFOLIO MOBILE RWD (page-scoped) ─── */
         @media (max-width: 900px) {
