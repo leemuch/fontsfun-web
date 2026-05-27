@@ -11,7 +11,7 @@ import { crowdfundingCases } from '../../data/crowdfunding-cases';
 import { EyeSlash, CoinQuestion, PuzzleSplit, MapQuestion, TrophyIcon, HandshakeIcon, MagnifyIcon, FlagIcon, ChatBubbleSmall, LightbulbSmall, BrushSmall, FlameSmall, RocketSmall, EnvelopeStarSmall } from '../../components/icons/CrowdfundingIcons';
 
 export const metadata: Metadata = {
-  title: '募資代操 — 盛和設計 × 字趣 fontsfun',
+  title: '募資代操 — 莫奇利創意設計 × 字趣 fontsfun',
   description: '嘖嘖、貝殼放大專案代操 × 廣告投放 × 視覺設計一條龍。',
 };
 

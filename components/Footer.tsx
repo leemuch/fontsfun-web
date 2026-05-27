@@ -26,7 +26,7 @@ export default function Footer() {
           <span style={{
             fontFamily: "'Noto Serif TC', serif", fontWeight: 500,
             fontSize: '16px', color: '#1a1714', letterSpacing: '0.12em',
-          }}>{isPortfolio ? '盛和設計' : '字趣 fontsfun'}</span>
+          }}>{isPortfolio ? '莫奇利創意設計' : '字趣 fontsfun'}</span>
         </div>
         {/* Contact */}
         <div style={{ display: 'flex', gap: '2.5rem', flexWrap: 'wrap' }}>
@@ -38,8 +38,8 @@ export default function Footer() {
             </a>
           </div>
           <div>
-            <span style={{ color: '#666' }}>Phone / LINE</span><br />
-            <span style={{ color: '#bbb' }}>0938-938-862</span>
+            <span style={{ color: '#666' }}>LINE</span><br />
+            <span style={{ color: '#bbb' }}>leemuch2</span>
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@ export default function Footer() {
         gap: '1rem', flexWrap: 'wrap',
       }}>
         <span style={{ color: '#666' }}>
-          © 2025 {isPortfolio ? '盛和有限公司 Shenghe Co., Ltd.' : '字趣 fontsfun · 盛和有限公司'}
+          © 2025 {isPortfolio ? '佳芝創意有限公司 · Mochili Creative Design' : '字趣 fontsfun · 佳芝創意有限公司'}
         </span>
         <span>
           {isPortfolio ? (
@@ -58,7 +58,7 @@ export default function Footer() {
             </>
           ) : (
             <>設計接案請前往{' '}
-              <Link href="/" style={{ color: '#1a1714', textDecoration: 'underline', textUnderlineOffset: '0.2em' }}>盛和設計</Link>
+              <Link href="/" style={{ color: '#1a1714', textDecoration: 'underline', textUnderlineOffset: '0.2em' }}>莫奇利創意設計</Link>
             </>
           )}
         </span>

@@ -8,7 +8,7 @@ import { BrandShield, TypographyA, BookDesign, GovBuilding, FilmSlate, CalendarI
 import { MonsterFamily } from '../components/monsters';
 
 export const metadata: Metadata = {
-  title: '盛和設計 — 平面設計・字體・品牌視覺',
+  title: '莫奇利創意設計 — 平面設計・字體・品牌視覺',
   description: '專注品牌識別、字體排版與文化視覺設計。從企業品牌到政府標案，讓你的形象說話。',
 };
 
@@ -159,7 +159,7 @@ const stats = [
   { num: '100%', label: '客戶回頭率' },
 ];
 
-const clientNames = ['臺大出版中心', '正官庄 CKJ', '字趣 fontsfun', '盛和有限公司', '3點1刻', 'Sunny 文庫', 'GWO 移民工協會', '好芯芩工作坊', '施恩國際'];
+const clientNames = ['臺大出版中心', '正官庄 CKJ', '字趣 fontsfun', '佳芝創意有限公司', '3點1刻', 'Sunny 文庫', 'GWO 移民工協會', '好芯芩工作坊', '施恩國際'];
 
 export default function PortfolioPage() {
   return (
@@ -353,7 +353,7 @@ export default function PortfolioPage() {
           }}>
             深耕平面設計逾十年，專注於繁體中文字體與排版美學的探索與實踐。
             <br /><br />
-            主持字趣 fontsfun 字型工作室，開發原創繁體中文字體；同時以盛和有限公司承接品牌識別、出版設計、政府視覺標案等多元設計專案。
+            主持字趣 fontsfun 字型工作室，開發原創繁體中文字體；同時以佳芝創意有限公司承接品牌識別、出版設計、政府視覺標案等多元設計專案。
             <br /><br />
             相信好的設計不只是美觀，而是能精準傳達訊息、建立信任、創造長期價值的溝通工具。
           </p>
@@ -400,10 +400,10 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* MASCOT FAMILY — 盛和設計品牌家族（融入現有設計、無標題、自己說話） */}
+      {/* MASCOT FAMILY — 莫奇利創意設計品牌家族（融入現有設計、無標題、自己說話） */}
       <section
         className="mascot-family-section"
-        aria-label="盛和設計品牌家族"
+        aria-label="莫奇利創意設計品牌家族"
         style={{ padding: '5rem 1.5rem' }}
       >
         <div className="mascot-family-container">
@@ -488,7 +488,7 @@ export default function PortfolioPage() {
             fontSize: '16px', lineHeight: 2.2,
             letterSpacing: '0.05em', color: '#262626',
           }}>
-            深耕平面設計逾十年，專注於繁體中文字體與排版美學的探索與實踐。主持字趣 fontsfun 字型工作室，同時以盛和有限公司承接品牌識別、出版設計、政府視覺標案等多元設計專案。
+            深耕平面設計逾十年，專注於繁體中文字體與排版美學的探索與實踐。主持字趣 fontsfun 字型工作室，同時以佳芝創意有限公司承接品牌識別、出版設計、政府視覺標案等多元設計專案。
           </p>
           <div style={{
             display: 'flex', gap: '3rem', marginTop: '2.5rem',
@@ -584,7 +584,7 @@ export default function PortfolioPage() {
           }}>
             {[
               { label: 'Email',         value: <a href="mailto:muchbin@gmail.com" style={{ color: '#262626', textDecoration: 'none' }}>muchbin@gmail.com</a> },
-              { label: 'Phone / LINE',  value: '0938-938-862' },
+              { label: 'LINE',          value: 'leemuch2' },
               { label: '字體工作室',     value: <a href="https://fontsfun.com" target="_blank" rel="noopener noreferrer" style={{ color: '#262626', textDecoration: 'none' }}>fontsfun.com</a> },
             ].map(it => (
               <div key={it.label} style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>

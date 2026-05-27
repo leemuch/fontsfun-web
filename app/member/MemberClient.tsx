@@ -453,7 +453,7 @@ function Dashboard({
               <p>版本：<strong style={{ color: 'var(--ink)', fontWeight: 500 }}>v{certFont.version}</strong></p>
             </div>
             <div style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--light-rule)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: '1.1rem', color: 'var(--warm-mid)' }}>字趣 fontsfun<br />盛和有限公司</div>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: '1.1rem', color: 'var(--warm-mid)' }}>字趣 fontsfun<br />佳芝創意有限公司</div>
               <div style={{ fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.6rem', color: '#bbb', letterSpacing: '0.1em' }}>FF-{certFont.purchaseDate.replace(/-/g, '')}-{Math.random().toString(36).slice(2, 6).toUpperCase()}</div>
             </div>
             <button onClick={() => window.print()} style={{ display: 'block', width: '100%', marginTop: '1.5rem', padding: '0.8rem', background: 'var(--ink)', color: 'var(--paper)', border: 'none', fontFamily: "'Noto Sans TC', sans-serif", fontSize: '0.7rem', letterSpacing: '0.15em', cursor: 'pointer', transition: 'background 0.2s' }}>列印 / 儲存 PDF</button>

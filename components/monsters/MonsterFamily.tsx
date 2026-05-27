@@ -4,7 +4,7 @@ type MonsterFamilyProps = {
 };
 
 /**
- * 盛和設計品牌吉祥物全家福主視覺。
+ * 莫奇利創意設計品牌吉祥物全家福主視覺。
  * 對應檔案：public/monsters.svg（手繪 3x3 九宮格，viewBox 0 0 1254 1254）
  *
  * 怪獸排列順序（由左至右、由上至下）：
@@ -16,7 +16,7 @@ export function MonsterFamily({ className }: MonsterFamilyProps) {
   return (
     <img
       src="/monsters.svg"
-      alt="盛和設計怪獸家族 — 9 隻字型化身"
+      alt="莫奇利創意設計怪獸家族 — 9 隻字型化身"
       className={className}
       loading="lazy"
     />

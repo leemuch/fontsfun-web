@@ -6,7 +6,7 @@ export const HERO_SLIDES: HeroSlide[] = [
   {
     img: '/images/hero/hero-slide-1.jpg',
     alt: '綿甜體字樣特寫',
-    eyebrow: 'Shenghe Design Studio',
+    eyebrow: 'Mochili Creative Design',
     title: '設計，是溝通的最短距離',
     titleAccent: '溝通',
     subtitle: '專注品牌識別、字體排版與文化視覺設計。從企業品牌到政府標案，讓你的形象說話。',

@@ -57,8 +57,8 @@ globals.css 裡有 `html:not(.dark) body { background-color: var(--paper) !impor
 渲染為空白（非 tofu / 非 .notdef，而是 zero-width 空字形）。
 
 **實測證據**：
-- Hero 主標「盛和設計」啟用 Miantian 時只剩「和設計」，「盛」空白
-- Concept 標題「關於盛和」啟用 Miantian 時只剩「和」，其餘 3 字空白
+- Hero 主標「莫奇利創意設計」啟用 Miantian 時只剩「和設計」，「盛」空白
+- Concept 標題「關於莫奇利」啟用 Miantian 時只剩「和」，其餘 3 字空白
 - 直接測試個別字：和、設、計、趣 有繪製；盛、關、於、品、體 空白
 
 **為什麼 fallback 沒有自動發生**：

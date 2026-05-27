@@ -9,7 +9,7 @@ import CTASection from '../../components/sections/CTASection';
 import { publishingCases } from '../../data/publishing-cases';
 
 export const metadata: Metadata = {
-  title: '自費出版 — 盛和設計 × 字趣 fontsfun',
+  title: '自費出版 — 莫奇利創意設計 × 字趣 fontsfun',
   description: '自費出版全流程｜詩集、散文、小說、設計雜誌——每一種書，都值得被好好做出來。',
 };
 

@@ -49,12 +49,12 @@ export default function Nav() {
             fontWeight: 500, fontSize: '1rem',
             letterSpacing: '0.15em', color: 'var(--ink)', textDecoration: 'none',
           }}>
-            盛和設計{' '}
+            莫奇利創意設計{' '}
             <span style={{
               fontFamily: "'Cormorant Garamond', serif",
               fontStyle: 'italic', fontWeight: 300, fontSize: '0.85rem',
               color: 'var(--warm-mid)', marginLeft: '0.5rem',
-            }}>Shenghe Design</span>
+            }}>Mochili Design</span>
           </Link>
         ) : (
           <Link href="/fonts" style={{

@@ -16,7 +16,7 @@
  *
  * 後果：啟用 @font-face 時，瀏覽器在 CJK 範圍匹配到 Miantian（cmap 說有），
  * 但實際繪空白，不會 fallback 到 Noto Serif TC（因為 cmap「有」該字）。
- * → 頁面會看到缺字（例：「盛和設計」只剩「和設計」）。
+ * → 頁面會看到缺字（例：「莫奇利創意設計」只剩「和設計」）。
  *
  * 待字趣團隊交付完整 Regular 字重後，取消下方註解即可自動啟用。
  * 相關紀錄：docs/tech-debt-notes.md §2
@@ -73,7 +73,7 @@
 .preview-scope .hero-sub-gap      { margin-top: 40px; }
 .preview-scope .hero-section      { padding-inline: 1.5rem; }
 
-/* ─── Concept section (關於盛和) ─── */
+/* ─── Concept section (關於莫奇利) ─── */
 .preview-scope .concept-section {
   padding-top: 80px;
   padding-bottom: 80px;

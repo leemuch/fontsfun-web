@@ -11,14 +11,14 @@ export default function PreviewConcept({ aboutHref = '#' }: Props) {
           About
         </div>
         <h2 className="concept-title-gap font-miantian font-light text-[48px]! leading-[1.2] tracking-[0.05em] text-neutral-900">
-          關於盛和
+          關於莫奇利
         </h2>
 
         <div className="concept-rule" aria-hidden />
 
         <div className="concept-body font-sans-zh">
           <p>
-            盛和設計專注於以文字為核心的視覺溝通。
+            莫奇利創意設計專注於以文字為核心的視覺溝通。
             <br />
             從字體設計、排版到品牌識別，
             <br />

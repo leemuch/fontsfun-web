@@ -3,8 +3,8 @@ import { monsters, MonsterFamily } from '../../../components/monsters';
 import './monsters.css';
 
 export const metadata: Metadata = {
-  title: '怪獸家族 · 盛和設計',
-  description: '盛和設計品牌吉祥物家族 — 9 隻字型化身怪獸，為品牌注入靈魂。',
+  title: '怪獸家族 · 莫奇利創意設計',
+  description: '莫奇利創意設計品牌吉祥物家族 — 9 隻字型化身怪獸，為品牌注入靈魂。',
 };
 
 export default function MonstersShowcase() {
@@ -23,7 +23,7 @@ export default function MonstersShowcase() {
             className="monsters-h1-gap font-sans-zh text-[clamp(28px,5vw,40px)] leading-[1.2] tracking-[0.04em]"
             style={{ color: '#1B2845', fontWeight: 700 }}
           >
-            盛和設計怪獸家族
+            莫奇利創意設計怪獸家族
           </h1>
           <p
             className="monsters-sub-gap font-sans-zh text-[15px] leading-[1.6]"

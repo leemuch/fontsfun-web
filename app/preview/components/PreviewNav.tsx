@@ -23,10 +23,10 @@ export default function PreviewNav() {
             className="flex items-baseline gap-2"
           >
             <span className="font-miantian text-[18px] lg:text-[20px] tracking-wider text-neutral-900">
-              盛和
+              莫奇利
             </span>
             <span className="font-serif-en text-[12px] lg:text-[14px] text-neutral-500">
-              Shenghe
+              Mochili
             </span>
           </Link>
 
